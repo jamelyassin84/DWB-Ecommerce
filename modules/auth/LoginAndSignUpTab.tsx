@@ -10,16 +10,11 @@ const LoginAndSignUpTab: FC<Props> = (props) => {
 	return (
 		<View>
 			<View>
-				<TouchableOpacity
-					onPress={() => {
-						props.wantsToLogin(false)
-					}}>
+				<TouchableOpacity onPress={() => props.wantsToLogin(false)}>
 					<Text>Sign up</Text>
 				</TouchableOpacity>
-				<TouchableOpacity
-					onPress={() => {
-						props.wantsToLogin(true)
-					}}>
+
+				<TouchableOpacity onPress={() => props.wantsToLogin(true)}>
 					<Text>Login</Text>
 				</TouchableOpacity>
 			</View>
