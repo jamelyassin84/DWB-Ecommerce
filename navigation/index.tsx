@@ -13,7 +13,7 @@ import {
 import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
 import ModalScreen from '../screens/ModalScreen'
-import LoginAndSignUpTab from '../modules/app/LoginAndSignupTab'
+import LoginAndSignUpTab from '../modules/auth/LoginAndSignUpTab'
 
 export default function Navigation({
 	colorScheme
