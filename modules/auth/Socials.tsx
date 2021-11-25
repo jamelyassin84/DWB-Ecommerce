@@ -1,14 +1,15 @@
 import React, { FC } from 'react'
-import { Text } from 'react-native'
-import Container from '../../components/Layout'
+import { Text, View } from 'react-native'
 
-type Props = {}
+type Props = {
+	isShowing: boolean
+}
 
 const Socials: FC<Props> = (props) => {
 	return (
-		<Container>
+		<View>
 			<Text>Socials</Text>
-		</Container>
+		</View>
 	)
 }
 
