@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Dimensions, View } from 'react-native';
 import useColorScheme from '../hooks/useColorScheme';
-import Colors from './Colors';
+import Colors from '../constants/Colors';
 
 type Props = {};
 
