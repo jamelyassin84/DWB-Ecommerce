@@ -14,6 +14,10 @@ import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
 import ModalScreen from '../screens/ModalScreen'
 import LoginAndSignUpTab from '../modules/auth/LoginAndSignUpTab'
+import _Home from '../modules/home/_Home'
+import _Products from '../modules/products/_Products'
+import _Payment from '../modules/payment/_Payment'
+import _Settings from '../modules/settings/_Settings'
 
 export default function Navigation({
 	colorScheme
@@ -56,7 +60,7 @@ const BottomTabNavigator = () => {
 			}}>
 			<BottomTab.Screen
 				name="Home"
-				component={LoginAndSignUpTab}
+				component={_Home}
 				options={{
 					title: 'Products',
 					tabBarIcon: ({ color }) => (
@@ -66,7 +70,7 @@ const BottomTabNavigator = () => {
 			/>
 			<BottomTab.Screen
 				name="Products"
-				component={LoginAndSignUpTab}
+				component={_Products}
 				options={{
 					title: 'Products',
 					tabBarIcon: ({ color }) => (
@@ -76,7 +80,7 @@ const BottomTabNavigator = () => {
 			/>
 			<BottomTab.Screen
 				name="Payment"
-				component={LoginAndSignUpTab}
+				component={_Payment}
 				options={{
 					title: 'Payment',
 					tabBarIcon: ({ color }) => (
@@ -90,7 +94,7 @@ const BottomTabNavigator = () => {
 			/>
 			<BottomTab.Screen
 				name="Settings"
-				component={LoginAndSignUpTab}
+				component={_Settings}
 				options={{
 					title: 'Settings',
 					tabBarIcon: ({ color }) => (
