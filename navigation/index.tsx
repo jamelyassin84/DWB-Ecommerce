@@ -2,7 +2,7 @@ import * as React from 'react'
 import { FontAwesome, FontAwesome5, Ionicons } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { RootStackParamList, RootTabParamList } from '../types'
-import { ColorSchemeName, Pressable } from 'react-native'
+import { ColorSchemeName } from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Entypo } from '@expo/vector-icons'
 import {
@@ -13,7 +13,6 @@ import {
 import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
 import ModalScreen from '../screens/ModalScreen'
-import NotFoundScreen from '../screens/NotFoundScreen'
 import LoginAndSignUpTab from '../modules/app/LoginAndSignupTab'
 
 export default function Navigation({
@@ -37,11 +36,6 @@ const RootNavigator = () => {
 				name="Root"
 				component={BottomTabNavigator}
 				options={{ headerShown: false }}
-			/>
-			<Stack.Screen
-				name="NotFound"
-				component={NotFoundScreen}
-				options={{ title: 'Oops!' }}
 			/>
 			<Stack.Group screenOptions={{ presentation: 'modal' }}>
 				<Stack.Screen name="Modal" component={ModalScreen} />
