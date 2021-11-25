@@ -41,11 +41,6 @@ const RootNavigator = () => {
 		<Stack.Navigator>
 			<Stack.Screen
 				name="Auth"
-				component={BottomTabNavigator}
-				options={{ headerShown: false }}
-			/>
-			<Stack.Screen
-				name="Auth"
 				component={_Auth}
 				options={{ headerShown: false }}
 			/>
@@ -62,6 +57,11 @@ const RootNavigator = () => {
 			<Stack.Screen
 				name="PasswordReset"
 				component={_PasswordReset}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
+				name="Root"
+				component={BottomTabNavigator}
 				options={{ headerShown: false }}
 			/>
 			<Stack.Group screenOptions={{ presentation: 'modal' }}>
