@@ -1,14 +1,20 @@
 import React, { FC } from 'react'
-import { Text } from 'react-native'
+import { Text, TextInput, View } from 'react-native'
 import Container from './Layout'
 
-type Props = {}
+type Props = {
+	label: string
+	placeholder?: string
+}
 
 const TextArea: FC<Props> = (props) => {
 	return (
-		<Container>
-			<Text>TextArea</Text>
-		</Container>
+		<View>
+			<Text>{props.label}</Text>
+			<View>
+				<TextInput />
+			</View>
+		</View>
 	)
 }
 

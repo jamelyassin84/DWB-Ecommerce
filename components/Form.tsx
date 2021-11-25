@@ -6,7 +6,7 @@ type Props = {
 	placeholder?: string
 }
 
-const PasswordForm: FC<Props> = (props) => {
+const Form: FC<Props> = (props) => {
 	return (
 		<View>
 			<Text>{props.label}</Text>
@@ -17,4 +17,4 @@ const PasswordForm: FC<Props> = (props) => {
 	)
 }
 
-export default PasswordForm
+export default Form
