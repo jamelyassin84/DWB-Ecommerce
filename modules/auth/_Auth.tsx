@@ -13,6 +13,7 @@ const _Auth: FC<Props> = (props) => {
 	return (
 		<Container>
 			<LoginAndSignUpTab
+				shouldLogin={shouldLogin}
 				wantsToLogin={(value: boolean) => {
 					setShouldLogin(value)
 				}}
