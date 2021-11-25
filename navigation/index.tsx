@@ -13,11 +13,14 @@ import {
 import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
 import ModalScreen from '../screens/ModalScreen'
-import LoginAndSignUpTab from '../modules/auth/LoginAndSignUpTab'
 import _Home from '../modules/home/_Home'
 import _Products from '../modules/products/_Products'
 import _Payment from '../modules/payment/_Payment'
 import _Settings from '../modules/settings/_Settings'
+import _Auth from '../modules/auth/_Auth'
+import _ProductDetail from '../modules/product_details/_ProductDetail'
+import _PasswordReset from '../modules/PasswordReset/_PasswordReset'
+import _Profile from '../modules/Profile/_Profile'
 
 export default function Navigation({
 	colorScheme
@@ -37,8 +40,28 @@ const RootNavigator = () => {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
-				name="Root"
+				name="Auth"
 				component={BottomTabNavigator}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
+				name="Auth"
+				component={_Auth}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
+				name="ProductDetail"
+				component={_ProductDetail}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
+				name="Profile"
+				component={_Profile}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
+				name="PasswordReset"
+				component={_PasswordReset}
 				options={{ headerShown: false }}
 			/>
 			<Stack.Group screenOptions={{ presentation: 'modal' }}>
