@@ -1,5 +1,8 @@
 import React, { FC } from 'react'
-import { Text } from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
+import Form from '../../components/Form'
+import PasswordForm from '../../components/PasswordForm'
+import PrimaryButton from '../../components/PrimaryButton'
 import { View } from '../../components/Themed'
 
 type Props = {
@@ -9,7 +12,12 @@ type Props = {
 const Login: FC<Props> = (props) => {
 	return (
 		<View>
-			<Text>Login</Text>
+			<Form label="Email" />
+			<PasswordForm label="Password" />
+			<PrimaryButton text="Login" callback={() => {}} />
+			<TouchableOpacity onPress={() => {}}>
+				<Text>Forgot Password</Text>
+			</TouchableOpacity>
 		</View>
 	)
 }
