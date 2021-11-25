@@ -1,15 +1,15 @@
 import React, { FC } from 'react'
 import { Text } from 'react-native'
-import Container from './Layout'
+import Container from '../../components/Layout'
 
 type Props = {}
 
-const Component: FC<Props> = (props) => {
+const Login: FC<Props> = (props) => {
 	return (
 		<Container>
-			<Text>Component</Text>
+			<Text>Login</Text>
 		</Container>
 	)
 }
 
-export default Component
+export default Login
