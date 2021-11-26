@@ -9,7 +9,7 @@ const HomeChart: FC<Props> = (props) => {
 		container: {},
 		image: {
 			width: '100%',
-			height: 270,
+			height: 290,
 			resizeMode: 'contain'
 		}
 	})

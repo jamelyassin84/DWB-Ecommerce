@@ -6,7 +6,16 @@ type Props = {
 }
 
 const Title: FC<Props> = (props) => {
-	return <Text style={{ fontSize: 16, fontWeight: '500' }}>{props.text}</Text>
+	return (
+		<Text
+			style={{
+				fontSize: 16,
+				fontWeight: 'bold',
+				marginBottom: 10
+			}}>
+			{props.text}
+		</Text>
+	)
 }
 
 export default Title

@@ -18,7 +18,7 @@ const Form: FC<Props> = (props) => {
 			color: '#757575',
 			paddingHorizontal: 20
 		},
-		inputContainer: {
+		input: {
 			width: '90%',
 			borderRadius: 10,
 			borderWidth: 1,
@@ -28,18 +28,13 @@ const Form: FC<Props> = (props) => {
 			fontSize: 16,
 			marginVertical: 10,
 			alignSelf: 'center'
-		},
-		input: {
-			width: '100%'
 		}
 	})
 
 	return (
 		<View style={styles.wrapper}>
 			<Text style={styles.label}>{props.label}</Text>
-			<View style={styles.inputContainer}>
-				<TextInput style={styles.input} />
-			</View>
+			<TextInput style={styles.input} />
 		</View>
 	)
 }
