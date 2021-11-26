@@ -14,7 +14,7 @@ const SelectAMonth: FC<Props> = (props) => {
 		button: {
 			borderRadius: 20,
 			borderWidth: 1.5,
-			borderColor: '#F6F7F9',
+			borderColor: 'rgba(150,150,150,.4)',
 			flexDirection: 'row',
 			alignItems: 'center',
 			paddingVertical: 6,

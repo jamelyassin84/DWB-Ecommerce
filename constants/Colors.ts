@@ -16,7 +16,7 @@ export default {
 		background: '#000',
 		homeBackground: 'black',
 		tint: tintColorDark,
-		tabIconDefault: '#D2D7DB',
+		tabIconDefault: 'rgba(150,150,150,.4)',
 		tabIconSelected: tintColorDark,
 		tabColor: 'rgba(50,50,50,.5)'
 	}

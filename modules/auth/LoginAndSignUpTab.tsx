@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { StyleSheet, TouchableOpacity } from 'react-native'
+import { Platform, StyleSheet, TouchableOpacity } from 'react-native'
 import { Text, View } from '../../components/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
@@ -25,7 +25,7 @@ const LoginAndSignUpTab: FC<Props> = (props) => {
 			padding: 5,
 			alignSelf: 'center',
 			marginVertical: 30,
-			marginTop: 0
+			marginTop: Platform.OS === 'ios' ? 0 : 30
 		},
 		button: {
 			flex: 1,

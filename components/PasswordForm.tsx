@@ -28,7 +28,7 @@ const PasswordForm: FC<Props> = (props) => {
 			width: '90%',
 			borderRadius: 10,
 			borderWidth: 1,
-			borderColor: '#ddd',
+			borderColor: 'rgba(150,150,150,.4)',
 			paddingHorizontal: 10,
 			paddingVertical: 15,
 			fontSize: 16,
