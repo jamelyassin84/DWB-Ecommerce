@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/core'
 import React, { FC } from 'react'
 import { StyleSheet, Text } from 'react-native'
 import Form from '../../components/Form'
@@ -17,13 +18,20 @@ const SignUp: FC<Props> = (props) => {
 		}
 	})
 
+	const navigation = useNavigation()
+
 	return (
 		<View style={!props.isShowing ? styles.hidden : {}}>
 			<Form label="Full Name" />
 			<Form label="Email" />
 			<PasswordForm label="Password" />
 			<PasswordForm label="Confirm Password" />
-			<PrimaryButton text="Sign up" callback={() => {}} />
+			<PrimaryButton
+				text="Sign up"
+				callback={() => {
+					navigation.navigate('Root')
+				}}
+			/>
 		</View>
 	)
 }

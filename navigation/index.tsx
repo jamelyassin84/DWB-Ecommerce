@@ -85,7 +85,7 @@ const BottomTabNavigator = () => {
 				name="Home"
 				component={_Home}
 				options={{
-					title: 'Products',
+					title: 'Home',
 					tabBarIcon: ({ color }) => (
 						<Entypo name="home" size={24} color={color} />
 					)

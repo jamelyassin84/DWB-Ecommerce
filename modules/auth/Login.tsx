@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/core'
 import React, { FC } from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import Form from '../../components/Form'
@@ -24,11 +25,18 @@ const Login: FC<Props> = (props) => {
 		}
 	})
 
+	const navigation = useNavigation()
+
 	return (
 		<View style={!props.isShowing ? styles.hidden : {}}>
 			<Form label="Email" />
 			<PasswordForm label="Password" />
-			<PrimaryButton text="Login" callback={() => {}} />
+			<PrimaryButton
+				text="Login"
+				callback={() => {
+					navigation.navigate('Root')
+				}}
+			/>
 			<TouchableOpacity onPress={() => {}}>
 				<Text style={styles.buttonText}>Forgot Password?</Text>
 			</TouchableOpacity>
