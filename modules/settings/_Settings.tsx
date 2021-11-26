@@ -1,14 +1,20 @@
 import React, { FC } from 'react'
-import { Text } from 'react-native'
+import HomeCard from '../../components/HomeCard'
 import HomeLayout from '../../components/HomeLayout'
-import Container from '../../components/Layout'
+import Title from '../../components/Title'
+import SettingList from './SettingList'
+import SettingListWithToggler from './SettingListWithToggler'
 
 type Props = {}
 
 const _Settings: FC<Props> = (props) => {
 	return (
 		<HomeLayout>
-			<Text>_Settings</Text>
+			<HomeCard>
+				<Title text="Profile Settings" />
+				<SettingList />
+				<SettingListWithToggler />
+			</HomeCard>
 		</HomeLayout>
 	)
 }
