@@ -1,6 +1,8 @@
 import React, { FC } from 'react'
 import { RefreshControl, ScrollView } from 'react-native'
 import { Dimensions, View } from 'react-native'
+import Colors from '../constants/Colors'
+import useColorScheme from '../hooks/useColorScheme'
 
 type Props = {
 	onRefresh: Function
@@ -9,6 +11,8 @@ type Props = {
 }
 
 const ScrollViewWithRefresh: FC<Props> = (props) => {
+	const colorScheme = useColorScheme()
+
 	return (
 		<ScrollView
 			style={{
@@ -19,7 +23,7 @@ const ScrollViewWithRefresh: FC<Props> = (props) => {
 			showsVerticalScrollIndicator={false}
 			refreshControl={
 				<RefreshControl
-					tintColor="#07B1E8"
+					tintColor={Colors[colorScheme].tint}
 					refreshing={props.loading}
 					onRefresh={props.onRefresh()}
 				/>
