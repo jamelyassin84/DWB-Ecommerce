@@ -4,7 +4,7 @@ import Container from '../../components/Layout'
 
 type Props = {}
 
-const _ProductDetail: FC<Props> = (props) => {
+const _ProductDetail: FC<Props> = ({ route }: any) => {
 	return (
 		<Container>
 			<Text>_ProductDetail</Text>
