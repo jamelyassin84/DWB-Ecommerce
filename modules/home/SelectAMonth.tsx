@@ -1,4 +1,5 @@
 import { AntDesign } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/core'
 import React, { FC } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import { Text, View } from '../../components/Themed'
@@ -9,6 +10,7 @@ type Props = {}
 
 const SelectAMonth: FC<Props> = (props) => {
 	const colorScheme = useColorScheme()
+	const navigation = useNavigation()
 
 	const styles = StyleSheet.create({
 		button: {
@@ -30,7 +32,11 @@ const SelectAMonth: FC<Props> = (props) => {
 	})
 
 	return (
-		<TouchableOpacity style={styles.button}>
+		<TouchableOpacity
+			style={styles.button}
+			onPress={() => {
+				navigation.navigate('SelectMonth')
+			}}>
 			<Text style={styles.text}>August</Text>
 			<View style={styles.iconContainer}>
 				<AntDesign

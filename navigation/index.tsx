@@ -1,16 +1,9 @@
 import * as React from 'react'
-import {
-	AntDesign,
-	FontAwesome,
-	FontAwesome5,
-	Ionicons,
-	Octicons
-} from '@expo/vector-icons'
+import { AntDesign, FontAwesome5, Octicons } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { RootStackParamList, RootTabParamList } from '../types'
 import { ColorSchemeName } from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { Entypo } from '@expo/vector-icons'
 import {
 	NavigationContainer,
 	DefaultTheme,
@@ -18,7 +11,6 @@ import {
 } from '@react-navigation/native'
 import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
-import ModalScreen from '../screens/ModalScreen'
 import _Home from '../modules/home/_Home'
 import _Products from '../modules/products/_Products'
 import _Payment from '../modules/payment/_Payment'
@@ -27,6 +19,8 @@ import _Auth from '../modules/auth/_Auth'
 import _ProductDetail from '../modules/product_details/_ProductDetail'
 import _PasswordReset from '../modules/PasswordReset/_PasswordReset'
 import _Profile from '../modules/Profile/_Profile'
+import AddProduct from '../modals/AddProduct'
+import ModalScreen from '../modals/ModalScreen'
 
 export default function Navigation({
 	colorScheme
@@ -70,8 +64,25 @@ const RootNavigator = () => {
 				component={BottomTabNavigator}
 				options={{ headerShown: false }}
 			/>
-			<Stack.Group screenOptions={{ presentation: 'modal' }}>
-				<Stack.Screen name="Modal" component={ModalScreen} />
+			<Stack.Group
+				screenOptions={{
+					presentation: 'modal',
+					headerTitle: 'Select Month',
+					headerBackButtonMenuEnabled: true,
+					headerBackTitle: 'Cancel',
+					gestureEnabled: true
+				}}>
+				<Stack.Screen name="SelectMonth" component={ModalScreen} />
+			</Stack.Group>
+			<Stack.Group
+				screenOptions={{
+					presentation: 'modal',
+					headerTitle: 'Add Product',
+					headerBackButtonMenuEnabled: true,
+					headerBackTitle: 'Cancel',
+					gestureEnabled: true
+				}}>
+				<Stack.Screen name="AddProduct" component={AddProduct} />
 			</Stack.Group>
 		</Stack.Navigator>
 	)

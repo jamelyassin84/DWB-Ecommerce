@@ -1,16 +1,20 @@
 import { Feather } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/core'
 import React, { FC } from 'react'
 import { TouchableOpacity } from 'react-native'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
+import Navigation from '../../navigation'
 
 type Props = {}
 
 const FloatingButton: FC<Props> = (props) => {
 	const colorScheme = useColorScheme()
+	const navigation = useNavigation()
 
 	return (
 		<TouchableOpacity
+			onPress={() => navigation.navigate('AddProduct')}
 			style={{
 				position: 'absolute',
 				backgroundColor: Colors[colorScheme].tint,
