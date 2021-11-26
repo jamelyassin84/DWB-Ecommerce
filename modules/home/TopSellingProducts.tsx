@@ -1,14 +1,15 @@
 import React, { FC } from 'react'
-import { Text } from 'react-native'
-import Container from '../../components/Layout'
+import { Text, View } from '../../components/Themed'
+import HomeProducts from './HomeProducts'
 
 type Props = {}
 
 const TopSellingProducts: FC<Props> = (props) => {
 	return (
-		<Container>
-			<Text>TopSellingProducts</Text>
-		</Container>
+		<View>
+			<Text>Top Selling Products</Text>
+			<HomeProducts></HomeProducts>
+		</View>
 	)
 }
 

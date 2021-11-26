@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import { Text, TextInput, View } from 'react-native'
-import Container from './Layout'
 
 type Props = {
 	label: string

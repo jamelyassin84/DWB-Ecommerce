@@ -13,7 +13,7 @@ const HomeLayout: FC<Props> = (props) => {
 				height: Dimensions.get('screen').height,
 				width: Dimensions.get('screen').width,
 				paddingTop: 10,
-				backgroundColor: Colors[colorScheme].background
+				backgroundColor: Colors[colorScheme].homeBackground
 			}}>
 			{props.children}
 		</View>

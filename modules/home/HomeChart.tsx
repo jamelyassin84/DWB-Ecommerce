@@ -1,14 +1,14 @@
 import React, { FC } from 'react'
 import { Text } from 'react-native'
-import Container from '../../components/Layout'
+import { View } from '../../components/Themed'
 
 type Props = {}
 
 const HomeChart: FC<Props> = (props) => {
 	return (
-		<Container>
+		<View>
 			<Text>HomeChart</Text>
-		</Container>
+		</View>
 	)
 }
 

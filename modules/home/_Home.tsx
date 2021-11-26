@@ -1,14 +1,25 @@
 import React, { FC } from 'react'
-import { Text } from 'react-native'
+import HomeCard from '../../components/HomeCard'
 import HomeLayout from '../../components/HomeLayout'
-import Container from '../../components/Layout'
+import HomeChart from './HomeChart'
+import SalesSummary from './SalesSummary'
+import SelectAMonth from './SelectAMonth'
+import TopSellingProducts from './TopSellingProducts'
 
 type Props = {}
 
 const _Home: FC<Props> = (props) => {
 	return (
 		<HomeLayout>
-			<Text>_Home</Text>
+			<HomeCard>
+				<SalesSummary />
+				<SelectAMonth />
+				<HomeChart />
+			</HomeCard>
+
+			<HomeCard>
+				<TopSellingProducts />
+			</HomeCard>
 		</HomeLayout>
 	)
 }

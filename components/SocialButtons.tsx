@@ -1,11 +1,5 @@
 import React, { FC } from 'react'
-import {
-	Image,
-	StyleSheet,
-	TextInput,
-	TouchableOpacity,
-	View
-} from 'react-native'
+import { Image, StyleSheet, TouchableOpacity } from 'react-native'
 import { Text } from './Themed'
 type Props = {
 	text: string
