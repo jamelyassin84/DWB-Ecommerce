@@ -28,7 +28,7 @@ const HomeProducts: FC<Props> = (props) => {
 		imageContainer: {
 			borderWidth: 1,
 			borderRadius: 10,
-			borderColor: '#ddd'
+			borderColor: 'rgba(150,150,150,.2)'
 		},
 		image: {
 			width: 60,

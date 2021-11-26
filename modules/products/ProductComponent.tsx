@@ -19,27 +19,25 @@ const ProductComponent: FC<Props> = (props) => {
 		button: {
 			width: '100%',
 			borderRadius: 10,
-			borderWidth: 0.8,
 			flexDirection: 'row',
 			alignItems: 'center',
 			paddingVertical: 7,
 			paddingHorizontal: 8,
-			borderColor: 'rgba(150,150,150,.2)',
 			backgroundColor: Colors[colorScheme].background,
 			marginVertical: 5,
-			shadowColor: 'rgba(0,0,0,.15)',
+			shadowColor: 'rgba(0,0,0,.12)',
 			shadowOffset: {
 				width: 0,
-				height: 10
+				height: 5
 			},
-			shadowOpacity: 0.39,
-			shadowRadius: 14.65,
+			shadowOpacity: 0.49,
+			shadowRadius: 24.65,
 			elevation: 7
 		},
 		imageContainer: {
 			borderWidth: 1,
 			borderRadius: 10,
-			borderColor: '#ddd'
+			borderColor: 'rgba(150,150,150,.2)'
 		},
 		image: {
 			width: 60,
