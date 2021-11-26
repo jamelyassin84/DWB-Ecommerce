@@ -23,16 +23,13 @@ const HomeProducts: FC<Props> = (props) => {
 		imageContainer: {
 			borderWidth: 1,
 			borderRadius: 10,
-			borderColor: '#ddd',
-			width: 60,
-			justifyContent: 'center',
-			paddingHorizontal: 9,
-			paddingVertical: 6
+			borderColor: '#ddd'
 		},
 		image: {
-			height: 40,
-			resizeMode: 'contain',
-			alignSelf: 'center'
+			width: 60,
+			height: 50,
+			resizeMode: 'stretch',
+			borderRadius: 10
 		},
 		textContainer: { flex: 1, marginLeft: 10 },
 		soldContainer: {

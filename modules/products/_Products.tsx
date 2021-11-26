@@ -1,15 +1,32 @@
 import React, { FC } from 'react'
-import { Text } from 'react-native'
+import HomeCard from '../../components/HomeCard'
 import HomeLayout from '../../components/HomeLayout'
-import Container from '../../components/Layout'
+import ScrollViewWithRefresh from '../../components/ScrollViewWithRefresh'
+import Title from '../../components/Title'
+import ProductComponent from './ProductComponent'
+import { productDummyData, ProductType } from './ProductDummyData'
 
 type Props = {}
 
 const _Products: FC<Props> = (props) => {
 	return (
-		<HomeLayout>
-			<Text>_Products</Text>
-		</HomeLayout>
+		<ScrollViewWithRefresh onRefresh={() => {}} loading={false}>
+			<HomeLayout>
+				<HomeCard>
+					<Title text="My products (25)" />
+
+					{productDummyData.map(
+						(product: ProductType | any, index: number) => (
+							<ProductComponent
+								product={product.name}
+								image={product.image}
+								price={product.price}
+							/>
+						)
+					)}
+				</HomeCard>
+			</HomeLayout>
+		</ScrollViewWithRefresh>
 	)
 }
 

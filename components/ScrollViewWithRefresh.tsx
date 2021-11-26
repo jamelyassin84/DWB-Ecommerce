@@ -29,7 +29,7 @@ const ScrollViewWithRefresh: FC<Props> = (props) => {
 				/>
 			}>
 			{props.children}
-			<View style={{ height: 150 }}></View>
+			<View style={{ height: 180 }}></View>
 		</ScrollView>
 	)
 }
