@@ -18,8 +18,8 @@ const _Auth: FC<Props> = (props) => {
 					setShouldLogin(value)
 				}}
 			/>
-			<Login isShowing={shouldLogin} />
 			<SignUp isShowing={!shouldLogin} />
+			<Login isShowing={shouldLogin} />
 			<Socials isShowing={!shouldLogin} />
 		</Container>
 	)
