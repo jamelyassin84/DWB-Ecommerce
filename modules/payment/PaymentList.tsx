@@ -1,15 +1,64 @@
+import { Entypo } from '@expo/vector-icons'
 import React, { FC } from 'react'
-import { Text } from 'react-native'
-import Container from '../../components/Layout'
-import { View } from '../../components/Themed'
+import { StyleSheet, TouchableOpacity, Image } from 'react-native'
+import { Text, View } from '../../components/Themed'
+import Colors from '../../constants/Colors'
+import useColorScheme from '../../hooks/useColorScheme'
 
-type Props = {}
+type Props = {
+	nav: string
+	image: string | any
+}
 
 const PaymentList: FC<Props> = (props) => {
+	const colorScheme = useColorScheme()
+
+	const style = StyleSheet.create({
+		button: {
+			width: '100%',
+			paddingLeft: '5%',
+			paddingRight: '5%',
+			flexDirection: 'row',
+			alignItems: 'center',
+			paddingVertical: 10,
+			paddingHorizontal: 8,
+			borderColor: 'rgba(150,150,150,.2)',
+			backgroundColor: Colors[colorScheme].background
+		},
+		imageContainer: {
+			borderWidth: 1,
+			borderRadius: 10,
+			borderColor: 'rgba(150,150,150,.2)'
+		},
+		image: {
+			width: 40,
+			height: 40,
+			resizeMode: 'contain'
+		},
+		textContainer: { flex: 1, marginLeft: 10 },
+		soldContainer: {
+			paddingVertical: 7,
+			paddingHorizontal: 10,
+			backgroundColor: 'rgba(150,150,150,.2)',
+			borderRadius: 20
+		},
+		soldText: {}
+	})
+
 	return (
-		<View>
-			<Text>PaymentList</Text>
-		</View>
+		<TouchableOpacity style={style.button}>
+			<View style={style.imageContainer}>
+				<Image source={props.image} style={style.image} />
+			</View>
+			<View style={style.textContainer}>
+				<Text style={{ fontWeight: '500' }}>{props.nav}</Text>
+			</View>
+			<Entypo
+				name="chevron-small-right"
+				size={24}
+				color={Colors[colorScheme].tabIconDefault}
+			/>
+		</TouchableOpacity>
 	)
 }
 

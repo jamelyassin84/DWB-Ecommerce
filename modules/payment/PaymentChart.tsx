@@ -1,14 +1,26 @@
 import React, { FC } from 'react'
-import { Text } from 'react-native'
+import { Image, StyleSheet, Text } from 'react-native'
 import Container from '../../components/Layout'
 import { View } from '../../components/Themed'
 
 type Props = {}
 
 const PaymentChart: FC<Props> = (props) => {
+	const styles = StyleSheet.create({
+		container: {},
+		image: {
+			width: '100%',
+			height: 290,
+			resizeMode: 'contain'
+		}
+	})
+
 	return (
-		<View>
-			<Text>PaymentChart</Text>
+		<View style={styles.container}>
+			<Image
+				style={styles.image}
+				source={require('../../assets/app/images/home/graph.png')}
+			/>
 		</View>
 	)
 }
