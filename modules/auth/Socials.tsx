@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import SocialButtons from '../../components/SocialButtons'
 
 type Props = {
@@ -7,8 +7,15 @@ type Props = {
 }
 
 const Socials: FC<Props> = (props) => {
+	const styles = StyleSheet.create({
+		hidden: {
+			position: 'absolute',
+			left: -500
+		}
+	})
+
 	return (
-		<View>
+		<View style={!props.isShowing ? styles.hidden : {}}>
 			<Text>Or</Text>
 			<SocialButtons
 				text="Sign-up with Google"

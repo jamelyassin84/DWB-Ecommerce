@@ -1,5 +1,11 @@
 import React, { FC } from 'react'
-import { Text, TextInput, TouchableOpacity, View } from 'react-native'
+import {
+	StyleSheet,
+	Text,
+	TextInput,
+	TouchableOpacity,
+	View
+} from 'react-native'
 
 type Props = {
 	text: string
@@ -7,9 +13,29 @@ type Props = {
 }
 
 const PrimaryButton: FC<Props> = (props) => {
+	const styles = StyleSheet.create({
+		button: {
+			width: '90%',
+			paddingVertical: 15,
+			borderRadius: 10,
+			backgroundColor: '#416AD6',
+			justifyContent: 'center',
+			alignItems: 'center',
+			marginTop: 30,
+			alignSelf: 'center'
+		},
+		buttonText: {
+			color: '#fff',
+			fontSize: 18,
+			fontWeight: '600'
+		}
+	})
+
 	return (
-		<TouchableOpacity onPress={() => props.callback()}>
-			<Text>{props.text}</Text>
+		<TouchableOpacity
+			style={styles.button}
+			onPress={() => props.callback()}>
+			<Text style={styles.buttonText}>{props.text}</Text>
 		</TouchableOpacity>
 	)
 }
