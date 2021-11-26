@@ -58,8 +58,10 @@ const ProductComponent: FC<Props> = (props) => {
 			style={style.button}
 			onPress={() =>
 				navigation.navigate('ProductDetail', {
-					product: props.product,
-					image: props.image
+					data: {
+						product: props.product,
+						image: props.image
+					}
 				})
 			}>
 			<View style={style.imageContainer}>
