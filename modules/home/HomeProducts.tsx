@@ -43,7 +43,9 @@ const HomeProducts: FC<Props> = (props) => {
 			backgroundColor: 'rgba(150,150,150,.2)',
 			borderRadius: 20
 		},
-		soldText: {}
+		soldText: {
+			fontWeight: '500'
+		}
 	})
 
 	return (
@@ -52,10 +54,10 @@ const HomeProducts: FC<Props> = (props) => {
 				<Image source={props.image} style={style.image} />
 			</View>
 			<View style={style.textContainer}>
-				<Text style={{ fontWeight: '500' }}>{props.product}</Text>
+				<Text style={{ fontWeight: 'bold' }}>{props.product}</Text>
 			</View>
 			<View style={style.soldContainer}>
-				<Text>{props.sold} sold</Text>
+				<Text style={style.soldText}>{props.sold} sold</Text>
 			</View>
 		</TouchableOpacity>
 	)

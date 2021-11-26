@@ -80,7 +80,8 @@ const BottomTabNavigator = () => {
 			initialRouteName="Home"
 			screenOptions={{
 				tabBarActiveTintColor: Colors[colorScheme].tint,
-				tabBarInactiveTintColor: Colors[colorScheme].tabIconDefault
+				tabBarInactiveTintColor: Colors[colorScheme].tabIconDefault,
+				tabBarStyle: { borderRadius: 20 }
 			}}>
 			<BottomTab.Screen
 				name="Home"

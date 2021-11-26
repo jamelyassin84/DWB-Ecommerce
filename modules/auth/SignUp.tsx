@@ -22,8 +22,8 @@ const SignUp: FC<Props> = (props) => {
 
 	return (
 		<View style={!props.isShowing ? styles.hidden : {}}>
-			<Form label="Full Name" />
-			<Form label="Email" />
+			<Form label="Full Name" placeholder="Full Name" />
+			<Form label="Email" placeholder="Email" />
 			<PasswordForm label="Password" />
 			<PasswordForm label="Confirm Password" />
 			<PrimaryButton

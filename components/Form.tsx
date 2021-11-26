@@ -1,5 +1,7 @@
 import React, { FC } from 'react'
 import { StyleSheet, TextInput, View } from 'react-native'
+import Colors from '../constants/Colors'
+import useColorScheme from '../hooks/useColorScheme'
 import { Text } from './Themed'
 
 type Props = {
@@ -8,6 +10,8 @@ type Props = {
 }
 
 const Form: FC<Props> = (props) => {
+	const colorScheme = useColorScheme()
+
 	const styles = StyleSheet.create({
 		wrapper: {
 			paddingVertical: 5
@@ -34,7 +38,11 @@ const Form: FC<Props> = (props) => {
 	return (
 		<View style={styles.wrapper}>
 			<Text style={styles.label}>{props.label}</Text>
-			<TextInput style={styles.input} />
+			<TextInput
+				style={styles.input}
+				placeholder={props.placeholder}
+				placeholderTextColor={Colors[colorScheme].tabIconDefault}
+			/>
 		</View>
 	)
 }

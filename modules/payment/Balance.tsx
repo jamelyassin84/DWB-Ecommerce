@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import { Image, TouchableOpacity } from 'react-native'
-import { View } from '../../components/Themed'
 
 type Props = {}
 
@@ -10,11 +9,10 @@ const Balance: FC<Props> = (props) => {
 			<Image
 				source={require('../../assets/app/images/payment/top-card.png')}
 				style={{
-					width: '90%',
-					height: 100,
+					width: '100%',
+					height: 140,
 					resizeMode: 'contain',
-					alignSelf: 'center',
-					marginBottom: 20
+					alignSelf: 'center'
 				}}
 			/>
 		</TouchableOpacity>

@@ -1,5 +1,11 @@
 import React, { FC } from 'react'
-import { StyleSheet, TextInput, View } from 'react-native'
+import {
+	Image,
+	StyleSheet,
+	TextInput,
+	TouchableOpacity,
+	View
+} from 'react-native'
 import { Text } from './Themed'
 
 type Props = {
@@ -28,6 +34,12 @@ const PasswordForm: FC<Props> = (props) => {
 			fontSize: 16,
 			marginVertical: 10,
 			alignSelf: 'center'
+		},
+		hideIcon: {
+			alignSelf: 'flex-end',
+			right: 35,
+			transform: [{ translateY: 44 }],
+			position: 'absolute'
 		}
 	})
 
@@ -35,6 +47,12 @@ const PasswordForm: FC<Props> = (props) => {
 		<View style={styles.wrapper}>
 			<Text style={styles.label}>{props.label}</Text>
 			<TextInput secureTextEntry={true} style={styles.input} />
+			<TouchableOpacity style={styles.hideIcon} onPress={() => {}}>
+				<Image
+					source={require('../assets/app/images/auth/hide.png')}
+					style={{ width: 20, height: 20, resizeMode: 'contain' }}
+				/>
+			</TouchableOpacity>
 		</View>
 	)
 }
