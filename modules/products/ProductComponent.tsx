@@ -57,7 +57,10 @@ const ProductComponent: FC<Props> = (props) => {
 		<TouchableOpacity
 			style={style.button}
 			onPress={() =>
-				navigation.navigate('ProductDetail', { product: props.product })
+				navigation.navigate('ProductDetail', {
+					product: props.product,
+					image: props.image
+				})
 			}>
 			<View style={style.imageContainer}>
 				<Image source={props.image} style={style.image} />
