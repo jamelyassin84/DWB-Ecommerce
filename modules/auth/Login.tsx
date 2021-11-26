@@ -14,6 +14,13 @@ const Login: FC<Props> = (props) => {
 		hidden: {
 			position: 'absolute',
 			left: -500
+		},
+		buttonText: {
+			fontSize: 16,
+			textAlign: 'center',
+			marginTop: 20,
+			color: '#416AD6',
+			fontWeight: '600'
 		}
 	})
 
@@ -23,7 +30,7 @@ const Login: FC<Props> = (props) => {
 			<PasswordForm label="Password" />
 			<PrimaryButton text="Login" callback={() => {}} />
 			<TouchableOpacity onPress={() => {}}>
-				<Text>Forgot Password</Text>
+				<Text style={styles.buttonText}>Forgot Password?</Text>
 			</TouchableOpacity>
 		</View>
 	)

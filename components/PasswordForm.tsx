@@ -9,7 +9,6 @@ type Props = {
 const PasswordForm: FC<Props> = (props) => {
 	const styles = StyleSheet.create({
 		wrapper: {
-			paddingHorizontal: 20,
 			paddingVertical: 5
 		},
 		label: {

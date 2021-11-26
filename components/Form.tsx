@@ -9,7 +9,6 @@ type Props = {
 const Form: FC<Props> = (props) => {
 	const styles = StyleSheet.create({
 		wrapper: {
-			paddingHorizontal: 20,
 			paddingVertical: 5
 		},
 		label: {
