@@ -24,10 +24,10 @@ const ProductComponent: FC<Props> = (props) => {
 			alignItems: 'center',
 			paddingVertical: 7,
 			paddingHorizontal: 8,
-			borderColor: '#F6F7F9',
-			backgroundColor: '#fff',
+			borderColor: 'rgba(150,150,150,.2)',
+			backgroundColor: Colors[colorScheme].background,
 			marginVertical: 5,
-			shadowColor: '#D2D7DB',
+			shadowColor: 'rgba(0,0,0,.15)',
 			shadowOffset: {
 				width: 0,
 				height: 10
