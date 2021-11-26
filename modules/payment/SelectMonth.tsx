@@ -1,14 +1,15 @@
 import React, { FC } from 'react'
 import { Text } from 'react-native'
 import Container from '../../components/Layout'
+import { View } from '../../components/Themed'
 
 type Props = {}
 
 const SelectMonth: FC<Props> = (props) => {
 	return (
-		<Container>
+		<View>
 			<Text>SelectMonth</Text>
-		</Container>
+		</View>
 	)
 }
 
