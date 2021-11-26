@@ -1,5 +1,11 @@
 import * as React from 'react'
-import { FontAwesome, FontAwesome5, Ionicons } from '@expo/vector-icons'
+import {
+	AntDesign,
+	FontAwesome,
+	FontAwesome5,
+	Ionicons,
+	Octicons
+} from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { RootStackParamList, RootTabParamList } from '../types'
 import { ColorSchemeName } from 'react-native'
@@ -81,15 +87,27 @@ const BottomTabNavigator = () => {
 			screenOptions={{
 				tabBarActiveTintColor: Colors[colorScheme].tint,
 				tabBarInactiveTintColor: Colors[colorScheme].tabIconDefault,
-				tabBarStyle: { borderRadius: 20 }
+				tabBarStyle: { borderRadius: 20, height: 80 }
 			}}>
 			<BottomTab.Screen
 				name="Home"
 				component={_Home}
 				options={{
 					title: 'Home',
+					headerTitleAllowFontScaling: true,
+					headerTitleStyle: {
+						fontWeight: 'bold',
+						fontFamily: 'Montserrat',
+						fontSize: 21,
+						marginBottom: -10
+					},
+					tabBarLabelStyle: {
+						fontWeight: 'bold',
+						fontFamily: 'Montserrat',
+						fontSize: 11
+					},
 					tabBarIcon: ({ color }) => (
-						<Entypo name="home" size={24} color={color} />
+						<Octicons name="home" size={24} color={color} />
 					)
 				}}
 			/>
@@ -98,8 +116,24 @@ const BottomTabNavigator = () => {
 				component={_Products}
 				options={{
 					title: 'Products',
+					headerTitleAllowFontScaling: true,
+					headerTitleStyle: {
+						fontWeight: 'bold',
+						fontFamily: 'Montserrat',
+						fontSize: 21,
+						marginBottom: -10
+					},
+					tabBarLabelStyle: {
+						fontWeight: 'bold',
+						fontFamily: 'Montserrat',
+						fontSize: 11
+					},
 					tabBarIcon: ({ color }) => (
-						<FontAwesome5 size={24} name="box-open" color={color} />
+						<FontAwesome5
+							name="shopping-bag"
+							size={24}
+							color={color}
+						/>
 					)
 				}}
 			/>
@@ -108,26 +142,42 @@ const BottomTabNavigator = () => {
 				component={_Payment}
 				options={{
 					title: 'Payment',
+					headerTitleAllowFontScaling: true,
+					headerTitleStyle: {
+						fontWeight: 'bold',
+						fontFamily: 'Montserrat',
+						fontSize: 21,
+						marginBottom: -10
+					},
+					tabBarLabelStyle: {
+						fontWeight: 'bold',
+						fontFamily: 'Montserrat',
+						fontSize: 11
+					},
 					tabBarIcon: ({ color }) => (
-						<FontAwesome
-							size={24}
-							name="credit-card-alt"
-							color={color}
-						/>
+						<AntDesign name="creditcard" size={24} color={color} />
 					)
 				}}
 			/>
 			<BottomTab.Screen
-				name="Settings"
+				name="Menu"
 				component={_Settings}
 				options={{
-					title: 'Settings',
+					title: 'Menu',
+					headerTitleAllowFontScaling: true,
+					headerTitleStyle: {
+						fontWeight: 'bold',
+						fontFamily: 'Montserrat',
+						fontSize: 21,
+						marginBottom: -10
+					},
+					tabBarLabelStyle: {
+						fontWeight: 'bold',
+						fontFamily: 'Montserrat',
+						fontSize: 11
+					},
 					tabBarIcon: ({ color }) => (
-						<Ionicons
-							size={24}
-							name="ios-settings-sharp"
-							color={color}
-						/>
+						<AntDesign name="menuunfold" size={24} color={color} />
 					)
 				}}
 			/>

@@ -24,7 +24,7 @@ const SelectMonth: FC<Props> = (props) => {
 			justifyContent: 'space-between'
 		},
 		balance: {
-			fontSize: 22,
+			fontSize: 27,
 			fontWeight: '600'
 		}
 	})

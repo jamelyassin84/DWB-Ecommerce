@@ -33,7 +33,9 @@ const PasswordForm: FC<Props> = (props) => {
 			paddingVertical: 15,
 			fontSize: 16,
 			marginVertical: 10,
-			alignSelf: 'center'
+			alignSelf: 'center',
+			fontFamily: 'Montserrat',
+			fontWeight: 'bold'
 		},
 		hideIcon: {
 			alignSelf: 'flex-end',

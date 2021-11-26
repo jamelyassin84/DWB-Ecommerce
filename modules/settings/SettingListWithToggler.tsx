@@ -1,7 +1,6 @@
 import { Ionicons } from '@expo/vector-icons'
 import React, { FC } from 'react'
 import { StyleSheet, Switch, Text, TouchableOpacity } from 'react-native'
-import Container from '../../components/Layout'
 import { View } from '../../components/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
@@ -15,7 +14,7 @@ const SettingListWithToggler: FC<Props> = (props) => {
 		button: {
 			flexDirection: 'row',
 			justifyContent: 'center',
-			paddingVertical: 20,
+			paddingVertical: 15,
 			alignItems: 'center'
 		},
 		text: {

@@ -15,6 +15,14 @@ export default function useCachedResources() {
 					...FontAwesome.font,
 					'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf')
 				})
+				await Font.loadAsync({
+					...FontAwesome.font,
+					Montserrat: require('../assets/fonts/Montserrat.ttf')
+				})
+				await Font.loadAsync({
+					...FontAwesome.font,
+					'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf')
+				})
 			} catch (e) {
 				console.warn(e)
 			} finally {

@@ -18,7 +18,6 @@ const Form: FC<Props> = (props) => {
 		},
 		label: {
 			fontSize: 14,
-			fontWeight: '600',
 			color: '#757575',
 			paddingHorizontal: 20
 		},
@@ -31,7 +30,9 @@ const Form: FC<Props> = (props) => {
 			paddingVertical: 15,
 			fontSize: 16,
 			marginVertical: 10,
-			alignSelf: 'center'
+			alignSelf: 'center',
+			fontFamily: 'Montserrat',
+			fontWeight: 'bold'
 		}
 	})
 

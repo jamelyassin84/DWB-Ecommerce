@@ -14,8 +14,8 @@ type Props = {}
 
 const _Payment: FC<Props> = (props) => {
 	return (
-		<ScrollViewWithRefresh onRefresh={() => {}} loading={false}>
-			<HomeLayout>
+		<HomeLayout>
+			<ScrollViewWithRefresh onRefresh={() => {}} loading={false}>
 				<HomeCard>
 					<Balance />
 					<SelectMonth />
@@ -24,8 +24,8 @@ const _Payment: FC<Props> = (props) => {
 				{paymentListData.map((nav: PaymentListType, index: number) => (
 					<PaymentList key={index} nav={nav.name} image={nav.image} />
 				))}
-			</HomeLayout>
-		</ScrollViewWithRefresh>
+			</ScrollViewWithRefresh>
+		</HomeLayout>
 	)
 }
 

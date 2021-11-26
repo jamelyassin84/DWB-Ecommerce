@@ -16,7 +16,7 @@ const SettingList: FC<Props> = (props) => {
 		button: {
 			flexDirection: 'row',
 			justifyContent: 'center',
-			paddingVertical: 20,
+			paddingVertical: 15,
 			alignItems: 'center'
 		},
 		text: {

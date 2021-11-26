@@ -10,8 +10,8 @@ type Props = {}
 
 const _Home: FC<Props> = (props) => {
 	return (
-		<ScrollViewWithRefresh onRefresh={() => {}} loading={false}>
-			<HomeLayout>
+		<HomeLayout>
+			<ScrollViewWithRefresh onRefresh={() => {}} loading={false}>
 				<HomeCard>
 					<SalesSummary />
 					<HomeChart />
@@ -20,8 +20,8 @@ const _Home: FC<Props> = (props) => {
 				<HomeCard>
 					<TopSellingProducts />
 				</HomeCard>
-			</HomeLayout>
-		</ScrollViewWithRefresh>
+			</ScrollViewWithRefresh>
+		</HomeLayout>
 	)
 }
 

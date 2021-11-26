@@ -27,7 +27,7 @@ export type RootTabParamList = {
 	Home: undefined
 	Products: undefined
 	Payment: undefined
-	Settings: undefined
+	Menu: undefined
 	Profile: undefined
 	PasswordReset: undefined
 }
