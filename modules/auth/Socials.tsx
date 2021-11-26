@@ -11,19 +11,26 @@ const Socials: FC<Props> = (props) => {
 		hidden: {
 			position: 'absolute',
 			left: -500
+		},
+		text: {
+			fontSize: 18,
+			textAlign: 'center',
+			marginVertical: 18
 		}
 	})
 
 	return (
 		<View style={!props.isShowing ? styles.hidden : {}}>
-			<Text>Or</Text>
+			<View style={{ height: 5 }} />
+			<Text style={styles.text}>Or</Text>
 			<SocialButtons
-				text="Sign-up with Google"
+				text="Sign up with Google"
 				image={require('../../assets/app/images/auth/google-icon.png')}
 				callback={() => {}}
 			/>
+			<View style={{ height: 15 }} />
 			<SocialButtons
-				text="Sign-up with Apple"
+				text="Sign up with Apple"
 				image={require('../../assets/app/images/auth/apple-icon.png')}
 				callback={() => {}}
 			/>

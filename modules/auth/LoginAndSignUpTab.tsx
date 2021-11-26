@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
-import { StyleSheet, Text, TouchableOpacity } from 'react-native'
-import { View } from '../../components/Themed'
+import { StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, View } from '../../components/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
 
@@ -37,7 +37,7 @@ const LoginAndSignUpTab: FC<Props> = (props) => {
 		},
 		text: {
 			color: Colors[colorScheme].text,
-			fontWeight: '600',
+			fontWeight: '700',
 			paddingVertical: 10,
 			fontSize: 16
 		},
