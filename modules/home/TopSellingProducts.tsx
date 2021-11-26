@@ -12,6 +12,7 @@ const TopSellingProducts: FC<Props> = (props) => {
 			<Title text="Top Selling Products" />
 			{homeProducts.map((product: HomeProductType, index: number) => (
 				<HomeProducts
+					key={index}
 					image={product.image}
 					product={product.name}
 					sold={product.sold}

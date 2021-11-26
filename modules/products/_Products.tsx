@@ -14,10 +14,10 @@ const _Products: FC<Props> = (props) => {
 			<HomeLayout>
 				<HomeCard>
 					<Title text="My products (25)" />
-
 					{productDummyData.map(
-						(product: ProductType | any, index: number) => (
+						(product: ProductType, index: number) => (
 							<ProductComponent
+								key={index}
 								product={product.name}
 								image={product.image}
 								price={product.price}

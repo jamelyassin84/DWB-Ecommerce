@@ -1,4 +1,4 @@
-export const productDummyData = [
+export const productDummyData: ProductType[] = [
 	{
 		image: require('../../assets/app/images/products/nike.png'),
 		name: 'Nike Blue precision Iv',
@@ -59,5 +59,5 @@ export const productDummyData = [
 export type ProductType = {
 	image: string | any
 	name: string
-	price: number
+	price: string
 }
