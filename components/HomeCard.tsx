@@ -14,6 +14,7 @@ const HomeCard: FC<Props> = (props) => {
 				backgroundColor: Colors[colorScheme].background,
 				width: '100%',
 				padding: 20,
+				paddingBottom: 0,
 				marginBottom: 10
 			}}>
 			{props.children}

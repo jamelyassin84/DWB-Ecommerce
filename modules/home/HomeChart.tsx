@@ -1,13 +1,25 @@
 import React, { FC } from 'react'
-import { Text } from 'react-native'
+import { Image, StyleSheet, Text } from 'react-native'
 import { View } from '../../components/Themed'
 
 type Props = {}
 
 const HomeChart: FC<Props> = (props) => {
+	const styles = StyleSheet.create({
+		container: {},
+		image: {
+			width: '100%',
+			height: 270,
+			resizeMode: 'contain'
+		}
+	})
+
 	return (
-		<View>
-			<Text>HomeChart</Text>
+		<View style={styles.container}>
+			<Image
+				style={styles.image}
+				source={require('../../assets/app/images/home/graph.png')}
+			/>
 		</View>
 	)
 }

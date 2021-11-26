@@ -7,8 +7,8 @@ export default {
 		background: '#fff',
 		homeBackground: '#F5F5F5',
 		tint: tintColorLight,
-		tabIconDefault: '#ccc',
-		tabIconSelected: tintColorLight,
+		tabIconDefault: '#7589AE',
+		tabIconSelected: 'tintColorLight',
 		tabColor: '#E9EBF0'
 	},
 	dark: {
@@ -16,7 +16,7 @@ export default {
 		background: '#000',
 		homeBackground: '#F5F5F5',
 		tint: tintColorDark,
-		tabIconDefault: '#ccc',
+		tabIconDefault: '#7589AE',
 		tabIconSelected: tintColorDark,
 		tabColor: 'rgba(50,50,50,.5)'
 	}

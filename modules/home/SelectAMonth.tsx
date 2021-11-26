@@ -1,14 +1,45 @@
+import { AntDesign } from '@expo/vector-icons'
 import React, { FC } from 'react'
-import { Text } from 'react-native'
-import { View } from '../../components/Themed'
+import { StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, View } from '../../components/Themed'
+import Colors from '../../constants/Colors'
+import useColorScheme from '../../hooks/useColorScheme'
 
 type Props = {}
 
 const SelectAMonth: FC<Props> = (props) => {
+	const colorScheme = useColorScheme()
+
+	const styles = StyleSheet.create({
+		button: {
+			borderRadius: 20,
+			borderWidth: 1.5,
+			borderColor: '#F6F7F9',
+			flexDirection: 'row',
+			alignItems: 'center',
+			paddingVertical: 6,
+			paddingHorizontal: 12,
+			marginLeft: 'auto',
+			justifyContent: 'center'
+		},
+		iconContainer: {
+			justifyContent: 'center'
+		},
+		icon: {},
+		text: { fontSize: 14, fontWeight: '500', marginRight: 20 }
+	})
+
 	return (
-		<View>
-			<Text>SelectAMonth</Text>
-		</View>
+		<TouchableOpacity style={styles.button}>
+			<Text style={styles.text}>August</Text>
+			<View style={styles.iconContainer}>
+				<AntDesign
+					name="caretdown"
+					size={12}
+					color={Colors[colorScheme].tabIconDefault}
+				/>
+			</View>
+		</TouchableOpacity>
 	)
 }
 
