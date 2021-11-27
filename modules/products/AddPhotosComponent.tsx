@@ -14,13 +14,16 @@ const AddPhotosComponent: FC<Props> = (props) => {
 		flexCOntainer: {
 			flexDirection: 'row',
 			paddingHorizontal: 20,
-			paddingTop: 20
+			paddingTop: 20,
+			marginBottom: 10
 		},
 		photoLabel: {
-			fontSize: 16
+			fontSize: 16,
+			marginTop: 10
 		},
 		editBtn: {
-			marginLeft: 'auto'
+			marginLeft: 'auto',
+			marginTop: 10
 		},
 		editBtnText: {
 			fontSize: 16,
@@ -31,12 +34,17 @@ const AddPhotosComponent: FC<Props> = (props) => {
 			alignItems: 'center',
 			justifyContent: 'center',
 			paddingBottom: 0,
-			marginBottom: -10
+			marginBottom: 10,
+			width: '50%',
+			borderRadius: 30
 		},
 		image: {
-			width: 150,
-			height: 200,
-			resizeMode: 'contain'
+			width: '110%',
+			height: 120,
+			resizeMode: 'contain',
+			borderRadius: 30,
+			borderWidth: 1,
+			borderColor: 'rgba(150,150,150,.2)'
 		},
 		closeButton: {
 			borderRadius: 50,

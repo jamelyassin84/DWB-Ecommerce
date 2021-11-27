@@ -7,6 +7,7 @@ import PrimaryButton from '../../components/PrimaryButton'
 import TextArea from '../../components/TextArea'
 import { View } from '../../components/Themed'
 import Title from '../../components/Title'
+import AddDiscount from './AddDiscount'
 import AddPhotosComponent from './AddPhotosComponent'
 
 type Props = {
@@ -29,6 +30,7 @@ const AddProductFrom: FC<Props> = (props) => {
 				</View>
 				<Form label="Product name" />
 				<Form label="Price" />
+				<AddDiscount />
 				<TextArea label="Description" />
 				<AddPhotosBtn callback={() => {}} />
 				<AddPhotosComponent />
