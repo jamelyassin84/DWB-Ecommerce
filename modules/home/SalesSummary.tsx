@@ -1,16 +1,21 @@
 import React, { FC } from 'react'
-import { Text } from 'react-native'
 import { View } from '../../components/Themed'
 import Title from '../../components/Title'
 import SelectAMonth from './SelectAMonth'
 
-type Props = {}
+type Props = {
+	activateBottomSheet: Function
+}
 
 const SalesSummary: FC<Props> = (props) => {
 	return (
 		<View style={{ flexDirection: 'row', justifyContent: 'center' }}>
 			<Title text="Sales summary" />
-			<SelectAMonth />
+			<SelectAMonth
+				activateBottomSheet={() => {
+					props.activateBottomSheet()
+				}}
+			/>
 		</View>
 	)
 }

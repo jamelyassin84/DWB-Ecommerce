@@ -4,6 +4,7 @@ import React from 'react'
 import useCachedResources from './hooks/useCachedResources'
 import useColorScheme from './hooks/useColorScheme'
 import Navigation from './navigation'
+// import 'react-native-gesture-handlers'
 
 export default function App() {
 	const isLoadingComplete = useCachedResources()

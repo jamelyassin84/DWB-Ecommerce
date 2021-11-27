@@ -30,7 +30,7 @@ const SettingList: FC<Props> = (props) => {
 
 	return (
 		<View>
-			<TouchableOpacity style={style.button}>
+			<View style={style.button}>
 				<AntDesign
 					name="user"
 					size={24}
@@ -42,9 +42,9 @@ const SettingList: FC<Props> = (props) => {
 					size={24}
 					color={Colors[colorScheme].tabIconDefault}
 				/>
-			</TouchableOpacity>
+			</View>
 
-			<TouchableOpacity style={style.button}>
+			<View style={style.button}>
 				<Entypo
 					name="lock"
 					size={24}
@@ -56,7 +56,7 @@ const SettingList: FC<Props> = (props) => {
 					size={24}
 					color={Colors[colorScheme].tabIconDefault}
 				/>
-			</TouchableOpacity>
+			</View>
 		</View>
 	)
 }

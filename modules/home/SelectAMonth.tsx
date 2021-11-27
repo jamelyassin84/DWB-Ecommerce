@@ -6,7 +6,9 @@ import { Text, View } from '../../components/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
 
-type Props = {}
+type Props = {
+	activateBottomSheet: Function
+}
 
 const SelectAMonth: FC<Props> = (props) => {
 	const colorScheme = useColorScheme()
@@ -35,7 +37,7 @@ const SelectAMonth: FC<Props> = (props) => {
 		<TouchableOpacity
 			style={styles.button}
 			onPress={() => {
-				navigation.navigate('SelectMonth')
+				props.activateBottomSheet()
 			}}>
 			<Text style={styles.text}>August</Text>
 			<View style={styles.iconContainer}>
