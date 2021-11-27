@@ -6,7 +6,9 @@ import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
 import Navigation from '../../navigation'
 
-type Props = {}
+type Props = {
+	open: Function
+}
 
 const FloatingButton: FC<Props> = (props) => {
 	const colorScheme = useColorScheme()
@@ -14,7 +16,7 @@ const FloatingButton: FC<Props> = (props) => {
 
 	return (
 		<TouchableOpacity
-			onPress={() => navigation.navigate('AddProduct')}
+			onPress={() => props.open()}
 			style={{
 				position: 'absolute',
 				backgroundColor: Colors[colorScheme].tint,

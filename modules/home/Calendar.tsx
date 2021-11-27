@@ -30,8 +30,8 @@ const Calendar: FC<Props> = (props) => {
 						style={{
 							flexDirection: 'row',
 							paddingHorizontal: 30,
-							width: '100%',
-							paddingVertical: 15
+							paddingVertical: 15,
+							width: '100%'
 						}}>
 						<Text
 							style={{
