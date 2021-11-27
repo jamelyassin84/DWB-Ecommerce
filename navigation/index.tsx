@@ -108,14 +108,12 @@ const BottomTabNavigator = () => {
 					title: 'Home',
 					headerTitleAllowFontScaling: true,
 					headerTitleStyle: {
-						fontWeight: 'bold',
-						fontFamily: 'Montserrat',
+						fontFamily: 'Montserrat-bold',
 						fontSize: 21,
 						marginBottom: -10
 					},
 					tabBarLabelStyle: {
-						fontWeight: 'bold',
-						fontFamily: 'Montserrat',
+						fontFamily: 'Montserrat-bold',
 						fontSize: 11
 					},
 					tabBarIcon: ({ color }) => (
@@ -130,14 +128,12 @@ const BottomTabNavigator = () => {
 					title: 'Products',
 					headerTitleAllowFontScaling: true,
 					headerTitleStyle: {
-						fontWeight: 'bold',
-						fontFamily: 'Montserrat',
+						fontFamily: 'Montserrat-bold',
 						fontSize: 21,
 						marginBottom: -10
 					},
 					tabBarLabelStyle: {
-						fontWeight: 'bold',
-						fontFamily: 'Montserrat',
+						fontFamily: 'Montserrat-bold',
 						fontSize: 11
 					},
 					tabBarIcon: ({ color }) => (
@@ -156,14 +152,12 @@ const BottomTabNavigator = () => {
 					title: 'Payment',
 					headerTitleAllowFontScaling: true,
 					headerTitleStyle: {
-						fontWeight: 'bold',
-						fontFamily: 'Montserrat',
+						fontFamily: 'Montserrat-bold',
 						fontSize: 21,
 						marginBottom: -10
 					},
 					tabBarLabelStyle: {
-						fontWeight: 'bold',
-						fontFamily: 'Montserrat',
+						fontFamily: 'Montserrat-bold',
 						fontSize: 11
 					},
 					tabBarIcon: ({ color }) => (
@@ -178,14 +172,12 @@ const BottomTabNavigator = () => {
 					title: 'Menu',
 					headerTitleAllowFontScaling: true,
 					headerTitleStyle: {
-						fontWeight: 'bold',
-						fontFamily: 'Montserrat',
+						fontFamily: 'Montserrat-bold',
 						fontSize: 21,
 						marginBottom: -10
 					},
 					tabBarLabelStyle: {
-						fontWeight: 'bold',
-						fontFamily: 'Montserrat',
+						fontFamily: 'Montserrat-bold',
 						fontSize: 11
 					},
 					tabBarIcon: ({ color }) => (
