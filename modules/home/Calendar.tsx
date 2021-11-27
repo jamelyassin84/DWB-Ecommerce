@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import { ScrollView, TouchableOpacity } from 'react-native'
 import BottomSheetHeader from '../../components/BottomSheetHeader'
 import Container from '../../components/Layout'
-import { Text, View } from '../../components/Themed'
+import { BoldText, Text, View } from '../../components/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
 import { Months } from './DummyHomeProducts'
@@ -27,18 +27,17 @@ const Calendar: FC<Props> = (props) => {
 							paddingVertical: 15,
 							width: '100%'
 						}}>
-						<Text
+						<BoldText
 							style={{
 								flex: 1,
 								fontSize: 16,
-								fontWeight: 'bold',
 								color:
 									index === 8 - 1
 										? Colors[colorScheme].tint
 										: '#5F6A84'
 							}}>
 							{month}
-						</Text>
+						</BoldText>
 						<FontAwesome5
 							name="check"
 							size={16}

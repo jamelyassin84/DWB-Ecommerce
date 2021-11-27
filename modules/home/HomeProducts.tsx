@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Image, StyleSheet, TouchableOpacity } from 'react-native'
-import { Text, View } from '../../components/Themed'
+import { BoldText, Text, View } from '../../components/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
 
@@ -32,8 +32,8 @@ const HomeProducts: FC<Props> = (props) => {
 		},
 		image: {
 			width: 60,
-			height: 50,
-			resizeMode: 'stretch',
+			height: 40,
+			resizeMode: 'contain',
 			borderRadius: 10
 		},
 		textContainer: { flex: 1, marginLeft: 10 },
@@ -42,9 +42,6 @@ const HomeProducts: FC<Props> = (props) => {
 			paddingHorizontal: 10,
 			backgroundColor: 'rgba(150,150,150,.2)',
 			borderRadius: 20
-		},
-		soldText: {
-			fontWeight: '500'
 		}
 	})
 
@@ -54,10 +51,10 @@ const HomeProducts: FC<Props> = (props) => {
 				<Image source={props.image} style={style.image} />
 			</View>
 			<View style={style.textContainer}>
-				<Text style={{ fontWeight: 'bold' }}>{props.product}</Text>
+				<BoldText>{props.product}</BoldText>
 			</View>
 			<View style={style.soldContainer}>
-				<Text style={style.soldText}>{props.sold} sold</Text>
+				<BoldText>{props.sold} sold</BoldText>
 			</View>
 		</TouchableOpacity>
 	)

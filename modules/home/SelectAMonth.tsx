@@ -2,7 +2,7 @@ import { AntDesign } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/core'
 import React, { FC } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
-import { Text, View } from '../../components/Themed'
+import { BoldText, Text, View } from '../../components/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
 
@@ -26,13 +26,17 @@ const SelectAMonth: FC<Props> = (props) => {
 			marginLeft: 'auto',
 			justifyContent: 'center',
 			position: 'relative',
-			zIndex: 9
+			zIndex: 9,
+			marginTop: -7
 		},
 		iconContainer: {
 			justifyContent: 'center'
 		},
 		icon: {},
-		text: { fontSize: 14, fontWeight: '500', marginRight: 20 }
+		text: {
+			fontSize: 14,
+			marginRight: 20
+		}
 	})
 
 	return (
@@ -41,7 +45,7 @@ const SelectAMonth: FC<Props> = (props) => {
 			onPress={() => {
 				props.activateBottomSheet()
 			}}>
-			<Text style={styles.text}>August</Text>
+			<BoldText style={styles.text}>August</BoldText>
 			<View style={styles.iconContainer}>
 				<AntDesign
 					name="caretdown"

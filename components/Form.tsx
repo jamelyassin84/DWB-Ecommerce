@@ -26,7 +26,7 @@ const Form: FC<Props> = (props) => {
 			borderRadius: 10,
 			borderWidth: 1,
 			borderColor: 'rgba(150,150,150,.4)',
-			paddingHorizontal: '2%',
+			paddingHorizontal: 20,
 			height: 50,
 			fontSize: 16,
 			marginVertical: 10,

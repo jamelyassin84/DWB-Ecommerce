@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { TouchableOpacity } from 'react-native'
 import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
-import { Text, View } from './Themed'
+import { BoldText, Text, View } from './Themed'
 
 type Props = {
 	title: string
@@ -32,16 +32,14 @@ const BottomSheetHeader: FC<Props> = (props) => {
 					Cancel
 				</Text>
 			</TouchableOpacity>
-			<Text
+			<BoldText
 				style={{
 					textAlign: 'center',
 					alignSelf: 'center',
-					fontWeight: 'bold',
-					fontSize: 17,
-					flex: 1
+					fontSize: 17
 				}}>
 				{props.title}
-			</Text>
+			</BoldText>
 			<View style={{ flex: 1, paddingRight: 10 }}></View>
 		</View>
 	)

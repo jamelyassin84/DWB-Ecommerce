@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Text } from './Themed'
+import { BoldText, Text } from './Themed'
 
 type Props = {
 	text: string
@@ -7,14 +7,13 @@ type Props = {
 
 const Title: FC<Props> = (props) => {
 	return (
-		<Text
+		<BoldText
 			style={{
 				fontSize: 16,
-				fontWeight: 'bold',
 				marginBottom: 10
 			}}>
 			{props.text}
-		</Text>
+		</BoldText>
 	)
 }
 
