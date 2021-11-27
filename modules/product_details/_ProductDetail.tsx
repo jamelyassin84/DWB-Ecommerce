@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Platform, StyleSheet } from 'react-native'
 import Container from '../../components/Layout'
-import { Text, View } from '../../components/Themed'
+import { BoldText, Text, View } from '../../components/Themed'
 import TitleBar from '../../components/TitleBar'
 import PhotoComponent from './PhotoComponent'
 
@@ -13,7 +13,7 @@ const _ProductDetail: FC<Props> = ({ route }: any) => {
 	const style = StyleSheet.create({
 		title: {
 			marginLeft: '5%',
-			fontWeight: 'bold',
+
 			fontSize: 21,
 			marginTop: 10
 		},
@@ -25,7 +25,7 @@ const _ProductDetail: FC<Props> = ({ route }: any) => {
 		},
 		price: {
 			marginLeft: '5%',
-			fontWeight: Platform.OS === 'ios' ? '900' : 'bold',
+
 			fontSize: 18,
 			marginTop: 15
 		},
@@ -39,7 +39,7 @@ const _ProductDetail: FC<Props> = ({ route }: any) => {
 		},
 		descriptionTitle: {
 			marginLeft: '5%',
-			fontWeight: 'bold',
+
 			fontSize: 16,
 			marginTop: 30
 		},
@@ -56,13 +56,13 @@ const _ProductDetail: FC<Props> = ({ route }: any) => {
 		<Container>
 			<TitleBar title="Product Details" />
 			<PhotoComponent data={data} />
-			<Text style={style.title}>{data.product}</Text>
+			<BoldText style={style.title}>{data.product}</BoldText>
 			<Text style={style.subtitle}>Unisex basketball shoes</Text>
 			<View style={{ flexDirection: 'row' }}>
-				<Text style={style.price}>$ 74</Text>
+				<BoldText style={style.price}>$ 74</BoldText>
 				<Text style={style.discounted}>$ 74</Text>
 			</View>
-			<Text style={style.descriptionTitle}>Description</Text>
+			<BoldText style={style.descriptionTitle}>Description</BoldText>
 			<Text style={style.description}>
 				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam
 				provident quas dolorum praesentium voluptatem aperiam, fugiat

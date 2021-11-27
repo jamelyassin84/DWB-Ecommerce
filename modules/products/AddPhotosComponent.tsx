@@ -7,7 +7,7 @@ import {
 	StyleSheet,
 	TouchableOpacity
 } from 'react-native'
-import { Text, View } from '../../components/Themed'
+import { BoldText, Text, View } from '../../components/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
 
@@ -41,7 +41,7 @@ const AddPhotosComponent: FC<Props> = (props) => {
 			color: Colors[colorScheme].tint
 		},
 		imageContainer: {
-			padding: 20,
+			padding: 30,
 			alignItems: 'center',
 			justifyContent: 'center',
 			paddingBottom: 0,
@@ -50,10 +50,10 @@ const AddPhotosComponent: FC<Props> = (props) => {
 			borderRadius: 30
 		},
 		image: {
-			width: '110%',
-			height: 120,
+			width: '120%',
+			height: 100,
 			resizeMode: 'contain',
-			borderRadius: 30,
+			borderRadius: 10,
 			borderWidth: 1,
 			borderColor: 'rgba(150,150,150,.2)'
 		},
@@ -80,9 +80,9 @@ const AddPhotosComponent: FC<Props> = (props) => {
 	return (
 		<View>
 			<View style={styles.flexCOntainer}>
-				<Text style={styles.photoLabel}>2 Photos</Text>
+				<BoldText style={styles.photoLabel}>2 Photos</BoldText>
 				<TouchableOpacity style={styles.editBtn}>
-					<Text style={styles.editBtnText}> Cancel</Text>
+					<BoldText style={styles.editBtnText}> Cancel</BoldText>
 				</TouchableOpacity>
 			</View>
 

@@ -7,6 +7,7 @@ import { BoldText, Text } from './Themed'
 type Props = {
 	label: string
 	placeholder?: string
+	numeric?: boolean
 }
 
 const Form: FC<Props> = (props) => {
@@ -57,6 +58,7 @@ const Form: FC<Props> = (props) => {
 				onFocus={() => setIsFocused(true)}
 				onBlur={() => setIsFocused(false)}
 				selectionColor={Colors[colorScheme].tint}
+				keyboardType={!props.numeric ? 'default' : 'number-pad'}
 			/>
 		</View>
 	)

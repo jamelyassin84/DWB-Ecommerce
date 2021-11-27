@@ -17,11 +17,16 @@ const AddProductFrom: FC<Props> = (props) => {
 	return (
 		<View>
 			<View>
-				<View style={{ paddingHorizontal: 20, paddingVertical: 15 }}>
+				<View
+					style={{
+						paddingHorizontal: 20,
+						paddingVertical: 15,
+						paddingBottom: 5
+					}}>
 					<Title text="Product information" />
 				</View>
 				<Form label="Product name" />
-				<Form label="Price" />
+				<Form label="Price (AED)" numeric />
 				<AddDiscount />
 				<TextArea label="Description" />
 				<AddPhotosBtn callback={() => {}} />

@@ -2,7 +2,7 @@ import { AntDesign } from '@expo/vector-icons'
 import React, { FC } from 'react'
 import { StyleSheet } from 'react-native'
 import Form from '../../components/Form'
-import { Text, View } from '../../components/Themed'
+import { BoldText, Text, View } from '../../components/Themed'
 import useColorScheme from '../../hooks/useColorScheme'
 
 type Props = {}
@@ -21,7 +21,7 @@ const AddDiscount: FC<Props> = (props) => {
 			justifyContent: 'center'
 		},
 		formContainer: {
-			flex: 1,
+			flex: 1.3,
 			marginRight: 10
 		}
 	})
@@ -29,10 +29,10 @@ const AddDiscount: FC<Props> = (props) => {
 		<View style={styles.container}>
 			<View style={styles.checkContainer}>
 				<AntDesign name="checkcircle" size={24} color="#00B523" />
-				<Text style={{ marginLeft: 10 }}>AddDiscount</Text>
+				<BoldText style={{ marginLeft: 10 }}>Add Discount</BoldText>
 			</View>
 			<View style={styles.formContainer}>
-				<Form label="Discounted Price" />
+				<Form label="Discounted Price (AED)" numeric />
 			</View>
 		</View>
 	)

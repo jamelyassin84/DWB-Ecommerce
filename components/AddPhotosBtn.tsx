@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
-import { Text, View } from './Themed'
+import { BoldText, Text, View } from './Themed'
 
 type Props = {
 	callback: Function
@@ -49,7 +49,7 @@ const AddPhotosBtn: FC<Props> = (props) => {
 					size={28}
 					color={Colors[colorScheme].tint}
 				/>
-				<Text style={styles.buttonText}>Add Photos</Text>
+				<BoldText style={styles.buttonText}>Add Photos</BoldText>
 			</View>
 		</TouchableOpacity>
 	)
