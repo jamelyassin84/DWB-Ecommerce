@@ -4,7 +4,7 @@ import React, { FC } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
-import { Text, View } from './Themed'
+import { BoldText, Text, View } from './Themed'
 
 type Props = {
 	title: string
@@ -26,7 +26,6 @@ const TitleBar: FC<Props> = (props) => {
 			alignSelf: 'center',
 			marginLeft: 'auto',
 			marginRight: 'auto',
-			fontWeight: 'bold',
 			fontSize: 20,
 			transform: [
 				{
@@ -44,7 +43,7 @@ const TitleBar: FC<Props> = (props) => {
 					color={Colors[colorScheme].tabIconDefault}
 				/>
 			</TouchableOpacity>
-			<Text style={styles.text}>{props.title}</Text>
+			<BoldText style={styles.text}>{props.title}</BoldText>
 		</View>
 	)
 }

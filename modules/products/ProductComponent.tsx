@@ -1,8 +1,8 @@
 import { Entypo } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/core'
 import React, { FC } from 'react'
-import { Image, StyleSheet, TouchableOpacity } from 'react-native'
-import { Text, View } from '../../components/Themed'
+import { Image, Platform, StyleSheet, TouchableOpacity } from 'react-native'
+import { BoldText, Text, View } from '../../components/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
 
@@ -25,14 +25,15 @@ const ProductComponent: FC<Props> = (props) => {
 			paddingHorizontal: 8,
 			backgroundColor: Colors[colorScheme].background,
 			marginVertical: 5,
-			shadowColor: 'rgba(0,0,0,.12)',
+			shadowColor:
+				Platform.OS === 'ios' ? 'rgba(0,0,0,.12)' : 'rgba(0,0,0,.32)',
 			shadowOffset: {
 				width: 0,
 				height: 5
 			},
 			shadowOpacity: 0.49,
 			shadowRadius: 24.65,
-			elevation: 7
+			elevation: 20
 		},
 		imageContainer: {
 			borderWidth: 1,
@@ -48,7 +49,6 @@ const ProductComponent: FC<Props> = (props) => {
 		textContainer: { flex: 1, marginLeft: 15 },
 		price: {
 			marginTop: 3,
-			fontWeight: 'bold',
 			color: 'gray'
 		}
 	})
@@ -68,7 +68,7 @@ const ProductComponent: FC<Props> = (props) => {
 				<Image source={props.image} style={style.image} />
 			</View>
 			<View style={style.textContainer}>
-				<Text style={{ fontWeight: 'bold' }}>{props.product}</Text>
+				<BoldText>{props.product}</BoldText>
 				<Text style={style.price}>{props.price}</Text>
 			</View>
 			<Entypo
