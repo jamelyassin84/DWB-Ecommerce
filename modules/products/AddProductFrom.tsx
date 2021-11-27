@@ -7,6 +7,7 @@ import PrimaryButton from '../../components/PrimaryButton'
 import TextArea from '../../components/TextArea'
 import { View } from '../../components/Themed'
 import Title from '../../components/Title'
+import AddPhotosComponent from './AddPhotosComponent'
 
 type Props = {
 	close: Function
@@ -30,12 +31,15 @@ const AddProductFrom: FC<Props> = (props) => {
 				<Form label="Price" />
 				<TextArea label="Description" />
 				<AddPhotosBtn callback={() => {}} />
+				<AddPhotosComponent />
+
 				<PrimaryButton
 					text="Add product"
 					callback={() => {
 						// navigation.navigate('Root')
 					}}
 				/>
+
 				<View style={{ marginTop: 180 }}></View>
 			</ScrollView>
 		</View>
