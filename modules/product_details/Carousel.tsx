@@ -29,8 +29,11 @@ const Carousel: FC<Props> = (props) => {
 						resizeMode: 'stretch',
 						borderRadius: 15,
 						marginRight: 20,
-						borderWidth: index === 0 ? 2 : 0,
-						borderColor: Colors[colorscheme].tint
+						borderWidth: index === 0 ? 2 : 0.5,
+						borderColor:
+							index === 0
+								? Colors[colorscheme].tint
+								: 'rgba(150,150,150,.4)'
 					}}
 				/>
 			))}

@@ -8,28 +8,41 @@ import useColorScheme from '../../hooks/useColorScheme'
 import FloatingButton from './FloatingButton'
 import ProductComponent from './ProductComponent'
 import { productDummyData, ProductType } from './ProductDummyData'
-import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet'
+import BottomSheet, {
+	BottomSheetBackdrop,
+	BottomSheetScrollView
+} from '@gorhom/bottom-sheet'
 import AddProductFrom from './AddProductFrom'
 import Colors from '../../constants/Colors'
+import BottomSheetHeader from '../../components/BottomSheetHeader'
 
 type Props = {}
 
 const _Products: FC<Props> = (props) => {
 	const colorScheme = useColorScheme()
 
+	const [floatingButtonIsShowing, setFloatingButtonIsShowing] =
+		React.useState(true)
+
 	const addProductRef = useRef<BottomSheet>(null)
 	const snapPoints = useMemo(() => ['25%', '96'], [])
 
 	const handleSheetChanges = useCallback((index: number) => {
 		if (index === 0) {
+			setFloatingButtonIsShowing(true)
 			addProductRef.current?.close()
+			return
 		}
 	}, [])
 
 	return (
 		<View>
 			<FloatingButton
-				open={() => addProductRef.current?.snapToIndex(1)}
+				isShowing={floatingButtonIsShowing}
+				open={() => {
+					addProductRef.current?.snapToIndex(1)
+					setFloatingButtonIsShowing(false)
+				}}
 			/>
 			<HomeLayout>
 				<ScrollViewWithRefresh onRefresh={() => {}} loading={false}>
@@ -55,7 +68,6 @@ const _Products: FC<Props> = (props) => {
 					borderColor: 'rgba(150,150,150,.1)',
 					padding: 5
 				}}
-				enableContentPanningGesture={false}
 				ref={addProductRef}
 				index={0}
 				snapPoints={snapPoints}
@@ -66,10 +78,25 @@ const _Products: FC<Props> = (props) => {
 					/>
 				)}
 				onChange={handleSheetChanges}>
-				<AddProductFrom
-					open={() => addProductRef.current?.snapToIndex(1)}
-					close={() => addProductRef.current?.close()}
+				<BottomSheetHeader
+					title="Add Product"
+					close={() => {
+						addProductRef.current?.close()
+						setFloatingButtonIsShowing(true)
+					}}
 				/>
+				<BottomSheetScrollView>
+					<AddProductFrom
+						open={() => {
+							addProductRef.current?.snapToIndex(1)
+							setFloatingButtonIsShowing(false)
+						}}
+						close={() => {
+							addProductRef.current?.close()
+							setFloatingButtonIsShowing(true)
+						}}
+					/>
+				</BottomSheetScrollView>
 			</BottomSheet>
 		</View>
 	)

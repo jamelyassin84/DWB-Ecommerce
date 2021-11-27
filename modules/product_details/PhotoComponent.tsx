@@ -15,8 +15,8 @@ const PhotoComponent: FC<Props> = (props) => {
 				style={{
 					width: '100%',
 					height: 250,
-					borderBottomWidth: 0.3,
-					borderColor: '#ddd',
+					borderBottomWidth: 0.4,
+					borderColor: 'rgba(150,150,150,.2)',
 					justifyContent: 'space-between',
 					alignItems: 'center',
 					flexDirection: 'row',

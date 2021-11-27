@@ -24,7 +24,9 @@ const SelectAMonth: FC<Props> = (props) => {
 			paddingVertical: 6,
 			paddingHorizontal: 12,
 			marginLeft: 'auto',
-			justifyContent: 'center'
+			justifyContent: 'center',
+			position: 'relative',
+			zIndex: 9
 		},
 		iconContainer: {
 			justifyContent: 'center'

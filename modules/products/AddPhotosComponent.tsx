@@ -1,6 +1,12 @@
 import { AntDesign } from '@expo/vector-icons'
 import React, { FC } from 'react'
-import { FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native'
+import {
+	FlatList,
+	Image,
+	LogBox,
+	StyleSheet,
+	TouchableOpacity
+} from 'react-native'
 import { Text, View } from '../../components/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
@@ -9,6 +15,11 @@ type Props = {}
 
 const AddPhotosComponent: FC<Props> = (props) => {
 	const colorScheme = useColorScheme()
+
+	React.useEffect(() => {
+		LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
+		LogBox.ignoreLogs(['VirtualizedLists:'])
+	}, [])
 
 	const styles = StyleSheet.create({
 		flexCOntainer: {
@@ -74,9 +85,10 @@ const AddPhotosComponent: FC<Props> = (props) => {
 					<Text style={styles.editBtnText}> Cancel</Text>
 				</TouchableOpacity>
 			</View>
+
 			<FlatList
 				style={{ alignSelf: 'center' }}
-				nestedScrollEnabled={false}
+				nestedScrollEnabled={true}
 				data={[
 					require('../../assets/app/images/products/shoe1.jpeg'),
 					require('../../assets/app/images/products/shoe1.jpeg'),
@@ -97,7 +109,7 @@ const AddPhotosComponent: FC<Props> = (props) => {
 							</TouchableOpacity>
 							<Image
 								style={styles.image}
-								key={item.key}
+								key={index}
 								source={item}
 							/>
 						</View>

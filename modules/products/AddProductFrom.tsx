@@ -1,7 +1,5 @@
 import React, { FC } from 'react'
-import { ScrollView } from 'react-native'
 import AddPhotosBtn from '../../components/AddPhotosBtn'
-import BottomSheetHeader from '../../components/BottomSheetHeader'
 import Form from '../../components/Form'
 import PrimaryButton from '../../components/PrimaryButton'
 import TextArea from '../../components/TextArea'
@@ -18,13 +16,7 @@ type Props = {
 const AddProductFrom: FC<Props> = (props) => {
 	return (
 		<View>
-			<BottomSheetHeader
-				title="Add Product"
-				close={() => {
-					props.close()
-				}}
-			/>
-			<ScrollView>
+			<View>
 				<View style={{ paddingHorizontal: 20, paddingVertical: 15 }}>
 					<Title text="Product information" />
 				</View>
@@ -43,7 +35,7 @@ const AddProductFrom: FC<Props> = (props) => {
 				/>
 
 				<View style={{ marginTop: 180 }}></View>
-			</ScrollView>
+			</View>
 		</View>
 	)
 }

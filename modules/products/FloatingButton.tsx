@@ -8,6 +8,7 @@ import Navigation from '../../navigation'
 
 type Props = {
 	open: Function
+	isShowing: boolean
 }
 
 const FloatingButton: FC<Props> = (props) => {
@@ -23,7 +24,6 @@ const FloatingButton: FC<Props> = (props) => {
 				borderRadius: 50,
 				padding: 14,
 				zIndex: 9,
-				right: 20,
 				top: '70.5%',
 				shadowColor: Colors[colorScheme].tint,
 				shadowOffset: {
@@ -32,7 +32,8 @@ const FloatingButton: FC<Props> = (props) => {
 				},
 				shadowOpacity: 0.59,
 				shadowRadius: 10.65,
-				elevation: 7
+				elevation: 7,
+				right: props.isShowing ? 20 : -5000
 			}}>
 			<Feather name="plus" size={28} color="white" />
 		</TouchableOpacity>

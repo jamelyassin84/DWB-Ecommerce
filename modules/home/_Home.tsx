@@ -5,11 +5,15 @@ import ScrollViewWithRefresh from '../../components/ScrollViewWithRefresh'
 import HomeChart from './HomeChart'
 import SalesSummary from './SalesSummary'
 import TopSellingProducts from './TopSellingProducts'
-import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet'
+import BottomSheet, {
+	BottomSheetBackdrop,
+	BottomSheetScrollView
+} from '@gorhom/bottom-sheet'
 
 import Calendar from './Calendar'
 import useColorScheme from '../../hooks/useColorScheme'
 import Colors from '../../constants/Colors'
+import BottomSheetHeader from '../../components/BottomSheetHeader'
 
 type Props = {}
 
@@ -41,6 +45,7 @@ const _Home: FC<Props> = (props) => {
 					<TopSellingProducts />
 				</HomeCard>
 			</ScrollViewWithRefresh>
+
 			<BottomSheet
 				backgroundStyle={{
 					backgroundColor: Colors[colorScheme].background,
@@ -48,7 +53,6 @@ const _Home: FC<Props> = (props) => {
 					borderColor: 'rgba(150,150,150,.1)',
 					padding: 5
 				}}
-				enableContentPanningGesture={false}
 				ref={monthsRef}
 				index={0}
 				snapPoints={snapPoints}
@@ -59,11 +63,20 @@ const _Home: FC<Props> = (props) => {
 					/>
 				)}
 				onChange={handleSheetChanges}>
-				<Calendar
+				<BottomSheetHeader
+					title="Select Month"
 					close={() => {
 						monthsRef.current?.close()
 					}}
 				/>
+
+				<BottomSheetScrollView>
+					<Calendar
+						close={() => {
+							monthsRef.current?.close()
+						}}
+					/>
+				</BottomSheetScrollView>
 			</BottomSheet>
 		</HomeLayout>
 	)

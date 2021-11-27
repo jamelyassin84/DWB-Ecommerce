@@ -17,13 +17,7 @@ const Calendar: FC<Props> = (props) => {
 
 	return (
 		<View>
-			<BottomSheetHeader
-				title="Select Month"
-				close={() => {
-					props.close()
-				}}
-			/>
-			<ScrollView style={{ width: '100%' }}>
+			<View style={{ width: '100%' }}>
 				{Months.map((month: string, index: number) => (
 					<TouchableOpacity
 						key={index}
@@ -57,7 +51,7 @@ const Calendar: FC<Props> = (props) => {
 					</TouchableOpacity>
 				))}
 				<View style={{ marginTop: 190 }}></View>
-			</ScrollView>
+			</View>
 		</View>
 	)
 }

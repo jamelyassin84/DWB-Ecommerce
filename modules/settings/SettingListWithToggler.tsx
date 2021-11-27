@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons'
 import React, { FC } from 'react'
-import { StyleSheet, Switch, Text, TouchableOpacity } from 'react-native'
-import { View } from '../../components/Themed'
+import { StyleSheet, Switch, TouchableOpacity } from 'react-native'
+import { Text, View } from '../../components/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
 
