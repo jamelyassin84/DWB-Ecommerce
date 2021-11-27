@@ -98,7 +98,8 @@ const BottomTabNavigator = () => {
 			screenOptions={{
 				tabBarActiveTintColor: Colors[colorScheme].tint,
 				tabBarInactiveTintColor: Colors[colorScheme].tabIconDefault,
-				tabBarStyle: { borderRadius: 20, height: 80 }
+				tabBarStyle: { borderRadius: 20, height: 80 },
+				tabBarHideOnKeyboard: true
 			}}>
 			<BottomTab.Screen
 				name="Home"

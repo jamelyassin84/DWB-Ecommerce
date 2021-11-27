@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { ScrollView } from 'react-native'
+import AddPhotosBtn from '../../components/AddPhotosBtn'
 import BottomSheetHeader from '../../components/BottomSheetHeader'
 import Form from '../../components/Form'
 import PrimaryButton from '../../components/PrimaryButton'
@@ -28,12 +29,14 @@ const AddProductFrom: FC<Props> = (props) => {
 				<Form label="Product name" />
 				<Form label="Price" />
 				<TextArea label="Description" />
+				<AddPhotosBtn callback={() => {}} />
 				<PrimaryButton
 					text="Add product"
 					callback={() => {
 						// navigation.navigate('Root')
 					}}
 				/>
+				<View style={{ marginTop: 180 }}></View>
 			</ScrollView>
 		</View>
 	)

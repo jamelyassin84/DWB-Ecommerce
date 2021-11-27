@@ -40,6 +40,8 @@ const TextArea: FC<Props> = (props) => {
 		<View style={styles.wrapper}>
 			<Text style={styles.label}>{props.label}</Text>
 			<TextInput
+				multiline={true}
+				numberOfLines={4}
 				style={styles.input}
 				placeholder={props.placeholder}
 				placeholderTextColor={Colors[colorScheme].tabIconDefault}
