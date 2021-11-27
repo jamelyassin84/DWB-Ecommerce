@@ -1,7 +1,7 @@
 import { Entypo } from '@expo/vector-icons'
 import React, { FC } from 'react'
 import { StyleSheet, TouchableOpacity, Image } from 'react-native'
-import { Text, View } from '../../components/Themed'
+import { BoldText, Text, View } from '../../components/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
 
@@ -51,7 +51,7 @@ const PaymentList: FC<Props> = (props) => {
 				<Image source={props.image} style={style.image} />
 			</View>
 			<View style={style.textContainer}>
-				<Text style={{ fontWeight: '500' }}>{props.nav}</Text>
+				<BoldText>{props.nav}</BoldText>
 			</View>
 			<Entypo
 				name="chevron-small-right"

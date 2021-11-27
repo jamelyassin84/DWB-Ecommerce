@@ -2,7 +2,7 @@ import { Entypo } from '@expo/vector-icons'
 import React, { FC } from 'react'
 import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import Container from '../../components/Layout'
-import { View } from '../../components/Themed'
+import { BoldText, View } from '../../components/Themed'
 
 type Props = {}
 
@@ -12,8 +12,7 @@ const SelectMonth: FC<Props> = (props) => {
 			fontSize: 18,
 			color: '#5F6A84',
 			textAlign: 'center',
-			marginTop: 5,
-			fontWeight: '500'
+			marginTop: 5
 		},
 		balanceContainer: {
 			width: '50%',
@@ -24,14 +23,13 @@ const SelectMonth: FC<Props> = (props) => {
 			justifyContent: 'space-between'
 		},
 		balance: {
-			fontSize: 27,
-			fontWeight: '600'
+			fontSize: 27
 		}
 	})
 
 	return (
 		<View>
-			<Text style={styles.month}>May</Text>
+			<BoldText style={styles.month}>May</BoldText>
 			<View style={styles.balanceContainer}>
 				<TouchableOpacity>
 					<Entypo
@@ -41,7 +39,7 @@ const SelectMonth: FC<Props> = (props) => {
 					/>
 				</TouchableOpacity>
 
-				<Text style={styles.balance}>$ 1059.90</Text>
+				<BoldText style={styles.balance}>$ 1059.90</BoldText>
 
 				<TouchableOpacity>
 					<Entypo
