@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Platform, StyleSheet, TouchableOpacity } from 'react-native'
-import { Text, View } from '../../components/Themed'
+import { BoldText, Text, View } from '../../components/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
 
@@ -38,7 +38,6 @@ const LoginAndSignUpTab: FC<Props> = (props) => {
 		},
 		text: {
 			color: Colors[colorScheme].text,
-			fontWeight: '700',
 			paddingVertical: 10,
 			fontSize: 16
 		},
@@ -56,13 +55,13 @@ const LoginAndSignUpTab: FC<Props> = (props) => {
 						!props.shouldLogin ? styles.active : null
 					]}
 					onPress={() => props.wantsToLogin(false)}>
-					<Text
+					<BoldText
 						style={[
 							styles.text,
 							!props.shouldLogin ? styles.activeText : null
 						]}>
 						Sign up
-					</Text>
+					</BoldText>
 				</TouchableOpacity>
 
 				<TouchableOpacity
@@ -71,13 +70,13 @@ const LoginAndSignUpTab: FC<Props> = (props) => {
 						props.shouldLogin ? styles.active : null
 					]}
 					onPress={() => props.wantsToLogin(true)}>
-					<Text
+					<BoldText
 						style={[
 							styles.text,
 							props.shouldLogin ? styles.activeText : null
 						]}>
 						Login
-					</Text>
+					</BoldText>
 				</TouchableOpacity>
 			</View>
 		</View>

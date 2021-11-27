@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
-import { Text } from './Themed'
+import { BoldText, Text } from './Themed'
 
 type Props = {
 	text: string
@@ -24,8 +24,7 @@ const PrimaryButton: FC<Props> = (props) => {
 		},
 		buttonText: {
 			color: '#fff',
-			fontSize: 18,
-			fontWeight: '600'
+			fontSize: 18
 		}
 	})
 
@@ -33,7 +32,7 @@ const PrimaryButton: FC<Props> = (props) => {
 		<TouchableOpacity
 			style={styles.button}
 			onPress={() => props.callback()}>
-			<Text style={styles.buttonText}>{props.text}</Text>
+			<BoldText style={styles.buttonText}>{props.text}</BoldText>
 		</TouchableOpacity>
 	)
 }

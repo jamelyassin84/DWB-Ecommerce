@@ -23,6 +23,10 @@ export default function useCachedResources() {
 					...FontAwesome.font,
 					'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf')
 				})
+				await Font.loadAsync({
+					...FontAwesome.font,
+					'Montserrat-bold': require('../assets/fonts/Montserrat-bold.ttf')
+				})
 			} catch (e) {
 				console.warn(e)
 			} finally {

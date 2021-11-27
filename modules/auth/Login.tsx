@@ -4,7 +4,7 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import Form from '../../components/Form'
 import PasswordForm from '../../components/PasswordForm'
 import PrimaryButton from '../../components/PrimaryButton'
-import { View } from '../../components/Themed'
+import { BoldText, View } from '../../components/Themed'
 
 type Props = {
 	isShowing: boolean
@@ -38,7 +38,7 @@ const Login: FC<Props> = (props) => {
 				}}
 			/>
 			<TouchableOpacity onPress={() => {}}>
-				<Text style={styles.buttonText}>Forgot Password?</Text>
+				<BoldText style={styles.buttonText}>Forgot Password?</BoldText>
 			</TouchableOpacity>
 		</View>
 	)

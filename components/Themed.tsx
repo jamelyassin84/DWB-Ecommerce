@@ -38,6 +38,18 @@ export function Text(props: TextProps) {
 	)
 }
 
+export function BoldText(props: TextProps) {
+	const { style, lightColor, darkColor, ...otherProps } = props
+	const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text')
+
+	return (
+		<DefaultText
+			style={[{ color }, style, { fontFamily: 'Montserrat-bold' }]}
+			{...otherProps}
+		/>
+	)
+}
+
 export function View(props: ViewProps) {
 	const { style, lightColor, darkColor, ...otherProps } = props
 	const backgroundColor = useThemeColor(
