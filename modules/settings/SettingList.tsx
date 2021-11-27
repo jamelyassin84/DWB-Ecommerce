@@ -2,7 +2,7 @@ import { AntDesign, Entypo, FontAwesome5 } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/core'
 import React, { FC } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
-import { Text, View } from '../../components/Themed'
+import { BoldText, Text, View } from '../../components/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
 
@@ -22,7 +22,6 @@ const SettingList: FC<Props> = (props) => {
 		text: {
 			flex: 1,
 			marginLeft: 15,
-			fontWeight: 'bold',
 			color: Colors[colorScheme].text,
 			fontSize: 14
 		}
@@ -36,7 +35,7 @@ const SettingList: FC<Props> = (props) => {
 					size={24}
 					color={Colors[colorScheme].tabIconDefault}
 				/>
-				<Text style={style.text}>Edit Profile</Text>
+				<BoldText style={style.text}>Edit Profile</BoldText>
 				<Entypo
 					name="chevron-small-right"
 					size={24}
@@ -50,7 +49,7 @@ const SettingList: FC<Props> = (props) => {
 					size={24}
 					color={Colors[colorScheme].tabIconDefault}
 				/>
-				<Text style={style.text}>Change Password</Text>
+				<BoldText style={style.text}>Change Password</BoldText>
 				<Entypo
 					name="chevron-small-right"
 					size={24}
