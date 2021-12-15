@@ -2,7 +2,7 @@ import * as React from 'react'
 import { AntDesign, FontAwesome5, Octicons } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { RootStackParamList, RootTabParamList } from '../types'
-import { ColorSchemeName } from 'react-native'
+import { ColorSchemeName, Platform } from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import {
 	NavigationContainer,
@@ -114,7 +114,12 @@ const BottomTabNavigator = () => {
 					},
 					tabBarLabelStyle: {
 						fontFamily: 'Montserrat-bold',
-						fontSize: 11
+						fontSize: 11,
+						transform: [
+							{
+								translateY: Platform.OS === 'android' ? -14 : 0
+							}
+						]
 					},
 					tabBarIcon: ({ color }) => (
 						<Octicons name="home" size={24} color={color} />
@@ -134,7 +139,12 @@ const BottomTabNavigator = () => {
 					},
 					tabBarLabelStyle: {
 						fontFamily: 'Montserrat-bold',
-						fontSize: 11
+						fontSize: 11,
+						transform: [
+							{
+								translateY: Platform.OS === 'android' ? -14 : 0
+							}
+						]
 					},
 					tabBarIcon: ({ color }) => (
 						<FontAwesome5
@@ -158,7 +168,12 @@ const BottomTabNavigator = () => {
 					},
 					tabBarLabelStyle: {
 						fontFamily: 'Montserrat-bold',
-						fontSize: 11
+						fontSize: 11,
+						transform: [
+							{
+								translateY: Platform.OS === 'android' ? -14 : 0
+							}
+						]
 					},
 					tabBarIcon: ({ color }) => (
 						<AntDesign name="creditcard" size={24} color={color} />
@@ -178,7 +193,12 @@ const BottomTabNavigator = () => {
 					},
 					tabBarLabelStyle: {
 						fontFamily: 'Montserrat-bold',
-						fontSize: 11
+						fontSize: 11,
+						transform: [
+							{
+								translateY: Platform.OS === 'android' ? -14 : 0
+							}
+						]
 					},
 					tabBarIcon: ({ color }) => (
 						<AntDesign name="menuunfold" size={24} color={color} />
