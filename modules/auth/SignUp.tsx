@@ -24,7 +24,7 @@ const SignUp: FC<Props> = (props) => {
 	const [confirmPassword, setConfirmPassword] = React.useState<string>('')
 
 	// Errors
-	const [fullNameError, setFullNameError] = React.useState<boolean>(false)
+	const [nameError, setNameError] = React.useState<boolean>(false)
 	const [emailError, setEmailError] = React.useState<boolean>(false)
 	const [passwordError, setPasswordError] = React.useState<boolean>(false)
 	const [doesNotMatchError, setDoesNotMatchError] =
@@ -63,7 +63,7 @@ const SignUp: FC<Props> = (props) => {
 			.then(() => {})
 			.catch((error) => {
 				if (hasData(error.response.data.errors.name)) {
-					setFullNameError(true)
+					setNameError(true)
 				}
 				if (hasData(error.response.data.errors.email)) {
 					setEmailError(true)
@@ -75,10 +75,17 @@ const SignUp: FC<Props> = (props) => {
 	}
 
 	const removeErrors = (): void => {
-		setFullNameError(false)
+		setNameError(false)
 		setEmailError(false)
 		setPasswordError(false)
 		setDoesNotMatchError(false)
+	}
+
+	const removeFocus = () => {
+		setEmailFocus(false)
+		setPasswordFocus(false)
+		setConfirmPasswordFocus(false)
+		setSubmitButtonFocus(false)
 	}
 
 	//Focus Inputs
@@ -87,11 +94,9 @@ const SignUp: FC<Props> = (props) => {
 	const [confirmPasswordFocus, setConfirmPasswordFocus] =
 		React.useState<boolean>(false)
 
-	const removeFocus = () => {
-		setEmailFocus(false)
-		setPasswordFocus(false)
-		setConfirmPasswordFocus(false)
-	}
+	//Focus Buttons
+	const [submitButtonFocus, setSubmitButtonFocus] =
+		React.useState<boolean>(false)
 
 	return (
 		<View>
@@ -103,12 +108,12 @@ const SignUp: FC<Props> = (props) => {
 				text={(value: string) => {
 					setName(value)
 				}}
-				label="Surname"
-				placeholder="Surname"
-				error={fullNameError}
+				label="Store Name"
+				placeholder="John Doe Shoe Shop"
+				error={nameError}
 			/>
 			<ErrorText
-				true={fullNameError}
+				true={nameError}
 				text="The surname must be at least 8 characters."
 			/>
 
@@ -152,6 +157,7 @@ const SignUp: FC<Props> = (props) => {
 				focus={confirmPasswordFocus}
 				onSubmitEditing={() => {
 					removeFocus()
+					setSubmitButtonFocus(true)
 				}}
 				text={(value: string) => {
 					setConfirmPassword(value)
@@ -164,7 +170,11 @@ const SignUp: FC<Props> = (props) => {
 				text="Password does not match."
 			/>
 
-			<PrimaryButton text="Sign up" callback={() => signUp()} />
+			<PrimaryButton
+				focus={submitButtonFocus}
+				text="Sign up"
+				callback={() => signUp()}
+			/>
 		</View>
 	)
 }

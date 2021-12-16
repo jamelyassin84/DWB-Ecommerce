@@ -7,6 +7,7 @@ import { BoldText, Text } from './Themed'
 type Props = {
 	text: string
 	callback: Function
+	focus?: boolean
 }
 
 const PrimaryButton: FC<Props> = (props) => {
@@ -20,17 +21,23 @@ const PrimaryButton: FC<Props> = (props) => {
 			justifyContent: 'center',
 			alignItems: 'center',
 			marginTop: 30,
-			alignSelf: 'center'
+			alignSelf: 'center',
+			borderWidth: 1,
+			borderColor: 'transparent'
 		},
 		buttonText: {
 			color: '#fff',
 			fontSize: 18
+		},
+		focus: {
+			borderColor: '#D3E1FA',
+			borderWidth: 5
 		}
 	})
 
 	return (
 		<TouchableOpacity
-			style={styles.button}
+			style={[styles.button, props.focus ? styles.focus : {}]}
 			onPress={() => props.callback()}>
 			<BoldText style={styles.buttonText}>{props.text}</BoldText>
 		</TouchableOpacity>

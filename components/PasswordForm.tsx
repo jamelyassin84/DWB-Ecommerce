@@ -42,17 +42,21 @@ const PasswordForm: FC<Props> = (props) => {
 			marginVertical: 10,
 			alignSelf: 'center',
 			fontFamily: 'Montserrat',
-			color: Colors[colorScheme].text
+			color: Colors[colorScheme].text,
+			zIndex: -1,
+			position: 'relative'
 		},
 		hideIcon: {
 			alignSelf: 'flex-end',
 			right: 35,
 			transform: [{ translateY: Platform.OS === 'ios' ? 46 : 48 }],
-			position: 'absolute'
+			position: 'absolute',
+			zIndex: 9
 		}
 	})
 
 	const [isFocused, setIsFocused] = React.useState(false)
+	const [showField, setShowField] = React.useState(false)
 
 	const ref: any = React.useRef()
 
@@ -75,7 +79,7 @@ const PasswordForm: FC<Props> = (props) => {
 				focusable={true}
 				placeholderTextColor={Colors[colorScheme].tabIconDefault}
 				selectionColor={Colors[colorScheme].tint}
-				secureTextEntry={true}
+				secureTextEntry={!showField ? true : false}
 				onChangeText={(text) => {
 					props.text(text)
 				}}
@@ -90,7 +94,11 @@ const PasswordForm: FC<Props> = (props) => {
 					}
 				]}
 			/>
-			<TouchableOpacity style={styles.hideIcon} onPress={() => {}}>
+			<TouchableOpacity
+				style={styles.hideIcon}
+				onPress={() =>
+					showField ? setShowField(false) : setShowField(true)
+				}>
 				<Image
 					source={require('../assets/app/images/auth/hide.png')}
 					style={{ width: 20, height: 20, resizeMode: 'contain' }}
