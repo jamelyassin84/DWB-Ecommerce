@@ -16,6 +16,8 @@ type Props = {
 	placeholder?: string
 	text: Function
 	error?: boolean
+	onSubmitEditing: Function
+	focus?: boolean
 }
 
 const PasswordForm: FC<Props> = (props) => {
@@ -52,11 +54,31 @@ const PasswordForm: FC<Props> = (props) => {
 
 	const [isFocused, setIsFocused] = React.useState(false)
 
+	const ref: any = React.useRef()
+
+	React.useEffect(() => {
+		if (props.focus === true) {
+			return ref.current.focus()
+		}
+		ref.current.blur()
+	}, [props.focus])
+
 	return (
 		<View style={styles.wrapper}>
 			<BoldText style={styles.label}>{props.label}</BoldText>
 			<TextInput
-				{...props}
+				ref={ref}
+				onSubmitEditing={() => props.onSubmitEditing()}
+				onFocus={() => setIsFocused(true)}
+				onBlur={() => setIsFocused(false)}
+				placeholder={props.placeholder}
+				focusable={true}
+				placeholderTextColor={Colors[colorScheme].tabIconDefault}
+				selectionColor={Colors[colorScheme].tint}
+				secureTextEntry={true}
+				onChangeText={(text) => {
+					props.text(text)
+				}}
 				style={[
 					styles.input,
 					props.error
@@ -67,16 +89,6 @@ const PasswordForm: FC<Props> = (props) => {
 						borderColor: Colors[colorScheme].tint
 					}
 				]}
-				placeholder={props.placeholder}
-				focusable={true}
-				placeholderTextColor={Colors[colorScheme].tabIconDefault}
-				onFocus={() => setIsFocused(true)}
-				onBlur={() => setIsFocused(false)}
-				selectionColor={Colors[colorScheme].tint}
-				secureTextEntry={true}
-				onChangeText={(text) => {
-					props.text(text)
-				}}
 			/>
 			<TouchableOpacity style={styles.hideIcon} onPress={() => {}}>
 				<Image

@@ -10,6 +10,8 @@ type Props = {
 	numeric?: boolean
 	text: Function
 	error?: boolean
+	focus?: boolean
+	onSubmitEditing: Function
 }
 
 const Form: FC<Props> = (props) => {
@@ -41,11 +43,33 @@ const Form: FC<Props> = (props) => {
 
 	const [isFocused, setIsFocused] = React.useState(false)
 
+	const ref: any = React.useRef()
+
+	React.useEffect(() => {
+		if (props.focus === true) {
+			return ref.current.focus()
+		}
+		ref.current.blur()
+	}, [props.focus])
+
 	return (
 		<View style={styles.wrapper}>
 			<BoldText style={styles.label}>{props.label}</BoldText>
 			<TextInput
-				{...props}
+				ref={ref}
+				onSubmitEditing={() => props.onSubmitEditing()}
+				onFocus={() => setIsFocused(true)}
+				onBlur={() => setIsFocused(false)}
+				onChangeText={(text) => {
+					props.text(text)
+				}}
+				placeholder={props.placeholder}
+				focusable={true}
+				clearButtonMode="always"
+				placeholderTextColor={Colors[colorScheme].tabIconDefault}
+				selectionColor={Colors[colorScheme].tint}
+				keyboardType={!props.numeric ? 'default' : 'number-pad'}
+				returnKeyType="next"
 				style={[
 					styles.input,
 					props.error
@@ -56,17 +80,6 @@ const Form: FC<Props> = (props) => {
 						borderColor: Colors[colorScheme].tint
 					}
 				]}
-				placeholder={props.placeholder}
-				focusable={true}
-				clearButtonMode="always"
-				placeholderTextColor={Colors[colorScheme].tabIconDefault}
-				onFocus={() => setIsFocused(true)}
-				onBlur={() => setIsFocused(false)}
-				selectionColor={Colors[colorScheme].tint}
-				keyboardType={!props.numeric ? 'default' : 'number-pad'}
-				onChangeText={(text) => {
-					props.text(text)
-				}}
 			/>
 		</View>
 	)
