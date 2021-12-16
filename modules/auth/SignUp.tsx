@@ -33,7 +33,9 @@ const SignUp: FC<Props> = (props) => {
 	// Functions
 	const signUp = (): void => {
 		removeErrors()
+		setButtonIsDisabled(true)
 		if (password !== confirmPassword) {
+			setButtonIsDisabled(false)
 			setDoesNotMatchError(true)
 			return
 		}
@@ -51,6 +53,7 @@ const SignUp: FC<Props> = (props) => {
 					'One or more fields should not be empty',
 					[{ text: 'Cancel', style: 'cancel' }, { text: 'OK' }]
 				)
+				setButtonIsDisabled(false)
 				return removeErrors()
 			}
 		}
@@ -60,15 +63,19 @@ const SignUp: FC<Props> = (props) => {
 	const processCredentials = async (user: User) => {
 		await new APIService(API.Register)
 			.store(user)
-			.then(() => {})
-			.catch((error) => {
-				if (hasData(error.response.data.errors.name)) {
+			.then(() => {
+				setButtonIsDisabled(false)
+			})
+			.catch((api) => {
+				alert(api.response.data.errors.name)
+				setButtonIsDisabled(false)
+				if (hasData(api.response.data.errors.name)) {
 					setNameError(true)
 				}
-				if (hasData(error.response.data.errors.email)) {
+				if (hasData(api.response.data.errors.email)) {
 					setEmailError(true)
 				}
-				if (hasData(error.response.data.errors.password)) {
+				if (hasData(api.response.data.errors.password)) {
 					setPasswordError(true)
 				}
 			})
@@ -94,8 +101,10 @@ const SignUp: FC<Props> = (props) => {
 	const [confirmPasswordFocus, setConfirmPasswordFocus] =
 		React.useState<boolean>(false)
 
-	//Focus Buttons
+	//Buttons
 	const [submitButtonFocus, setSubmitButtonFocus] =
+		React.useState<boolean>(false)
+	const [buttonIsDisabled, setButtonIsDisabled] =
 		React.useState<boolean>(false)
 
 	return (
@@ -171,6 +180,7 @@ const SignUp: FC<Props> = (props) => {
 			/>
 
 			<PrimaryButton
+				isDisabled={buttonIsDisabled}
 				focus={submitButtonFocus}
 				text="Sign up"
 				callback={() => signUp()}

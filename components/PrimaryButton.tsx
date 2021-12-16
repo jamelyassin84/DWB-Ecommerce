@@ -8,6 +8,7 @@ type Props = {
 	text: string
 	callback: Function
 	focus?: boolean
+	isDisabled?: boolean
 }
 
 const PrimaryButton: FC<Props> = (props) => {
@@ -32,12 +33,21 @@ const PrimaryButton: FC<Props> = (props) => {
 		focus: {
 			borderColor: '#D3E1FA',
 			borderWidth: 5
+		},
+		disabled: {
+			opacity: 0.1,
+			backgroundColor: 'lightgray'
 		}
 	})
 
 	return (
 		<TouchableOpacity
-			style={[styles.button, props.focus ? styles.focus : {}]}
+			disabled={props.isDisabled}
+			style={[
+				styles.button,
+				props.focus ? styles.focus : {},
+				props.isDisabled ? styles.disabled : {}
+			]}
 			onPress={() => props.callback()}>
 			<BoldText style={styles.buttonText}>{props.text}</BoldText>
 		</TouchableOpacity>
