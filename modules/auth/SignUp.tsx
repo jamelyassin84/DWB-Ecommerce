@@ -1,19 +1,13 @@
 import { useNavigation } from '@react-navigation/core'
 import React, { FC } from 'react'
-import {
-	Alert,
-	KeyboardAvoidingView,
-	Platform,
-	StyleSheet,
-	Text
-} from 'react-native'
+import { Alert } from 'react-native'
 import { API } from '../../api/api.routes'
 import { APIService } from '../../api/base.api'
 import ErrorText from '../../components/ErrorText'
 import Form from '../../components/Form'
 import PasswordForm from '../../components/PasswordForm'
 import PrimaryButton from '../../components/PrimaryButton'
-import { View } from '../../components/Themed'
+import { hasData } from '../../constants/Helpers'
 import { User } from '../../models/User'
 
 type Props = {
@@ -21,13 +15,6 @@ type Props = {
 }
 
 const SignUp: FC<Props> = (props) => {
-	const styles = StyleSheet.create({
-		hidden: {
-			position: 'absolute',
-			left: -500
-		}
-	})
-
 	const navigation = useNavigation()
 
 	const [name, setName] = React.useState<string>('')
@@ -42,6 +29,7 @@ const SignUp: FC<Props> = (props) => {
 		React.useState<boolean>(false)
 
 	const signUp = (): void => {
+		removeErrors()
 		if (password !== confirmPassword) {
 			setDoesNotMatchError(true)
 			return
@@ -58,13 +46,7 @@ const SignUp: FC<Props> = (props) => {
 				Alert.alert(
 					'Invalid Operation',
 					'One or more fields should not be empty',
-					[
-						{
-							text: 'Cancel',
-							style: 'cancel'
-						},
-						{ text: 'OK' }
-					]
+					[{ text: 'Cancel', style: 'cancel' }, { text: 'OK' }]
 				)
 				return removeErrors()
 			}
@@ -77,7 +59,15 @@ const SignUp: FC<Props> = (props) => {
 			.store(user)
 			.then(() => {})
 			.catch((error) => {
-				console.log(error)
+				if (hasData(error.response.data.errors.name)) {
+					setFullNameError(true)
+				}
+				if (hasData(error.response.data.errors.email)) {
+					setEmailError(true)
+				}
+				if (hasData(error.response.data.errors.password)) {
+					setPasswordError(true)
+				}
 			})
 	}
 
@@ -89,57 +79,64 @@ const SignUp: FC<Props> = (props) => {
 	}
 
 	return (
-		<View style={!props.isShowing ? styles.hidden : {}}>
-			<Form
-				text={(value: string) => {
-					setName(value)
-				}}
-				label="Full Name"
-				placeholder="Full Name"
-				error={fullNameError}
-			/>
-			<ErrorText
-				true={fullNameError}
-				text="Full name must be minimum of 8 characters."
-			/>
+		<>
+			{props.isShowing && (
+				<>
+					<Form
+						text={(value: string) => {
+							setName(value)
+						}}
+						label="Surname"
+						placeholder="Surname"
+						error={fullNameError}
+					/>
+					<ErrorText
+						true={fullNameError}
+						text="The surname must be at least 8 characters."
+					/>
 
-			<Form
-				text={(value: string) => {
-					stEmail(value)
-				}}
-				label="Email"
-				placeholder="Email"
-				error={emailError}
-			/>
-			<ErrorText true={emailError} text="Invalid email." />
+					<Form
+						text={(value: string) => {
+							stEmail(value)
+						}}
+						label="Email"
+						placeholder="Email"
+						error={emailError}
+					/>
+					<ErrorText
+						true={emailError}
+						text="The email must be a valid email address."
+					/>
 
-			<PasswordForm
-				text={(value: string) => {
-					setPassword(value)
-				}}
-				label="Password"
-				error={passwordError}
-			/>
-			<ErrorText
-				true={passwordError}
-				text="Password length must be 10 or higher, contain at least 1
-					uppercase and no special character."
-			/>
+					<PasswordForm
+						text={(value: string) => {
+							setPassword(value)
+						}}
+						label="Password"
+						error={passwordError}
+					/>
+					<ErrorText
+						true={passwordError}
+						text="Password must have minimum of 8 characters, contain at least 1
+					uppercase, lowercase and special character."
+					/>
 
-			<PasswordForm
-				text={(value: string) => {
-					setConfirmPassword(value)
-				}}
-				label="Confirm Password"
-				error={doesNotMatchError}
-			/>
-			<ErrorText
-				true={doesNotMatchError}
-				text="Password does not match."
-			/>
+					<PasswordForm
+						text={(value: string) => {
+							setConfirmPassword(value)
+						}}
+						label="Confirm Password"
+						error={doesNotMatchError}
+					/>
+					<ErrorText
+						true={doesNotMatchError}
+						text="Password does not match."
+					/>
 
-			<PrimaryButton text="Sign up" callback={() => signUp()} />
-		</View>
+					<PrimaryButton text="Sign up" callback={() => signUp()} />
+				</>
+			)}
+		</>
 	)
 }
 

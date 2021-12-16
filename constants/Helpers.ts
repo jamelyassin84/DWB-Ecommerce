@@ -17,7 +17,7 @@ export default function toDate(dateString: string) {
 	return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
 }
 
-export function toBool(data: any) {
+export function hasData(data: any) {
 	return data ? true : false
 }
 
