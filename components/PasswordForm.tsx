@@ -14,6 +14,7 @@ import { BoldText, Text } from './Themed'
 type Props = {
 	label: string
 	placeholder?: string
+	text: Function
 }
 
 const PasswordForm: FC<Props> = (props) => {
@@ -69,6 +70,9 @@ const PasswordForm: FC<Props> = (props) => {
 				onBlur={() => setIsFocused(false)}
 				selectionColor={Colors[colorScheme].tint}
 				secureTextEntry={true}
+				onChangeText={(text) => {
+					props.text(text)
+				}}
 			/>
 			<TouchableOpacity style={styles.hideIcon} onPress={() => {}}>
 				<Image
