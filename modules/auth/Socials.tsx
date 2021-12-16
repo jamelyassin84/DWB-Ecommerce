@@ -1,7 +1,11 @@
 import React, { FC } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { Platform, StyleSheet, View } from 'react-native'
 import SocialButtons from '../../components/SocialButtons'
 import { Text } from '../../components/Themed'
+import * as GoogleSignIn from 'expo-google-sign-in'
+import * as AppleAuthentication from 'expo-apple-authentication'
+import { GoogleClientID, GoogleConfig } from '../../constants/AppConstants'
+import * as Google from 'expo-google-app-auth'
 
 type Props = {
 	isShowing: boolean
@@ -20,6 +24,19 @@ const Socials: FC<Props> = (props) => {
 		}
 	})
 
+	async function signInWithGoogle() {
+		return await Google.logInAsync(GoogleConfig)
+	}
+
+	async function signInWithApple() {
+		return await AppleAuthentication.signInAsync({
+			requestedScopes: [
+				AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+				AppleAuthentication.AppleAuthenticationScope.EMAIL
+			]
+		})
+	}
+
 	return (
 		<View style={!props.isShowing ? styles.hidden : {}}>
 			<View style={{ height: 5 }} />
@@ -27,14 +44,21 @@ const Socials: FC<Props> = (props) => {
 			<SocialButtons
 				text="Sign up with Google"
 				image={require('../../assets/app/images/auth/google-icon.png')}
-				callback={() => {}}
+				callback={async () => {
+					signInWithGoogle()
+				}}
 			/>
 			<View style={{ height: 15 }} />
-			<SocialButtons
-				text="Sign up with Apple"
-				image={require('../../assets/app/images/auth/apple-icon.png')}
-				callback={() => {}}
-			/>
+
+			{Platform.OS === 'ios' && (
+				<SocialButtons
+					text="Sign up with Apple"
+					image={require('../../assets/app/images/auth/apple-icon.png')}
+					callback={async () => {
+						signInWithApple()
+					}}
+				/>
+			)}
 		</View>
 	)
 }

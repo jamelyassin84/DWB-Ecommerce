@@ -25,7 +25,7 @@ const LoginAndSignUpTab: FC<Props> = (props) => {
 			padding: 5,
 			alignSelf: 'center',
 			marginVertical: 30,
-			marginTop: Platform.OS === 'ios' ? 0 : 30
+			marginTop: Platform.OS === 'ios' ? 15 : 30
 		},
 		button: {
 			flex: 1,
