@@ -4,8 +4,9 @@ import SocialButtons from '../../components/SocialButtons'
 import { Text } from '../../components/Themed'
 import * as GoogleSignIn from 'expo-google-sign-in'
 import * as AppleAuthentication from 'expo-apple-authentication'
-import { GoogleClientID, GoogleConfig } from '../../constants/AppConstants'
+import { GoogleConfig } from '../../constants/AppConstants'
 import * as Google from 'expo-google-app-auth'
+import * as Application from 'expo-application'
 
 type Props = {
 	isShowing: boolean
@@ -25,16 +26,21 @@ const Socials: FC<Props> = (props) => {
 	})
 
 	async function signInWithGoogle() {
-		return await Google.logInAsync(GoogleConfig)
+		const credentials = await Google.logInAsync(GoogleConfig)
+		return credentials
 	}
 
 	async function signInWithApple() {
-		return await AppleAuthentication.signInAsync({
-			requestedScopes: [
-				AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
-				AppleAuthentication.AppleAuthenticationScope.EMAIL
-			]
-		})
+		let credentials: any = {}
+		try {
+			credentials = await AppleAuthentication.signInAsync({
+				requestedScopes: [
+					AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+					AppleAuthentication.AppleAuthenticationScope.EMAIL
+				]
+			})
+		} catch (e) {}
+		return credentials
 	}
 
 	return (

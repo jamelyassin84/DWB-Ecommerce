@@ -1,9 +1,9 @@
-export const GoogleClientID =
-	'430180773137-fcf03r0r27ad90v1cniesl7sv2pvbvrk.apps.googleusercontent.com'
+import { Platform } from 'react-native'
+
 export const GoogleConfig = {
-	iosClientId: `430180773137-fcf03r0r27ad90v1cniesl7sv2pvbvrk.apps.googleusercontent.com`,
-	// androidClientId:
-	// 	'430180773137-fcf03r0r27ad90v1cniesl7sv2pvbvrk.apps.googleusercontent.com',
-	iosStandaloneAppClientId: `430180773137-fcf03r0r27ad90v1cniesl7sv2pvbvrk.apps.googleusercontent.com`
-	// androidStandaloneAppClientId: `430180773137-fcf03r0r27ad90v1cniesl7sv2pvbvrk.apps.googleusercontent.com`
+	clientId:
+		Platform.OS === 'android'
+			? '430180773137-qjk72tn8iosvc2sg76pdcgo1ikm00oou.apps.googleusercontent.com'
+			: '430180773137-pmo7p2eb9smbpmsupmg2ibn9ei5ldm1q.apps.googleusercontent.com',
+	scopes: ['profile', 'email']
 }

@@ -20,18 +20,18 @@ const SignUp: FC<Props> = (props) => {
 
 	const navigation = useNavigation()
 
+	const signUp = () => {
+		alert('ari')
+		// navigation.navigate('Root')
+	}
+
 	return (
 		<View style={!props.isShowing ? styles.hidden : {}}>
-			<Form label="Full Name" placeholder="Full Name" />
-			<Form label="Email" placeholder="Email" />
+			<Form text={() => {}} label="Full Name" placeholder="Full Name" />
+			<Form text={() => {}} label="Email" placeholder="Email" />
 			<PasswordForm label="Password" />
 			<PasswordForm label="Confirm Password" />
-			<PrimaryButton
-				text="Sign up"
-				callback={() => {
-					navigation.navigate('Root')
-				}}
-			/>
+			<PrimaryButton text="Sign up" callback={() => signUp()} />
 		</View>
 	)
 }

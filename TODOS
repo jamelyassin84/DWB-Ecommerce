@@ -1,24 +1,29 @@
 Keyboard Avoiding View
-Hide Floating Button on Open 
+Hide Floating Button on Open
 Header Remove Make it Custom
-Add Photos 
+Add Photos
 
-Clickable Buttons 
-New Routes 
-Prepare Api 
+Clickable Buttons
+New Routes
+Prepare Api
 
 Use form
 Custom Animation
-Custom Chart 
+Custom Chart
 Dark Mode
 
+## App Secret
 
-
-
-App Secret
------------
 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
 
-Client ID
------------
+## Client ID
+
 430180773137-fcf03r0r27ad90v1cniesl7sv2pvbvrk.apps.googleusercontent.com
+
+## Application ID
+
+host.exp.Exponent
+
+## ANDROID FINGERPRINT
+
+keytool -keystore path-to-debug-or-production-keystore -list -v

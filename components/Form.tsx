@@ -8,6 +8,7 @@ type Props = {
 	label: string
 	placeholder?: string
 	numeric?: boolean
+	text: Function
 }
 
 const Form: FC<Props> = (props) => {
@@ -59,6 +60,9 @@ const Form: FC<Props> = (props) => {
 				onBlur={() => setIsFocused(false)}
 				selectionColor={Colors[colorScheme].tint}
 				keyboardType={!props.numeric ? 'default' : 'number-pad'}
+				onChangeText={(text) => {
+					props.text(text)
+				}}
 			/>
 		</View>
 	)
