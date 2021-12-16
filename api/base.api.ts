@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { environment } from '../environments/environment.dev'
 
-export class BaseService<T> {
+export class APIService<T> {
 	protected url: string
 
 	constructor(url: string) {

@@ -1,6 +1,15 @@
 import { useNavigation } from '@react-navigation/core'
 import React, { FC } from 'react'
-import { Alert, StyleSheet, Text } from 'react-native'
+import {
+	Alert,
+	KeyboardAvoidingView,
+	Platform,
+	StyleSheet,
+	Text
+} from 'react-native'
+import { API } from '../../api/api.routes'
+import { APIService } from '../../api/base.api'
+import ErrorText from '../../components/ErrorText'
 import Form from '../../components/Form'
 import PasswordForm from '../../components/PasswordForm'
 import PrimaryButton from '../../components/PrimaryButton'
@@ -25,11 +34,16 @@ const SignUp: FC<Props> = (props) => {
 	const [email, stEmail] = React.useState<string>('')
 	const [password, setPassword] = React.useState<string>('')
 	const [confirmPassword, setConfirmPassword] = React.useState<string>('')
-	const [doesNotMatch, setDoesNotMatch] = React.useState<boolean>(false)
 
-	const signUp = () => {
+	const [fullNameError, setFullNameError] = React.useState<boolean>(false)
+	const [emailError, setEmailError] = React.useState<boolean>(false)
+	const [passwordError, setPasswordError] = React.useState<boolean>(false)
+	const [doesNotMatchError, setDoesNotMatchError] =
+		React.useState<boolean>(false)
+
+	const signUp = (): void => {
 		if (password !== confirmPassword) {
-			setDoesNotMatch(true)
+			setDoesNotMatchError(true)
 			return
 		}
 		const user: User | any = {
@@ -52,12 +66,26 @@ const SignUp: FC<Props> = (props) => {
 						{ text: 'OK' }
 					]
 				)
-				setDoesNotMatch(false)
-				return
+				return removeErrors()
 			}
 		}
+		processCredentials(user)
+	}
 
-		// navigation.navigate('Root')
+	const processCredentials = async (user: User) => {
+		await new APIService(API.Register)
+			.store(user)
+			.then(() => {})
+			.catch((error) => {
+				console.log(error)
+			})
+	}
+
+	const removeErrors = (): void => {
+		setFullNameError(false)
+		setEmailError(false)
+		setPasswordError(false)
+		setDoesNotMatchError(false)
 	}
 
 	return (
@@ -68,37 +96,47 @@ const SignUp: FC<Props> = (props) => {
 				}}
 				label="Full Name"
 				placeholder="Full Name"
+				error={fullNameError}
 			/>
+			<ErrorText
+				true={fullNameError}
+				text="Full name must be minimum of 8 characters."
+			/>
+
 			<Form
 				text={(value: string) => {
 					stEmail(value)
 				}}
 				label="Email"
 				placeholder="Email"
+				error={emailError}
 			/>
+			<ErrorText true={emailError} text="Invalid email." />
+
 			<PasswordForm
 				text={(value: string) => {
 					setPassword(value)
 				}}
 				label="Password"
+				error={passwordError}
 			/>
+			<ErrorText
+				true={passwordError}
+				text="Password length must be 10 or higher, contain at least 1
+					uppercase and no special character."
+			/>
+
 			<PasswordForm
 				text={(value: string) => {
 					setConfirmPassword(value)
 				}}
 				label="Confirm Password"
+				error={doesNotMatchError}
 			/>
-
-			{doesNotMatch && (
-				<Text
-					style={{
-						paddingHorizontal: 20,
-						color: '#E73553',
-						marginTop: -10
-					}}>
-					Password does not match
-				</Text>
-			)}
+			<ErrorText
+				true={doesNotMatchError}
+				text="Password does not match."
+			/>
 
 			<PrimaryButton text="Sign up" callback={() => signUp()} />
 		</View>

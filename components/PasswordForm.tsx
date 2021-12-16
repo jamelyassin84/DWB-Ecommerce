@@ -15,6 +15,7 @@ type Props = {
 	label: string
 	placeholder?: string
 	text: Function
+	error?: boolean
 }
 
 const PasswordForm: FC<Props> = (props) => {
@@ -58,6 +59,9 @@ const PasswordForm: FC<Props> = (props) => {
 				{...props}
 				style={[
 					styles.input,
+					props.error
+						? { borderColor: '#E73553', borderWidth: 2 }
+						: {},
 					isFocused && {
 						borderWidth: 2,
 						borderColor: Colors[colorScheme].tint

@@ -9,6 +9,7 @@ type Props = {
 	placeholder?: string
 	numeric?: boolean
 	text: Function
+	error?: boolean
 }
 
 const Form: FC<Props> = (props) => {
@@ -47,6 +48,9 @@ const Form: FC<Props> = (props) => {
 				{...props}
 				style={[
 					styles.input,
+					props.error
+						? { borderColor: '#E73553', borderWidth: 2 }
+						: {},
 					isFocused && {
 						borderWidth: 2,
 						borderColor: Colors[colorScheme].tint

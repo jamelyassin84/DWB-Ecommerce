@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { ScrollView } from 'react-native'
+import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native'
 import Container from '../../components/Layout'
 import Login from './Login'
 import LoginAndSignUpTab from './LoginAndSignUpTab'
@@ -13,15 +13,21 @@ const _Auth: FC<Props> = (props) => {
 
 	return (
 		<Container>
-			<LoginAndSignUpTab
-				shouldLogin={shouldLogin}
-				wantsToLogin={(value: boolean) => {
-					setShouldLogin(value)
-				}}
-			/>
-			<SignUp isShowing={!shouldLogin} />
-			<Login isShowing={shouldLogin} />
-			<Socials isShowing={!shouldLogin} />
+			<KeyboardAvoidingView
+				style={{ flex: 1 }}
+				behavior={Platform.OS === 'ios' ? 'padding' : 'padding'}>
+				<ScrollView>
+					<LoginAndSignUpTab
+						shouldLogin={shouldLogin}
+						wantsToLogin={(value: boolean) => {
+							setShouldLogin(value)
+						}}
+					/>
+					<SignUp isShowing={!shouldLogin} />
+					<Login isShowing={shouldLogin} />
+					<Socials isShowing={!shouldLogin} />
+				</ScrollView>
+			</KeyboardAvoidingView>
 		</Container>
 	)
 }
