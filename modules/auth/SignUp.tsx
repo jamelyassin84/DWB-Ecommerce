@@ -67,17 +67,19 @@ const SignUp: FC<Props> = (props) => {
 				setButtonIsDisabled(false)
 			})
 			.catch((api) => {
-				alert(api.response.data.errors.name)
-				setButtonIsDisabled(false)
-				if (hasData(api.response.data.errors.name)) {
+				if (hasData(api?.response?.data?.errors?.name)) {
 					setNameError(true)
 				}
-				if (hasData(api.response.data.errors.email)) {
+				if (hasData(api?.response?.data.errors?.email)) {
 					setEmailError(true)
 				}
-				if (hasData(api.response.data.errors.password)) {
+				if (hasData(api?.response?.data?.errors?.password)) {
 					setPasswordError(true)
 				}
+				if (!api?.response) {
+					alert('Network Error Try Again')
+				}
+				setButtonIsDisabled(false)
 			})
 	}
 
