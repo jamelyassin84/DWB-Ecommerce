@@ -16,33 +16,32 @@ const HomeProducts: FC<Props> = (props) => {
 	const style = StyleSheet.create({
 		button: {
 			width: '100%',
-			paddingLeft: '5%',
-			paddingRight: '5%',
 			flexDirection: 'row',
 			alignItems: 'center',
 			paddingVertical: 10,
-			paddingHorizontal: 8,
 			borderColor: 'rgba(150,150,150,.2)',
-			backgroundColor: Colors[colorScheme].background
+			backgroundColor: Colors[colorScheme].background,
 		},
 		imageContainer: {
-			borderWidth: 1,
 			borderRadius: 10,
-			borderColor: 'rgba(150,150,150,.2)'
+			width: 54,
+			height: 40,
 		},
 		image: {
-			width: 60,
+			width: 54,
 			height: 40,
-			resizeMode: 'contain',
-			borderRadius: 10
+			resizeMode: 'stretch',
+			borderRadius: 10,
+			borderWidth: 1,
+			borderColor: 'rgba(150,150,150,.2)',
 		},
-		textContainer: { flex: 1, marginLeft: 10 },
+		textContainer: { flex: 1, marginLeft: 16 },
 		soldContainer: {
 			paddingVertical: 7,
 			paddingHorizontal: 10,
-			backgroundColor: 'rgba(150,150,150,.2)',
-			borderRadius: 20
-		}
+			backgroundColor: '#F5F5F5',
+			borderRadius: 20,
+		},
 	})
 
 	return (
@@ -51,10 +50,10 @@ const HomeProducts: FC<Props> = (props) => {
 				<Image source={props.image} style={style.image} />
 			</View>
 			<View style={style.textContainer}>
-				<BoldText>{props.product}</BoldText>
+				<BoldText style={{ fontSize: 14 }}>{props.product}</BoldText>
 			</View>
 			<View style={style.soldContainer}>
-				<BoldText>{props.sold} sold</BoldText>
+				<Text>{props.sold} sold</Text>
 			</View>
 		</TouchableOpacity>
 	)

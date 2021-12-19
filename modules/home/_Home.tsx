@@ -21,7 +21,7 @@ const _Home: FC<Props> = (props) => {
 	const colorScheme = useColorScheme()
 
 	const monthsRef = useRef<BottomSheet>(null)
-	const snapPoints = useMemo(() => ['25%', '96'], [])
+	const snapPoints = useMemo(() => ['25%', '89'], [])
 
 	const handleSheetChanges = useCallback((index: number) => {
 		if (index === 0) {
@@ -30,7 +30,7 @@ const _Home: FC<Props> = (props) => {
 	}, [])
 
 	return (
-		<HomeLayout>
+		<HomeLayout title="Home">
 			<ScrollViewWithRefresh onRefresh={() => {}} loading={false}>
 				<HomeCard>
 					<SalesSummary
@@ -47,6 +47,24 @@ const _Home: FC<Props> = (props) => {
 			</ScrollViewWithRefresh>
 
 			<BottomSheet
+				handleStyle={{
+					display: 'none'
+				}}
+				style={{
+					shadowColor: 'gray',
+					shadowOffset: {
+						width: 0,
+						height: 0
+					},
+					shadowOpacity: 0.2,
+					shadowRadius: 5.46,
+					// elevation: 19,
+					width: '100%',
+					borderWidth: 1,
+					borderColor: '#F2F4F6',
+					borderTopLeftRadius: 20,
+					borderTopRightRadius: 20
+				}}
 				backgroundStyle={{
 					backgroundColor: Colors[colorScheme].background,
 					borderWidth: 1,

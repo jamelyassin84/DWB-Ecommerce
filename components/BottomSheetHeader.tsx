@@ -21,13 +21,16 @@ const BottomSheetHeader: FC<Props> = (props) => {
 				paddingVertical: 5,
 				borderBottomColor: 'rgba(150,150,150,.2)',
 				borderBottomWidth: 1,
-				paddingBottom: 10
+				paddingBottom: 10,
+				height: 60,
+				alignItems: 'center',
+				backgroundColor: 'transparent'
 			}}>
 			<TouchableOpacity style={{ flex: 1 }} onPress={() => props.close()}>
 				<Text
 					style={{
 						color: Colors[colorScheme].tint,
-						fontSize: 17
+						fontSize: 15
 					}}>
 					Cancel
 				</Text>
@@ -35,8 +38,7 @@ const BottomSheetHeader: FC<Props> = (props) => {
 			<BoldText
 				style={{
 					textAlign: 'center',
-					alignSelf: 'center',
-					fontSize: 17
+					fontSize: 16
 				}}>
 				{props.title}
 			</BoldText>

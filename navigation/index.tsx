@@ -123,7 +123,8 @@ const BottomTabNavigator = () => {
 					},
 					tabBarIcon: ({ color }) => (
 						<Octicons name="home" size={24} color={color} />
-					)
+					),
+					headerShown: false
 				}}
 			/>
 			<BottomTab.Screen
@@ -152,7 +153,8 @@ const BottomTabNavigator = () => {
 							size={24}
 							color={color}
 						/>
-					)
+					),
+					headerShown: false
 				}}
 			/>
 			<BottomTab.Screen
@@ -177,7 +179,8 @@ const BottomTabNavigator = () => {
 					},
 					tabBarIcon: ({ color }) => (
 						<AntDesign name="creditcard" size={24} color={color} />
-					)
+					),
+					headerShown: false
 				}}
 			/>
 			<BottomTab.Screen
@@ -202,7 +205,8 @@ const BottomTabNavigator = () => {
 					},
 					tabBarIcon: ({ color }) => (
 						<AntDesign name="menuunfold" size={24} color={color} />
-					)
+					),
+					headerShown: false
 				}}
 			/>
 		</BottomTab.Navigator>

@@ -2,8 +2,12 @@ import React, { FC } from 'react'
 import { Dimensions, Platform, View } from 'react-native'
 import useColorScheme from '../hooks/useColorScheme'
 import Colors from '../constants/Colors'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { BoldText, Text } from './Themed'
 
-type Props = {}
+type Props = {
+	title?: string
+}
 
 const HomeLayout: FC<Props> = (props) => {
 	const colorScheme = useColorScheme()
@@ -14,6 +18,25 @@ const HomeLayout: FC<Props> = (props) => {
 				width: Dimensions.get('screen').width,
 				backgroundColor: Colors[colorScheme].homeBackground
 			}}>
+			<View
+				style={{
+					alignItems: 'center',
+					justifyContent: 'center',
+					backgroundColor: Colors[colorScheme].background,
+					paddingTop: 57,
+					paddingBottom: 11,
+					borderWidth: 0.8,
+					borderColor: Colors[colorScheme].homeBackground
+				}}>
+				<BoldText
+					style={{
+						color: '##000F34',
+						fontSize: 18,
+						textAlign: 'center'
+					}}>
+					{props.title}
+				</BoldText>
+			</View>
 			{props.children}
 		</View>
 	)

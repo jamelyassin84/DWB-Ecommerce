@@ -1,8 +1,6 @@
 import { FontAwesome5 } from '@expo/vector-icons'
 import React, { FC } from 'react'
-import { ScrollView, TouchableOpacity } from 'react-native'
-import BottomSheetHeader from '../../components/BottomSheetHeader'
-import Container from '../../components/Layout'
+import { TouchableOpacity } from 'react-native'
 import { BoldText, Text, View } from '../../components/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
@@ -25,22 +23,33 @@ const Calendar: FC<Props> = (props) => {
 							flexDirection: 'row',
 							paddingHorizontal: 30,
 							paddingVertical: 15,
-							width: '100%'
+							width: '100%',
 						}}>
-						<BoldText
-							style={{
-								flex: 1,
-								fontSize: 16,
-								color:
-									index === 8 - 1
-										? Colors[colorScheme].tint
-										: '#5F6A84'
-							}}>
-							{month}
-						</BoldText>
+						{index === 8 - 1 && (
+							<BoldText
+								style={{
+									flex: 1,
+									fontSize: 14,
+									color: Colors[colorScheme].tint,
+								}}>
+								{month}
+							</BoldText>
+						)}
+
+						{index !== 8 - 1 && (
+							<Text
+								style={{
+									flex: 1,
+									fontSize: 14,
+									color: '#5F6A84',
+								}}>
+								{month}
+							</Text>
+						)}
+
 						<FontAwesome5
 							name="check"
-							size={16}
+							size={18}
 							color={
 								index === 8 - 1
 									? Colors[colorScheme].tint

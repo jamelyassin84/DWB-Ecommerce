@@ -10,7 +10,8 @@ const Title: FC<Props> = (props) => {
 		<BoldText
 			style={{
 				fontSize: 16,
-				marginBottom: 10
+				marginBottom: 10,
+				color: '#000F34'
 			}}>
 			{props.text}
 		</BoldText>

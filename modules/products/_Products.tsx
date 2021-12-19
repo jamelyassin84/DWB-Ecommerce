@@ -44,7 +44,7 @@ const _Products: FC<Props> = (props) => {
 					setFloatingButtonIsShowing(false)
 				}}
 			/>
-			<HomeLayout>
+			<HomeLayout title="Products">
 				<ScrollViewWithRefresh onRefresh={() => {}} loading={false}>
 					<HomeCard>
 						<Title text="My products (25)" />

@@ -14,7 +14,7 @@ type Props = {}
 
 const _Payment: FC<Props> = (props) => {
 	return (
-		<HomeLayout>
+		<HomeLayout title="Income">
 			<ScrollViewWithRefresh onRefresh={() => {}} loading={false}>
 				<HomeCard>
 					<Balance />

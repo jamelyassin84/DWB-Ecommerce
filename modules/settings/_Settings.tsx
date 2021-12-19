@@ -9,7 +9,7 @@ type Props = {}
 
 const _Settings: FC<Props> = (props) => {
 	return (
-		<HomeLayout>
+		<HomeLayout title="Settings">
 			<HomeCard>
 				<Title text="Profile Settings" />
 				<SettingList />

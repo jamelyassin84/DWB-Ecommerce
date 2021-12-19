@@ -18,25 +18,26 @@ const SelectAMonth: FC<Props> = (props) => {
 		button: {
 			borderRadius: 20,
 			borderWidth: 1.5,
-			borderColor: 'rgba(150,150,150,.4)',
+			borderColor: '#E9EBF0',
 			flexDirection: 'row',
 			alignItems: 'center',
-			paddingVertical: 6,
 			paddingHorizontal: 12,
 			marginLeft: 'auto',
 			justifyContent: 'center',
 			position: 'relative',
 			zIndex: 9,
-			marginTop: -7
+			marginTop: -7,
+			paddingVertical: 8,
 		},
 		iconContainer: {
-			justifyContent: 'center'
+			justifyContent: 'center',
 		},
 		icon: {},
 		text: {
 			fontSize: 14,
-			marginRight: 20
-		}
+			marginRight: 20,
+			color: '#000F34',
+		},
 	})
 
 	return (
