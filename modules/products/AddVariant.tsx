@@ -2,18 +2,21 @@ import React, { FC } from 'react'
 import { Text, TouchableOpacity } from 'react-native'
 import { BoldText, View } from '../../components/Themed'
 
-type Props = {}
+type Props = {
+	addVariant: Function
+}
 
 const AddVariant: FC<Props> = (props) => {
 	return (
 		<View
 			style={{
-				marginHorizontal: 20,
+				marginHorizontal: 23,
 				flexDirection: 'row',
 				alignItems: 'center',
-				marginVertical: 20,
+				marginVertical: 10,
 			}}>
 			<TouchableOpacity
+				onPress={() => props.addVariant()}
 				style={{
 					backgroundColor: '#2E70E6',
 					height: 40,

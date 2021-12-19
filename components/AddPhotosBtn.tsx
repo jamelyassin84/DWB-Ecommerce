@@ -12,8 +12,12 @@ type Props = {
 const AddPhotosBtn: FC<Props> = (props) => {
 	const colorScheme = useColorScheme()
 	const styles = StyleSheet.create({
+		wrapper: {
+			marginBottom: 20,
+			paddingHorizontal: 23,
+		},
 		button: {
-			width: '90%',
+			width: '100%',
 			paddingVertical: 15,
 			borderRadius: 10,
 			justifyContent: 'center',
@@ -35,23 +39,25 @@ const AddPhotosBtn: FC<Props> = (props) => {
 	})
 
 	return (
-		<TouchableOpacity
-			style={styles.button}
-			onPress={() => props.callback()}>
-			<View
-				style={{
-					alignSelf: 'center',
-					flexDirection: 'row',
-					alignItems: 'center',
-				}}>
-				<Feather
-					name="plus"
-					size={28}
-					color={Colors[colorScheme].tint}
-				/>
-				<BoldText style={styles.buttonText}>Add Photos</BoldText>
-			</View>
-		</TouchableOpacity>
+		<View style={styles.wrapper}>
+			<TouchableOpacity
+				style={styles.button}
+				onPress={() => props.callback()}>
+				<View
+					style={{
+						alignSelf: 'center',
+						flexDirection: 'row',
+						alignItems: 'center',
+					}}>
+					<Feather
+						name="plus"
+						size={28}
+						color={Colors[colorScheme].tint}
+					/>
+					<BoldText style={styles.buttonText}>Add Photos</BoldText>
+				</View>
+			</TouchableOpacity>
+		</View>
 	)
 }
 

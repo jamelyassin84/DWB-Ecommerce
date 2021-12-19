@@ -5,13 +5,13 @@ import useColorScheme from '../hooks/useColorScheme'
 import { BoldText, Text } from './Themed'
 
 type Props = {
-	label: string
+	label?: string
 	placeholder?: string
 	numeric?: boolean
 	text: Function
 	error?: boolean
 	focus?: boolean
-	onSubmitEditing: Function
+	onSubmitEditing?: Function
 }
 
 const Form: FC<Props> = (props) => {
@@ -21,6 +21,7 @@ const Form: FC<Props> = (props) => {
 		wrapper: {
 			marginBottom: 20,
 			paddingHorizontal: 23,
+			flex: 1,
 		},
 		label: {
 			fontSize: 14,
@@ -35,6 +36,7 @@ const Form: FC<Props> = (props) => {
 			height: 50,
 			fontSize: 16,
 			marginVertical: 10,
+			marginBottom: 0,
 			alignSelf: 'center',
 			fontFamily: 'Montserrat',
 			color: Colors[colorScheme].text,
@@ -54,10 +56,14 @@ const Form: FC<Props> = (props) => {
 
 	return (
 		<View style={styles.wrapper}>
-			<BoldText style={styles.label}>{props.label}</BoldText>
+			{props.label && (
+				<BoldText style={styles.label}>{props.label}</BoldText>
+			)}
 			<TextInput
 				ref={ref}
-				onSubmitEditing={() => props.onSubmitEditing()}
+				onSubmitEditing={() => {
+					props.onSubmitEditing ? props.onSubmitEditing() : void 0
+				}}
 				onFocus={() => setIsFocused(true)}
 				onBlur={() => setIsFocused(false)}
 				onChangeText={(text) => {

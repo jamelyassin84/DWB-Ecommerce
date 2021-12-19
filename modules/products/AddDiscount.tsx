@@ -5,7 +5,9 @@ import Form from '../../components/Form'
 import { BoldText, Text, View } from '../../components/Themed'
 import useColorScheme from '../../hooks/useColorScheme'
 
-type Props = {}
+type Props = {
+	text: Function
+}
 
 const AddDiscount: FC<Props> = (props) => {
 	const colorScheme = useColorScheme()
@@ -33,12 +35,8 @@ const AddDiscount: FC<Props> = (props) => {
 			</View>
 			<View style={styles.formContainer}>
 				<Form
-					onSubmitEditing={() => {
-						// removeFocus()
-						// setPasswordFocus(true)
-					}}
 					text={(value: string) => {
-						// stEmail(value)
+						props.text(value)
 					}}
 					label="Discounted Price (AED)"
 					error={false}

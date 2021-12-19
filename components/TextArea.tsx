@@ -6,6 +6,7 @@ import useColorScheme from '../hooks/useColorScheme'
 type Props = {
 	label: string
 	placeholder?: string
+	text: Function
 }
 
 const TextArea: FC<Props> = (props) => {
@@ -13,7 +14,6 @@ const TextArea: FC<Props> = (props) => {
 
 	const styles = StyleSheet.create({
 		wrapper: {
-			marginBottom: 20,
 			paddingHorizontal: 23,
 		},
 		label: {
@@ -49,6 +49,9 @@ const TextArea: FC<Props> = (props) => {
 						borderColor: Colors[colorScheme].tint,
 					},
 				]}
+				onChangeText={(text) => {
+					props.text(text)
+				}}
 				multiline={true}
 				focusable={true}
 				clearButtonMode="always"

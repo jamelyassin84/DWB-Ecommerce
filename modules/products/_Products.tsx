@@ -26,7 +26,6 @@ const _Products: FC<Props> = (props) => {
 
 	const addProductRef = useRef<BottomSheet>(null)
 	const snapPoints = useMemo(() => ['25%', '93'], [])
-
 	const handleSheetChanges = useCallback((index: number) => {
 		if (index === 0) {
 			setFloatingButtonIsShowing(true)
@@ -34,7 +33,6 @@ const _Products: FC<Props> = (props) => {
 			return
 		}
 	}, [])
-
 	React.useEffect(() => {
 		addProductRef.current?.close()
 	}, [])
