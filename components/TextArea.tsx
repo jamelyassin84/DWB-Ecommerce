@@ -13,15 +13,15 @@ const TextArea: FC<Props> = (props) => {
 
 	const styles = StyleSheet.create({
 		wrapper: {
-			paddingVertical: 5
+			marginBottom: 20,
+			paddingHorizontal: 23,
 		},
 		label: {
 			fontSize: 14,
-			color: '#757575',
-			paddingHorizontal: 20
+			color: '#5F6A84',
 		},
 		input: {
-			width: '90%',
+			width: '100%',
 			borderRadius: 10,
 			borderWidth: 1,
 			borderColor: 'rgba(150,150,150,.4)',
@@ -31,8 +31,8 @@ const TextArea: FC<Props> = (props) => {
 			alignSelf: 'center',
 			fontFamily: 'Montserrat',
 			color: Colors[colorScheme].text,
-			minHeight: 150
-		}
+			minHeight: 150,
+		},
 	})
 
 	const [isFocused, setIsFocused] = React.useState(false)
@@ -46,8 +46,8 @@ const TextArea: FC<Props> = (props) => {
 					styles.input,
 					isFocused && {
 						borderWidth: 2,
-						borderColor: Colors[colorScheme].tint
-					}
+						borderColor: Colors[colorScheme].tint,
+					},
 				]}
 				multiline={true}
 				focusable={true}

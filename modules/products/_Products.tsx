@@ -35,6 +35,10 @@ const _Products: FC<Props> = (props) => {
 		}
 	}, [])
 
+	React.useEffect(() => {
+		addProductRef.current?.close()
+	}, [])
+
 	return (
 		<View>
 			<FloatingButton

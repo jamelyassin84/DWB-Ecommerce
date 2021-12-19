@@ -45,7 +45,7 @@ const SignUp: FC<Props> = (props) => {
 			name: name,
 			email: email,
 			password: password,
-			mode: 'Default'
+			mode: 'Default',
 		}
 
 		for (let key in user) {
@@ -53,7 +53,7 @@ const SignUp: FC<Props> = (props) => {
 				Alert.alert(
 					'Invalid Operation',
 					'One or more fields should not be empty',
-					[{ text: 'Cancel', style: 'cancel' }, { text: 'OK' }]
+					[{ text: 'Cancel', style: 'cancel' }, { text: 'OK' }],
 				)
 				setButtonIsDisabled(false)
 				return removeErrors()
@@ -184,6 +184,7 @@ const SignUp: FC<Props> = (props) => {
 				text="Password does not match."
 			/>
 
+			<View style={{ height: 40 }} />
 			<PrimaryButton
 				isDisabled={buttonIsDisabled}
 				focus={submitButtonFocus}

@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
-import { BoldText, Text } from './Themed'
+import { BoldText, Text, View } from './Themed'
 
 type Props = {
 	text: string
@@ -14,8 +14,12 @@ type Props = {
 const PrimaryButton: FC<Props> = (props) => {
 	const colorScheme = useColorScheme()
 	const styles = StyleSheet.create({
+		wrapper: {
+			marginBottom: 20,
+			paddingHorizontal: 23,
+		},
 		button: {
-			width: '90%',
+			width: '100%',
 			borderRadius: 13,
 			backgroundColor: Colors[colorScheme].tint,
 			justifyContent: 'center',
@@ -24,32 +28,35 @@ const PrimaryButton: FC<Props> = (props) => {
 			alignSelf: 'center',
 			borderWidth: 1,
 			borderColor: 'transparent',
-			height: 50
+			height: 50,
+			paddingHorizontal: 23,
 		},
 		buttonText: {
 			color: '#fff',
-			fontSize: 18
+			fontSize: 18,
 		},
 		focus: {
 			borderColor: '#D3E1FA',
-			borderWidth: 5
+			borderWidth: 5,
 		},
 		disabled: {
-			backgroundColor: '#B7CDF7'
-		}
+			backgroundColor: '#B7CDF7',
+		},
 	})
 
 	return (
-		<TouchableOpacity
-			disabled={props.isDisabled}
-			style={[
-				styles.button,
-				props.focus ? styles.focus : {},
-				props.isDisabled ? styles.disabled : {}
-			]}
-			onPress={() => props.callback()}>
-			<BoldText style={styles.buttonText}>{props.text}</BoldText>
-		</TouchableOpacity>
+		<View style={styles.wrapper}>
+			<TouchableOpacity
+				disabled={props.isDisabled}
+				style={[
+					styles.button,
+					props.focus ? styles.focus : {},
+					props.isDisabled ? styles.disabled : {},
+				]}
+				onPress={() => props.callback()}>
+				<BoldText style={styles.buttonText}>{props.text}</BoldText>
+			</TouchableOpacity>
+		</View>
 	)
 }
 

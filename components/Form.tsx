@@ -19,15 +19,15 @@ const Form: FC<Props> = (props) => {
 
 	const styles = StyleSheet.create({
 		wrapper: {
-			paddingVertical: 5
+			marginBottom: 20,
+			paddingHorizontal: 23,
 		},
 		label: {
 			fontSize: 14,
 			color: '#5F6A84',
-			paddingHorizontal: 20
 		},
 		input: {
-			width: '90%',
+			width: '100%',
 			borderRadius: 10,
 			borderWidth: 1,
 			borderColor: '#CAD0DB',
@@ -37,8 +37,8 @@ const Form: FC<Props> = (props) => {
 			marginVertical: 10,
 			alignSelf: 'center',
 			fontFamily: 'Montserrat',
-			color: Colors[colorScheme].text
-		}
+			color: Colors[colorScheme].text,
+		},
 	})
 
 	const [isFocused, setIsFocused] = React.useState(false)
@@ -77,8 +77,8 @@ const Form: FC<Props> = (props) => {
 						: {},
 					isFocused && {
 						borderWidth: 2,
-						borderColor: Colors[colorScheme].tint
-					}
+						borderColor: Colors[colorScheme].tint,
+					},
 				]}
 			/>
 		</View>

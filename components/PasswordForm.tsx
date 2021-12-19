@@ -5,7 +5,7 @@ import {
 	StyleSheet,
 	TextInput,
 	TouchableOpacity,
-	View
+	View,
 } from 'react-native'
 import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
@@ -24,15 +24,15 @@ const PasswordForm: FC<Props> = (props) => {
 	const colorScheme = useColorScheme()
 	const styles = StyleSheet.create({
 		wrapper: {
-			paddingVertical: 5
+			marginBottom: 20,
+			paddingHorizontal: 23,
 		},
 		label: {
 			fontSize: 14,
 			color: '#5F6A84',
-			paddingHorizontal: 20
 		},
 		input: {
-			width: '90%',
+			width: '100%',
 			borderRadius: 10,
 			borderWidth: 1,
 			borderColor: '#CAD0DB',
@@ -44,15 +44,15 @@ const PasswordForm: FC<Props> = (props) => {
 			fontFamily: 'Montserrat',
 			color: Colors[colorScheme].text,
 			zIndex: -1,
-			position: 'relative'
+			position: 'relative',
 		},
 		hideIcon: {
 			alignSelf: 'flex-end',
 			right: 35,
 			transform: [{ translateY: Platform.OS === 'ios' ? 46 : 48 }],
 			position: 'absolute',
-			zIndex: 9
-		}
+			zIndex: 9,
+		},
 	})
 
 	const [isFocused, setIsFocused] = React.useState(false)
@@ -90,8 +90,8 @@ const PasswordForm: FC<Props> = (props) => {
 						: {},
 					isFocused && {
 						borderWidth: 2,
-						borderColor: Colors[colorScheme].tint
-					}
+						borderColor: Colors[colorScheme].tint,
+					},
 				]}
 			/>
 			<TouchableOpacity

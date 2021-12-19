@@ -14,7 +14,7 @@ const LoginAndSignUpTab: FC<Props> = (props) => {
 
 	const styles = StyleSheet.create({
 		container: {
-			alignItems: 'center'
+			alignItems: 'center',
 		},
 		wrapper: {
 			width: '65%',
@@ -24,26 +24,26 @@ const LoginAndSignUpTab: FC<Props> = (props) => {
 			alignItems: 'center',
 			padding: 5,
 			alignSelf: 'center',
-			marginVertical: 10,
-			marginTop: Platform.OS === 'ios' ? 15 : 30
+			marginVertical: 30,
+			marginTop: Platform.OS === 'ios' ? 15 : 30,
 		},
 		button: {
 			flex: 1,
 			borderRadius: 10,
 			justifyContent: 'center',
-			alignItems: 'center'
+			alignItems: 'center',
 		},
 		active: {
-			backgroundColor: Colors[colorScheme].background
+			backgroundColor: Colors[colorScheme].background,
 		},
 		text: {
 			color: Colors[colorScheme].text,
 			paddingVertical: 10,
-			fontSize: 16
+			fontSize: 16,
 		},
 		activeText: {
-			color: Colors[colorScheme].tint
-		}
+			color: Colors[colorScheme].tint,
+		},
 	})
 
 	return (
@@ -52,13 +52,13 @@ const LoginAndSignUpTab: FC<Props> = (props) => {
 				<TouchableOpacity
 					style={[
 						styles.button,
-						!props.shouldLogin ? styles.active : null
+						!props.shouldLogin ? styles.active : null,
 					]}
 					onPress={() => props.wantsToLogin(false)}>
 					<BoldText
 						style={[
 							styles.text,
-							!props.shouldLogin ? styles.activeText : null
+							!props.shouldLogin ? styles.activeText : null,
 						]}>
 						Sign up
 					</BoldText>
@@ -67,13 +67,13 @@ const LoginAndSignUpTab: FC<Props> = (props) => {
 				<TouchableOpacity
 					style={[
 						styles.button,
-						props.shouldLogin ? styles.active : null
+						props.shouldLogin ? styles.active : null,
 					]}
 					onPress={() => props.wantsToLogin(true)}>
 					<BoldText
 						style={[
 							styles.text,
-							props.shouldLogin ? styles.activeText : null
+							props.shouldLogin ? styles.activeText : null,
 						]}>
 						Login
 					</BoldText>

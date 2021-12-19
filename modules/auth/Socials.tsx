@@ -14,13 +14,13 @@ const Socials: FC<Props> = (props) => {
 	const styles = StyleSheet.create({
 		hidden: {
 			position: 'absolute',
-			left: -500
+			left: -500,
 		},
 		text: {
 			fontSize: 18,
 			textAlign: 'center',
-			marginVertical: 18
-		}
+			marginVertical: 18,
+		},
 	})
 
 	async function signInWithGoogle() {
@@ -34,8 +34,8 @@ const Socials: FC<Props> = (props) => {
 			credentials = await AppleAuthentication.signInAsync({
 				requestedScopes: [
 					AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
-					AppleAuthentication.AppleAuthenticationScope.EMAIL
-				]
+					AppleAuthentication.AppleAuthenticationScope.EMAIL,
+				],
 			})
 		} catch (e) {}
 		return credentials
@@ -43,7 +43,7 @@ const Socials: FC<Props> = (props) => {
 
 	return (
 		<View>
-			<View style={{ height: 5 }} />
+			{/* <View style={{ height: 5 }} />
 			<Text style={styles.text}>Or</Text>
 			<SocialButtons
 				text="Sign up with Google"
@@ -52,7 +52,7 @@ const Socials: FC<Props> = (props) => {
 					signInWithGoogle()
 				}}
 			/>
-			<View style={{ height: 15 }} />
+			<View style={{ height: 15 }} /> */}
 
 			{/* {Platform.OS === 'ios' && (
 				<SocialButtons
