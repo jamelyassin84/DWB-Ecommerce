@@ -21,11 +21,13 @@ type Props = {}
 const _Products: FC<Props> = (props) => {
 	const colorScheme = useColorScheme()
 
+	const [mounted, setMounted] = React.useState(false)
 	const [floatingButtonIsShowing, setFloatingButtonIsShowing] =
 		React.useState(true)
 
 	const addProductRef = useRef<BottomSheet>(null)
 	const snapPoints = useMemo(() => ['25%', '93'], [])
+
 	const handleSheetChanges = useCallback((index: number) => {
 		if (index === 0) {
 			setFloatingButtonIsShowing(true)
@@ -34,7 +36,7 @@ const _Products: FC<Props> = (props) => {
 		}
 	}, [])
 	React.useEffect(() => {
-		addProductRef.current?.close()
+		setMounted(true)
 	}, [])
 
 	return (
@@ -63,46 +65,48 @@ const _Products: FC<Props> = (props) => {
 					</HomeCard>
 				</ScrollViewWithRefresh>
 			</HomeLayout>
-			<BottomSheet
-				backgroundStyle={{
-					backgroundColor: Colors[colorScheme].background,
-					borderWidth: 1,
-					borderColor: 'rgba(150,150,150,.1)',
-					padding: 5,
-				}}
-				handleStyle={{
-					display: 'none',
-				}}
-				ref={addProductRef}
-				index={0}
-				snapPoints={snapPoints}
-				backdropComponent={(backdropProps) => (
-					<BottomSheetBackdrop
-						{...backdropProps}
-						enableTouchThrough={true}
-					/>
-				)}
-				onChange={handleSheetChanges}>
-				<BottomSheetHeader
-					title="Add Product"
-					close={() => {
-						addProductRef.current?.close()
-						setFloatingButtonIsShowing(true)
+			{mounted && (
+				<BottomSheet
+					backgroundStyle={{
+						backgroundColor: Colors[colorScheme].background,
+						borderWidth: 1,
+						borderColor: 'rgba(150,150,150,.1)',
+						padding: 5,
 					}}
-				/>
-				<BottomSheetScrollView>
-					<AddProductFrom
-						open={() => {
-							addProductRef.current?.snapToIndex(1)
-							setFloatingButtonIsShowing(false)
-						}}
+					handleStyle={{
+						display: 'none',
+					}}
+					ref={addProductRef}
+					index={0}
+					snapPoints={snapPoints}
+					backdropComponent={(backdropProps) => (
+						<BottomSheetBackdrop
+							{...backdropProps}
+							enableTouchThrough={true}
+						/>
+					)}
+					onChange={handleSheetChanges}>
+					<BottomSheetHeader
+						title="Add Product"
 						close={() => {
 							addProductRef.current?.close()
 							setFloatingButtonIsShowing(true)
 						}}
 					/>
-				</BottomSheetScrollView>
-			</BottomSheet>
+					<BottomSheetScrollView>
+						<AddProductFrom
+							open={() => {
+								addProductRef.current?.snapToIndex(1)
+								setFloatingButtonIsShowing(false)
+							}}
+							close={() => {
+								addProductRef.current?.close()
+								setFloatingButtonIsShowing(true)
+							}}
+						/>
+					</BottomSheetScrollView>
+				</BottomSheet>
+			)}
 		</View>
 	)
 }

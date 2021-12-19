@@ -10,4 +10,5 @@ export type Product = {
 	variants?: string
 	is_sold_out: boolean
 	user_id: number
+	photos?: any
 }

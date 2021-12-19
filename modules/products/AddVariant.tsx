@@ -30,7 +30,7 @@ const AddVariant: FC<Props> = (props) => {
 
 			<Text
 				style={{
-					color: '##000F34',
+					color: '#000F34',
 					fontStyle: 'italic',
 					marginLeft: 'auto',
 					fontSize: 13,

@@ -16,7 +16,7 @@ const HomeLayout: FC<Props> = (props) => {
 			style={{
 				height: Dimensions.get('screen').height,
 				width: Dimensions.get('screen').width,
-				backgroundColor: Colors[colorScheme].homeBackground
+				backgroundColor: Colors[colorScheme].homeBackground,
 			}}>
 			<View
 				style={{
@@ -26,13 +26,13 @@ const HomeLayout: FC<Props> = (props) => {
 					paddingTop: 57,
 					paddingBottom: 11,
 					borderWidth: 0.8,
-					borderColor: Colors[colorScheme].homeBackground
+					borderColor: Colors[colorScheme].homeBackground,
 				}}>
 				<BoldText
 					style={{
-						color: '##000F34',
+						color: '#000F34',
 						fontSize: 18,
-						textAlign: 'center'
+						textAlign: 'center',
 					}}>
 					{props.title}
 				</BoldText>

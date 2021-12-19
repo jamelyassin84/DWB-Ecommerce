@@ -1,13 +1,14 @@
 import { FontAwesome5 } from '@expo/vector-icons'
 import React, { FC } from 'react'
 import { TouchableOpacity } from 'react-native'
+import { API } from '../../api/api.routes'
+import { APIService } from '../../api/base.api'
 import AddPhotosBtn from '../../components/AddPhotosBtn'
 import Form from '../../components/Form'
 import PrimaryButton from '../../components/PrimaryButton'
 import TextArea from '../../components/TextArea'
 import { View } from '../../components/Themed'
 import Title from '../../components/Title'
-import AddProduct from '../../modals/AddProduct'
 import { Product } from '../../models/Product'
 import AddDiscount from './AddDiscount'
 import AddPhotosComponent from './AddPhotosComponent'
@@ -43,8 +44,8 @@ const AddProductFrom: FC<Props> = () => {
 		}
 	}
 
-	const addProduct = () => {
-		const data: Product = {
+	const addProduct = async () => {
+		const data: Product | any = {
 			product_name: product_name,
 			brief_description: brief_description,
 			price: price,
@@ -54,10 +55,25 @@ const AddProductFrom: FC<Props> = () => {
 			photos: photos,
 			currency: 'AED',
 			is_sold_out: false,
-			user_id: 2,
+			user_id: 1,
 		}
 
-		console.log(data)
+		for (let key in data) {
+			if (data[key] === '') {
+				return
+			}
+		}
+
+		await new APIService(API.Products)
+			.store(data)
+			.then((data) => {
+				console.log(data)
+				alert('data')
+			})
+			.catch((error) => {
+				alert('error')
+				console.log(error)
+			})
 	}
 
 	return (
@@ -88,6 +104,7 @@ const AddProductFrom: FC<Props> = () => {
 					placeholder="Brief Description"
 					error={false}
 				/>
+
 				<Form
 					text={(value: string) => {
 						setPrice(value)
