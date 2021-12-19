@@ -8,6 +8,7 @@ import TextArea from '../../components/TextArea'
 import { View } from '../../components/Themed'
 import Title from '../../components/Title'
 import AddProduct from '../../modals/AddProduct'
+import { Product } from '../../models/Product'
 import AddDiscount from './AddDiscount'
 import AddPhotosComponent from './AddPhotosComponent'
 import AddVariant from './AddVariant'
@@ -25,6 +26,7 @@ const AddProductFrom: FC<Props> = () => {
 	const [description, setDescription]: any = React.useState('')
 	const [discounted_price, setDiscounted_price]: any = React.useState('')
 	const [variants, setVariants]: any = React.useState([])
+	const [photos, setPhotos]: any = React.useState([])
 
 	const addVariant = () => {
 		let hasEmpties = false
@@ -41,7 +43,22 @@ const AddProductFrom: FC<Props> = () => {
 		}
 	}
 
-	const addProduct = () => {}
+	const addProduct = () => {
+		const data: Product = {
+			product_name: product_name,
+			brief_description: brief_description,
+			price: price,
+			description: description,
+			discounted_price: discounted_price,
+			variants: discounted_price,
+			photos: photos,
+			currency: 'AED',
+			is_sold_out: false,
+			user_id: 2,
+		}
+
+		console.log(data)
+	}
 
 	return (
 		<View>
@@ -152,8 +169,16 @@ const AddProductFrom: FC<Props> = () => {
 					label="Description"
 				/>
 
-				<AddPhotosBtn callback={() => {}} />
-				<AddPhotosComponent />
+				<AddPhotosBtn
+					callback={(photo: any) => {
+						setPhotos([...photos, photo])
+					}}
+				/>
+
+				<AddPhotosComponent
+					photos={photos}
+					onClear={() => setPhotos([])}
+				/>
 
 				<PrimaryButton
 					text="add product"

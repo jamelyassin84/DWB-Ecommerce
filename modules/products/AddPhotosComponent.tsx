@@ -5,13 +5,16 @@ import {
 	Image,
 	LogBox,
 	StyleSheet,
-	TouchableOpacity
+	TouchableOpacity,
 } from 'react-native'
 import { BoldText, Text, View } from '../../components/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
 
-type Props = {}
+type Props = {
+	photos: any[]
+	onClear: Function
+}
 
 const AddPhotosComponent: FC<Props> = (props) => {
 	const colorScheme = useColorScheme()
@@ -26,36 +29,33 @@ const AddPhotosComponent: FC<Props> = (props) => {
 			flexDirection: 'row',
 			paddingHorizontal: 20,
 			paddingTop: 20,
-			marginBottom: 10
+			marginBottom: 10,
 		},
 		photoLabel: {
 			fontSize: 16,
-			marginTop: 10
+			marginTop: 10,
 		},
 		editBtn: {
 			marginLeft: 'auto',
-			marginTop: 10
+			marginTop: 10,
 		},
 		editBtnText: {
 			fontSize: 16,
-			color: Colors[colorScheme].tint
+			color: Colors[colorScheme].tint,
 		},
 		imageContainer: {
 			padding: 30,
-			alignItems: 'center',
-			justifyContent: 'center',
+			paddingHorizontal: 5,
 			paddingBottom: 0,
-			marginBottom: 10,
-			width: '50%',
-			borderRadius: 30
+			borderRadius: 30,
 		},
 		image: {
-			width: '120%',
-			height: 100,
-			resizeMode: 'contain',
+			width: 160,
+			height: 120,
+			resizeMode: 'cover',
 			borderRadius: 10,
 			borderWidth: 1,
-			borderColor: 'rgba(150,150,150,.2)'
+			borderColor: 'rgba(150,150,150,.2)',
 		},
 		closeButton: {
 			borderRadius: 50,
@@ -68,35 +68,27 @@ const AddPhotosComponent: FC<Props> = (props) => {
 			zIndex: 9,
 			transform: [
 				{
-					translateX: 55
+					translateX: 135,
 				},
-				{
-					translateY: 10
-				}
-			]
-		}
+			],
+		},
 	})
 
 	return (
 		<View>
 			<View style={styles.flexCOntainer}>
 				<BoldText style={styles.photoLabel}>2 Photos</BoldText>
-				<TouchableOpacity style={styles.editBtn}>
-					<BoldText style={styles.editBtnText}> Cancel</BoldText>
+				<TouchableOpacity
+					style={styles.editBtn}
+					onPress={() => props.onClear()}>
+					<BoldText style={styles.editBtnText}> Clear</BoldText>
 				</TouchableOpacity>
 			</View>
 
 			<FlatList
 				style={{ alignSelf: 'center' }}
 				nestedScrollEnabled={true}
-				data={[
-					require('../../assets/app/images/products/shoe1.jpeg'),
-					require('../../assets/app/images/products/shoe1.jpeg'),
-					require('../../assets/app/images/products/shoe1.jpeg'),
-					require('../../assets/app/images/products/shoe1.jpeg'),
-					require('../../assets/app/images/products/shoe1.jpeg'),
-					require('../../assets/app/images/products/shoe1.jpeg')
-				]}
+				data={props.photos}
 				renderItem={({ item, index }) => {
 					return (
 						<View style={styles.imageContainer}>
@@ -110,7 +102,7 @@ const AddPhotosComponent: FC<Props> = (props) => {
 							<Image
 								style={styles.image}
 								key={index}
-								source={item}
+								source={{ uri: item }}
 							/>
 						</View>
 					)

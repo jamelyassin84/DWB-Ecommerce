@@ -3,7 +3,8 @@ import React, { FC } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
-import { BoldText, Text, View } from './Themed'
+import { BoldText, View } from './Themed'
+import * as ImagePicker from 'expo-image-picker'
 
 type Props = {
 	callback: Function
@@ -38,11 +39,28 @@ const AddPhotosBtn: FC<Props> = (props) => {
 		},
 	})
 
+	const [photos, setPhotos]: any = React.useState([])
+
+	const pickImage = async () => {
+		let result: any = await ImagePicker.launchImageLibraryAsync({
+			mediaTypes: ImagePicker.MediaTypeOptions.All,
+			allowsEditing: true,
+			aspect: [3, 10],
+			allowsMultipleSelection: true,
+			quality: 1,
+		})
+
+		console.log(result)
+
+		if (!result.cancelled) {
+			setPhotos(result.uri)
+			props.callback(result.uri)
+		}
+	}
+
 	return (
 		<View style={styles.wrapper}>
-			<TouchableOpacity
-				style={styles.button}
-				onPress={() => props.callback()}>
+			<TouchableOpacity style={styles.button} onPress={() => pickImage()}>
 				<View
 					style={{
 						alignSelf: 'center',
@@ -54,7 +72,7 @@ const AddPhotosBtn: FC<Props> = (props) => {
 						size={28}
 						color={Colors[colorScheme].tint}
 					/>
-					<BoldText style={styles.buttonText}>Add Photos</BoldText>
+					<BoldText style={styles.buttonText}>Add Photo</BoldText>
 				</View>
 			</TouchableOpacity>
 		</View>

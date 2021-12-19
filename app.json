@@ -28,6 +28,14 @@
 		},
 		"web": {
 			"favicon": "./assets/images/favicon.png"
-		}
+		},
+		"plugins": [
+			[
+				"expo-image-picker",
+				{
+					"photosPermission": "Rive would ask to allow access from photos."
+				}
+			]
+		]
 	}
 }
