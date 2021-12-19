@@ -7,6 +7,7 @@ import { View } from '../../components/Themed'
 import Title from '../../components/Title'
 import AddDiscount from './AddDiscount'
 import AddPhotosComponent from './AddPhotosComponent'
+import AddVariant from './AddVariant'
 
 type Props = {
 	close: Function
@@ -21,19 +22,47 @@ const AddProductFrom: FC<Props> = (props) => {
 					style={{
 						paddingHorizontal: 20,
 						paddingVertical: 15,
-						paddingBottom: 5
+						paddingBottom: 5,
 					}}>
 					<Title text="Product information" />
 				</View>
-				<Form label="Product name" />
-				<Form label="Price (AED)" numeric />
+
+				<Form
+					onSubmitEditing={() => {
+						// removeFocus()
+						// setPasswordFocus(true)
+					}}
+					text={(value: string) => {
+						// stEmail(value)
+					}}
+					label="Email"
+					placeholder="Product name"
+					error={false}
+				/>
+
+				<Form
+					onSubmitEditing={() => {
+						// removeFocus()
+						// setPasswordFocus(true)
+					}}
+					text={(value: string) => {
+						// stEmail(value)
+					}}
+					label="Price (AED)"
+					placeholder="Price (AED)"
+					error={false}
+					numeric
+				/>
+
+				<AddVariant />
 				<AddDiscount />
+
 				<TextArea label="Description" />
 				<AddPhotosBtn callback={() => {}} />
 				<AddPhotosComponent />
 
 				<PrimaryButton
-					text="Add product"
+					text="add product"
 					callback={() => {
 						// navigation.navigate('Root')
 					}}

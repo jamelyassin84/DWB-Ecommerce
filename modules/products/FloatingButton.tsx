@@ -24,16 +24,16 @@ const FloatingButton: FC<Props> = (props) => {
 				borderRadius: 50,
 				padding: 14,
 				zIndex: 9,
-				top: '70.5%',
+				top: '80.5%',
 				shadowColor: Colors[colorScheme].tint,
 				shadowOffset: {
 					width: 0,
-					height: 0
+					height: 0,
 				},
 				shadowOpacity: 0.59,
 				shadowRadius: 10.65,
 				elevation: 7,
-				right: props.isShowing ? 20 : -5000
+				right: props.isShowing ? 20 : -5000,
 			}}>
 			<Feather name="plus" size={28} color="white" />
 		</TouchableOpacity>

@@ -23,15 +23,15 @@ const AddPhotosBtn: FC<Props> = (props) => {
 			flexDirection: 'row',
 			borderWidth: 2,
 			borderStyle: 'dashed',
-			borderColor: 'rgba(150,150,150,.4)'
+			borderColor: '#CAD0DB',
 		},
 		buttonText: {
 			color: Colors[colorScheme].tint,
 			fontSize: 18,
 			fontWeight: '600',
 			marginLeft: 10,
-			textAlign: 'center'
-		}
+			textAlign: 'center',
+		},
 	})
 
 	return (
@@ -42,7 +42,7 @@ const AddPhotosBtn: FC<Props> = (props) => {
 				style={{
 					alignSelf: 'center',
 					flexDirection: 'row',
-					alignItems: 'center'
+					alignItems: 'center',
 				}}>
 				<Feather
 					name="plus"

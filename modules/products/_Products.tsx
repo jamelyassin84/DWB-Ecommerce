@@ -10,7 +10,7 @@ import ProductComponent from './ProductComponent'
 import { productDummyData, ProductType } from './ProductDummyData'
 import BottomSheet, {
 	BottomSheetBackdrop,
-	BottomSheetScrollView
+	BottomSheetScrollView,
 } from '@gorhom/bottom-sheet'
 import AddProductFrom from './AddProductFrom'
 import Colors from '../../constants/Colors'
@@ -25,7 +25,7 @@ const _Products: FC<Props> = (props) => {
 		React.useState(true)
 
 	const addProductRef = useRef<BottomSheet>(null)
-	const snapPoints = useMemo(() => ['25%', '96'], [])
+	const snapPoints = useMemo(() => ['25%', '93'], [])
 
 	const handleSheetChanges = useCallback((index: number) => {
 		if (index === 0) {
@@ -56,7 +56,7 @@ const _Products: FC<Props> = (props) => {
 									image={product.image}
 									price={product.price}
 								/>
-							)
+							),
 						)}
 					</HomeCard>
 				</ScrollViewWithRefresh>
@@ -66,7 +66,10 @@ const _Products: FC<Props> = (props) => {
 					backgroundColor: Colors[colorScheme].background,
 					borderWidth: 1,
 					borderColor: 'rgba(150,150,150,.1)',
-					padding: 5
+					padding: 5,
+				}}
+				handleStyle={{
+					display: 'none',
 				}}
 				ref={addProductRef}
 				index={0}

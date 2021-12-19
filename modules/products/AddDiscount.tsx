@@ -12,18 +12,18 @@ const AddDiscount: FC<Props> = (props) => {
 
 	const styles = StyleSheet.create({
 		container: {
-			flexDirection: 'row'
+			flexDirection: 'row',
 		},
 		checkContainer: {
 			flexDirection: 'row',
 			flex: 1,
 			alignItems: 'center',
-			justifyContent: 'center'
+			justifyContent: 'center',
 		},
 		formContainer: {
 			flex: 1.3,
-			marginRight: 10
-		}
+			marginRight: 10,
+		},
 	})
 	return (
 		<View style={styles.container}>
@@ -32,7 +32,18 @@ const AddDiscount: FC<Props> = (props) => {
 				<BoldText style={{ marginLeft: 10 }}>Add Discount</BoldText>
 			</View>
 			<View style={styles.formContainer}>
-				<Form label="Discounted Price (AED)" numeric />
+				<Form
+					onSubmitEditing={() => {
+						// removeFocus()
+						// setPasswordFocus(true)
+					}}
+					text={(value: string) => {
+						// stEmail(value)
+					}}
+					label="Discounted Price (AED)"
+					error={false}
+					numeric
+				/>
 			</View>
 		</View>
 	)
