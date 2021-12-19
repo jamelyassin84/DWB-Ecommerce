@@ -8,9 +8,7 @@ import { GoogleConfig } from '../../constants/AppConstants'
 import * as Google from 'expo-google-app-auth'
 import * as Application from 'expo-application'
 
-type Props = {
-	isShowing: boolean
-}
+type Props = {}
 
 const Socials: FC<Props> = (props) => {
 	const styles = StyleSheet.create({
@@ -44,7 +42,7 @@ const Socials: FC<Props> = (props) => {
 	}
 
 	return (
-		<View style={!props.isShowing ? styles.hidden : {}}>
+		<View>
 			<View style={{ height: 5 }} />
 			<Text style={styles.text}>Or</Text>
 			<SocialButtons

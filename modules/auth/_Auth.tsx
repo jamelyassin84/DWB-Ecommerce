@@ -23,11 +23,9 @@ const _Auth: FC<Props> = (props) => {
 							setShouldLogin(value)
 						}}
 					/>
-
 					{!shouldLogin && <SignUp />}
-
-					<Login isShowing={shouldLogin} />
-					<Socials isShowing={!shouldLogin} />
+					{shouldLogin && <Login />}
+					{!shouldLogin && <Socials />}
 				</ScrollView>
 			</KeyboardAvoidingView>
 		</Container>

@@ -6,9 +6,7 @@ import PasswordForm from '../../components/PasswordForm'
 import PrimaryButton from '../../components/PrimaryButton'
 import { BoldText, View } from '../../components/Themed'
 
-type Props = {
-	isShowing: boolean
-}
+type Props = {}
 
 const Login: FC<Props> = (props) => {
 	const styles = StyleSheet.create({
@@ -28,9 +26,9 @@ const Login: FC<Props> = (props) => {
 	const navigation = useNavigation()
 
 	return (
-		<View style={!props.isShowing ? styles.hidden : {}}>
-			<Form label="Email" />
-			<PasswordForm label="Password" />
+		<View>
+			{/* <Form label="Email" />
+			<PasswordForm label="Password" /> */}
 			<PrimaryButton
 				text="Login"
 				callback={() => {
