@@ -34,7 +34,7 @@ const Login: FC<Props> = (props) => {
 	const [password, setPassword] = React.useState<string>('')
 
 	// Errors
-	const [loginError, setLoginError] = React.useState<boolean>(true)
+	const [loginError, setLoginError] = React.useState<boolean>(false)
 
 	//Focus Inputs
 	const [passwordFocus, setPasswordFocus] = React.useState<boolean>(false)

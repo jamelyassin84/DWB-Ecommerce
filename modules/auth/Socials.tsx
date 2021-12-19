@@ -54,7 +54,7 @@ const Socials: FC<Props> = (props) => {
 			/>
 			<View style={{ height: 15 }} />
 
-			{Platform.OS === 'ios' && (
+			{/* {Platform.OS === 'ios' && (
 				<SocialButtons
 					text="Sign up with Apple"
 					image={require('../../assets/app/images/auth/apple-icon.png')}
@@ -62,7 +62,7 @@ const Socials: FC<Props> = (props) => {
 						signInWithApple()
 					}}
 				/>
-			)}
+			)} */}
 		</View>
 	)
 }

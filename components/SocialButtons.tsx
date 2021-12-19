@@ -18,7 +18,7 @@ const SocialButtons: FC<Props> = (props) => {
 			flexDirection: 'row',
 			alignItems: 'center',
 			borderWidth: 1,
-			borderColor: 'rgba(150,150,150,.4)',
+			borderColor: '#CAD0DB',
 			paddingHorizontal: 20,
 			paddingVertical: 12,
 			alignSelf: 'center'

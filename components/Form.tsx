@@ -23,14 +23,14 @@ const Form: FC<Props> = (props) => {
 		},
 		label: {
 			fontSize: 14,
-			color: '#757575',
+			color: '#5F6A84',
 			paddingHorizontal: 20
 		},
 		input: {
 			width: '90%',
 			borderRadius: 10,
 			borderWidth: 1,
-			borderColor: 'rgba(150,150,150,.4)',
+			borderColor: '#CAD0DB',
 			paddingHorizontal: 20,
 			height: 50,
 			fontSize: 16,

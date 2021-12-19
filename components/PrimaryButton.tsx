@@ -16,15 +16,15 @@ const PrimaryButton: FC<Props> = (props) => {
 	const styles = StyleSheet.create({
 		button: {
 			width: '90%',
-			paddingVertical: 15,
-			borderRadius: 10,
+			borderRadius: 13,
 			backgroundColor: Colors[colorScheme].tint,
 			justifyContent: 'center',
 			alignItems: 'center',
 			marginTop: 30,
 			alignSelf: 'center',
 			borderWidth: 1,
-			borderColor: 'transparent'
+			borderColor: 'transparent',
+			height: 50
 		},
 		buttonText: {
 			color: '#fff',
