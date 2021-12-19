@@ -11,7 +11,9 @@ import { View } from '../../components/Themed'
 import { hasData } from '../../constants/Helpers'
 import { User } from '../../models/User'
 
-type Props = {}
+type Props = {
+	onFinished: Function
+}
 
 const SignUp: FC<Props> = (props) => {
 	// Hooks
@@ -65,6 +67,7 @@ const SignUp: FC<Props> = (props) => {
 			.store(user)
 			.then(() => {
 				setButtonIsDisabled(false)
+				props.onFinished()
 			})
 			.catch((api) => {
 				if (hasData(api?.response?.data?.errors?.name)) {

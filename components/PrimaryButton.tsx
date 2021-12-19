@@ -35,8 +35,7 @@ const PrimaryButton: FC<Props> = (props) => {
 			borderWidth: 5
 		},
 		disabled: {
-			opacity: 0.1,
-			backgroundColor: 'lightgray'
+			backgroundColor: '#B7CDF7'
 		}
 	})
 

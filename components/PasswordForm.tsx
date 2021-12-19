@@ -100,7 +100,11 @@ const PasswordForm: FC<Props> = (props) => {
 					showField ? setShowField(false) : setShowField(true)
 				}>
 				<Image
-					source={require('../assets/app/images/auth/hide.png')}
+					source={
+						showField
+							? require('../assets/app/images/auth/show.png')
+							: require('../assets/app/images/auth/unshow.png')
+					}
 					style={{ width: 20, height: 20, resizeMode: 'contain' }}
 				/>
 			</TouchableOpacity>

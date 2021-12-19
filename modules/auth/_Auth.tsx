@@ -23,7 +23,9 @@ const _Auth: FC<Props> = (props) => {
 							setShouldLogin(value)
 						}}
 					/>
-					{!shouldLogin && <SignUp />}
+					{!shouldLogin && (
+						<SignUp onFinished={() => setShouldLogin(true)} />
+					)}
 					{shouldLogin && <Login />}
 					{!shouldLogin && <Socials />}
 				</ScrollView>

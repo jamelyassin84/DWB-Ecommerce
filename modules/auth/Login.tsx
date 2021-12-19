@@ -1,10 +1,14 @@
 import { useNavigation } from '@react-navigation/core'
 import React, { FC } from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { API } from '../../api/api.routes'
+import { APIService } from '../../api/base.api'
+import ErrorText from '../../components/ErrorText'
 import Form from '../../components/Form'
 import PasswordForm from '../../components/PasswordForm'
 import PrimaryButton from '../../components/PrimaryButton'
 import { BoldText, View } from '../../components/Themed'
+import { hasData } from '../../constants/Helpers'
 
 type Props = {}
 
@@ -25,16 +29,96 @@ const Login: FC<Props> = (props) => {
 
 	const navigation = useNavigation()
 
+	// Data
+	const [email, stEmail] = React.useState<string>('')
+	const [password, setPassword] = React.useState<string>('')
+
+	// Errors
+	const [loginError, setLoginError] = React.useState<boolean>(true)
+
+	//Focus Inputs
+	const [passwordFocus, setPasswordFocus] = React.useState<boolean>(false)
+
+	// Functions
+	const login = async (): Promise<void> => {
+		removeErrors()
+		setButtonIsDisabled(true)
+		await new APIService(API.Login)
+			.store({
+				email: email,
+				password: password,
+				mode: 'Default'
+			})
+			.then(() => {
+				setButtonIsDisabled(false)
+				navigation.navigate('Root')
+			})
+			.catch((api) => {
+				if (hasData(api?.response?.data?.errors)) {
+					setLoginError(true)
+				}
+				if (!api?.response) {
+					alert('Network Error Try Again')
+				}
+				setButtonIsDisabled(false)
+			})
+	}
+
+	const removeErrors = (): void => {
+		setLoginError(false)
+	}
+
+	const removeFocus = () => {
+		setPasswordFocus(false)
+		setSubmitButtonFocus(false)
+	}
+
+	//Buttons
+	const [submitButtonFocus, setSubmitButtonFocus] =
+		React.useState<boolean>(false)
+	const [buttonIsDisabled, setButtonIsDisabled] =
+		React.useState<boolean>(false)
+
 	return (
 		<View>
-			{/* <Form label="Email" />
-			<PasswordForm label="Password" /> */}
-			<PrimaryButton
-				text="Login"
-				callback={() => {
-					navigation.navigate('Root')
+			<Form
+				onSubmitEditing={() => {
+					removeFocus()
+					setPasswordFocus(true)
 				}}
+				text={(value: string) => {
+					stEmail(value)
+				}}
+				label="Email"
+				placeholder="johndoe@mail.com"
+				error={loginError}
 			/>
+
+			<PasswordForm
+				focus={passwordFocus}
+				onSubmitEditing={() => {
+					removeFocus()
+					setSubmitButtonFocus(true)
+					login()
+				}}
+				text={(value: string) => {
+					setPassword(value)
+				}}
+				label="Password"
+				error={loginError}
+			/>
+			<ErrorText
+				true={loginError}
+				text="Username or password is incorrect"
+			/>
+
+			<PrimaryButton
+				isDisabled={buttonIsDisabled}
+				focus={submitButtonFocus}
+				text="Login"
+				callback={() => login()}
+			/>
+
 			<TouchableOpacity onPress={() => {}}>
 				<BoldText style={styles.buttonText}>Forgot Password?</BoldText>
 			</TouchableOpacity>
