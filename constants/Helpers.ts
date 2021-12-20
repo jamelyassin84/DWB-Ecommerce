@@ -11,7 +11,7 @@ export default function toDate(dateString: string) {
 		'September',
 		'October',
 		'November',
-		'December'
+		'December',
 	]
 	const date = new Date(new Date(dateString).getTime())
 	return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
@@ -64,7 +64,7 @@ export function except<T, K extends keyof T>(data: T, keys: Array<K>) {
 
 export function exceptMany<T, K extends keyof T>(
 	data: Array<T>,
-	keys: Array<K>
+	keys: Array<K>,
 ) {
 	return [...data].map((item) => except(item, keys))
 }
@@ -115,4 +115,10 @@ export function total(x: string | any, y: string | any) {
 
 export function isOdd(num: number) {
 	return num % 2
+}
+
+export function currencyFormat(number: number, currency: string) {
+	return `${currency} ${number
+		.toFixed(2)
+		.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}`
 }

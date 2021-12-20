@@ -15,6 +15,8 @@ import BottomSheet, {
 import AddProductFrom from './AddProductFrom'
 import Colors from '../../constants/Colors'
 import BottomSheetHeader from '../../components/BottomSheetHeader'
+import { APIService } from '../../api/base.api'
+import { Product } from '../../models/Product'
 
 type Props = {}
 
@@ -35,9 +37,24 @@ const _Products: FC<Props> = (props) => {
 			return
 		}
 	}, [])
+
 	React.useEffect(() => {
 		setMounted(true)
+		getProducts()
 	}, [])
+
+	const [products, setProducts] = React.useState<Product[]>([])
+
+	const getProducts = async (): Promise<void> => {
+		await new APIService('products')
+			.show(1)
+			.then((data: Product[] | any) => {
+				setProducts(data)
+			})
+			.catch((error) => {
+				console.log(error)
+			})
+	}
 
 	return (
 		<View>
@@ -51,17 +68,17 @@ const _Products: FC<Props> = (props) => {
 			<HomeLayout title="Products">
 				<ScrollViewWithRefresh onRefresh={() => {}} loading={false}>
 					<HomeCard>
-						<Title text="My products (25)" />
-						{productDummyData.map(
-							(product: ProductType, index: number) => (
-								<ProductComponent
-									key={index}
-									product={product.name}
-									image={product.image}
-									price={product.price}
-								/>
-							),
-						)}
+						<Title text={`My products (${products.length})`} />
+						{products.map((item: Product, index: number) => (
+							<ProductComponent
+								key={index}
+								product={item.product_name}
+								image={item['image-url']}
+								price={item.price}
+								currency={item.currency}
+								data={item}
+							/>
+						))}
 					</HomeCard>
 				</ScrollViewWithRefresh>
 			</HomeLayout>

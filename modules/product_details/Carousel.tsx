@@ -1,45 +1,88 @@
 import React, { FC } from 'react'
-import { ScrollView, Image, Platform, View } from 'react-native'
+import {
+	ScrollView,
+	Image,
+	Platform,
+	View,
+	TouchableOpacity,
+} from 'react-native'
+import { Text } from '../../components/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
 
 type Props = {
 	data: any
+	firstPhoto?: any
+	onSelect: Function
 }
 
 const Carousel: FC<Props> = (props) => {
 	const colorscheme = useColorScheme()
 
-	const images = [1, 1, 22, 2, 2, , 2, 2, 2, 2]
+	const [photoNumber, setPhoto] = React.useState(0)
 
 	return (
 		<ScrollView
 			showsHorizontalScrollIndicator={false}
 			horizontal={true}
 			style={{
-				padding: 18
+				padding: 18,
 			}}>
-			{images.map((image, index) => (
-				<View
+			{props.firstPhoto && (
+				<TouchableOpacity
+					onPress={() => {
+						props.onSelect(props.firstPhoto)
+						setPhoto(0)
+					}}
 					style={{
 						borderRadius: 15,
-						borderWidth: index === 0 ? 2 : 0.5,
+						marginRight: 20,
+						borderWidth: 2,
 						borderColor:
-							index === 0
+							photoNumber === 0
 								? Colors[colorscheme].tint
-								: 'rgba(150,150,150,.4)',
-						marginRight: 20
+								: 'transparent',
 					}}>
 					<Image
-						source={props.data.image}
-						key={index}
+						source={{ uri: props.firstPhoto }}
 						style={{
-							width: 80,
-							height: 60,
-							resizeMode: 'contain'
+							width: 76,
+							height: 56,
+							resizeMode: 'stretch',
+							borderRadius:
+								Platform.OS === 'android' ? 150 / 2 : 15,
 						}}
 					/>
-				</View>
+				</TouchableOpacity>
+			)}
+			{props.data.photos.map((photo: any, index: number) => (
+				<TouchableOpacity
+					key={index}
+					onPress={() => {
+						props.onSelect(photo.url)
+						setPhoto(index + 1)
+					}}
+					style={{
+						borderRadius: 15,
+						borderWidth: 2,
+						borderColor:
+							index + 1 === photoNumber
+								? Colors[colorscheme].tint
+								: 'transparent',
+						marginRight: 20,
+					}}>
+					<Image
+						source={{ uri: photo.url }}
+						key={index}
+						style={{
+							width: 76,
+							height: 56,
+							resizeMode: 'stretch',
+							borderRadius:
+								Platform.OS === 'android' ? 150 / 2 : 15,
+						}}
+					/>
+				</TouchableOpacity>
 			))}
 		</ScrollView>
 	)

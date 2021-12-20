@@ -8,10 +8,12 @@ type Props = {
 }
 
 const PhotoComponent: FC<Props> = (props) => {
+	const [image, setImage] = React.useState(props.data['image-url'])
+
 	return (
 		<View>
 			<Image
-				source={props.data.image}
+				source={{ uri: image }}
 				style={{
 					width: '100%',
 					height: 250,
@@ -20,10 +22,16 @@ const PhotoComponent: FC<Props> = (props) => {
 					justifyContent: 'space-between',
 					alignItems: 'center',
 					flexDirection: 'row',
-					paddingHorizontal: 20
+					paddingHorizontal: 20,
 				}}
 			/>
-			<Carousel data={props.data} />
+			<Carousel
+				onSelect={(image: string) => {
+					setImage(image)
+				}}
+				firstPhoto={props.data['image-url']}
+				data={props.data}
+			/>
 		</View>
 	)
 }

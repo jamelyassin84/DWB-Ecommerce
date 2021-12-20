@@ -12,4 +12,6 @@ export type Product = {
 	photos?: any
 	is_sold_out?: boolean
 	slug?: string
+	created_at?: any
+	updated_at?: any
 }

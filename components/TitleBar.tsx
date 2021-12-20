@@ -19,20 +19,20 @@ const TitleBar: FC<Props> = (props) => {
 			flexDirection: 'row',
 			width: '100%',
 			paddingHorizontal: 20,
-			paddingVertical: 10
+			paddingVertical: 10,
 		},
 		text: {
 			textAlign: 'center',
 			alignSelf: 'center',
 			marginLeft: 'auto',
 			marginRight: 'auto',
-			fontSize: 20,
+			fontSize: 18,
 			transform: [
 				{
-					translateX: -10
-				}
-			]
-		}
+					translateX: -10,
+				},
+			],
+		},
 	})
 	return (
 		<View style={styles.container}>
