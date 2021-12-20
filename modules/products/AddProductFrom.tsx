@@ -81,7 +81,7 @@ const AddProductFrom: FC<Props> = () => {
 		})
 
 		await new APIService(API.Products)
-			.store(formData)
+			.store(formData, true)
 			.then((data) => {
 				console.log(data)
 				Alert.alert(

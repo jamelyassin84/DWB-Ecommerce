@@ -22,15 +22,17 @@ export class APIService<T> {
 		return data
 	}
 
-	async store(payload: FreeObject) {
+	async store(payload: FreeObject, formData = false) {
 		const { data } = await axios.post<T[]>(
 			`${environment.api}${this.url}`,
 			payload,
-			{
-				headers: {
-					'Content-Type': 'multipart/form-data',
-				},
-			},
+			formData
+				? {
+						headers: {
+							'Content-Type': 'multipart/form-data',
+						},
+				  }
+				: {},
 		)
 		return data
 	}
