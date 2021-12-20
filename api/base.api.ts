@@ -17,7 +17,7 @@ export class APIService<T> {
 		const { data } = await axios.get<T[]>(
 			`${environment.api}${this.url}/${id}${
 				params !== undefined ? '?' + params : ''
-			}`
+			}`,
 		)
 		return data
 	}
@@ -25,7 +25,12 @@ export class APIService<T> {
 	async store(payload: FreeObject) {
 		const { data } = await axios.post<T[]>(
 			`${environment.api}${this.url}`,
-			payload
+			payload,
+			{
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
+			},
 		)
 		return data
 	}
@@ -33,14 +38,14 @@ export class APIService<T> {
 	async update(payload: FreeObject, id: number) {
 		const { data } = await axios.put<T[]>(
 			`${environment.api}${this.url}/${id}`,
-			payload
+			payload,
 		)
 		return data
 	}
 
 	async delete(id: number) {
 		const { data } = await axios.get<T[]>(
-			`${environment.api}${this.url}/${id}`
+			`${environment.api}${this.url}/${id}`,
 		)
 		return data
 	}

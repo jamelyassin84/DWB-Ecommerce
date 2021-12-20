@@ -1,6 +1,6 @@
 import { FontAwesome5 } from '@expo/vector-icons'
 import React, { FC } from 'react'
-import { TouchableOpacity } from 'react-native'
+import { Alert, TouchableOpacity } from 'react-native'
 import { API } from '../../api/api.routes'
 import { APIService } from '../../api/base.api'
 import AddPhotosBtn from '../../components/AddPhotosBtn'
@@ -28,6 +28,7 @@ const AddProductFrom: FC<Props> = () => {
 	const [discounted_price, setDiscounted_price]: any = React.useState('')
 	const [variants, setVariants]: any = React.useState([])
 	const [photos, setPhotos]: any = React.useState([])
+	const [files, setFiles]: any = React.useState([])
 
 	const addVariant = () => {
 		let hasEmpties = false
@@ -51,8 +52,7 @@ const AddProductFrom: FC<Props> = () => {
 			price: price,
 			description: description,
 			discounted_price: discounted_price,
-			variants: discounted_price,
-			photos: photos,
+			variants: variants,
 			currency: 'AED',
 			is_sold_out: false,
 			user_id: 1,
@@ -64,11 +64,37 @@ const AddProductFrom: FC<Props> = () => {
 			}
 		}
 
+		let formData: any = new FormData()
+
+		for (let key in data) {
+			formData.append(key, data[key])
+		}
+
+		photos.forEach((image: any) => {
+			const imageUri: any = image.replace('file:/data', 'file:///data')
+			const imageType = image.split('.')[1]
+			formData.append('photos[]', {
+				uri: imageUri,
+				type: `image/${imageType}`,
+				name: `photo.${imageType}`,
+			})
+		})
+
 		await new APIService(API.Products)
-			.store(data)
+			.store(formData)
 			.then((data) => {
 				console.log(data)
-				alert('data')
+				Alert.alert(
+					'Product Upload Successful',
+					'Your Product is ready!',
+					[
+						{
+							text: 'Got It!',
+							style: 'cancel',
+						},
+						{ text: 'OK' },
+					],
+				)
 			})
 			.catch((error) => {
 				alert('error')
@@ -187,8 +213,9 @@ const AddProductFrom: FC<Props> = () => {
 				/>
 
 				<AddPhotosBtn
-					callback={(photo: any) => {
-						setPhotos([...photos, photo])
+					callback={(file: any) => {
+						setPhotos([...photos, file.uri])
+						setFiles([...files, file])
 					}}
 				/>
 

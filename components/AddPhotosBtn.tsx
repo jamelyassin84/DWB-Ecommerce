@@ -39,8 +39,6 @@ const AddPhotosBtn: FC<Props> = (props) => {
 		},
 	})
 
-	const [photos, setPhotos]: any = React.useState([])
-
 	const pickImage = async () => {
 		let result: any = await ImagePicker.launchImageLibraryAsync({
 			mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -49,12 +47,8 @@ const AddPhotosBtn: FC<Props> = (props) => {
 			allowsMultipleSelection: true,
 			quality: 1,
 		})
-
-		console.log(result)
-
 		if (!result.cancelled) {
-			setPhotos(result.uri)
-			props.callback(result.uri)
+			props.callback(result)
 		}
 	}
 

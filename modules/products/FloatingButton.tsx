@@ -1,7 +1,7 @@
 import { Feather } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/core'
 import React, { FC } from 'react'
-import { TouchableOpacity } from 'react-native'
+import { Platform, TouchableOpacity } from 'react-native'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
 import Navigation from '../../navigation'
@@ -24,7 +24,7 @@ const FloatingButton: FC<Props> = (props) => {
 				borderRadius: 50,
 				padding: 14,
 				zIndex: 9,
-				top: '80.5%',
+				top: Platform.OS === 'ios' ? '80.5%' : '75.5%',
 				shadowColor: Colors[colorScheme].tint,
 				shadowOffset: {
 					width: 0,
