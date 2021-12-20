@@ -13,6 +13,7 @@ import TitleBar from '../../components/TitleBar'
 import { currencyFormat } from '../../constants/Helpers'
 import PhotoComponent from './PhotoComponent'
 import * as Clipboard from 'expo-clipboard'
+import VariantBadges from './VariantBadges'
 
 type Props = {}
 
@@ -22,12 +23,10 @@ const _ProductDetail: FC<Props> = ({ route }: any) => {
 	const style = StyleSheet.create({
 		title: {
 			marginLeft: '5%',
-
 			fontSize: 21,
-			marginTop: 10,
 		},
 		subtitle: {
-			color: '#7c7c7c',
+			color: '#5F6A84',
 			marginLeft: '5%',
 			fontSize: 16,
 			marginTop: 5,
@@ -42,23 +41,23 @@ const _ProductDetail: FC<Props> = ({ route }: any) => {
 			marginLeft: '5%',
 			fontSize: 18,
 			marginTop: 15,
-			color: 'gray',
+			color: '#5F6A84',
 			textDecorationLine: 'line-through',
 			textDecorationStyle: 'solid',
 		},
 		descriptionTitle: {
 			marginLeft: '5%',
-
-			fontSize: 16,
+			fontSize: 17,
 			marginTop: 30,
 		},
 		description: {
-			color: '#7c7c7c',
+			color: '#5F6A84',
 			marginHorizontal: '5%',
 			fontSize: 16,
 			marginTop: 10,
 			textAlign: 'justify',
 			marginBottom: 57,
+			lineHeight: 34,
 		},
 		button: {
 			width: '90%',
@@ -88,7 +87,11 @@ const _ProductDetail: FC<Props> = ({ route }: any) => {
 						</Text>
 					)}
 				</View>
+
+				<VariantBadges data={data.variants} />
+
 				<BoldText style={style.descriptionTitle}>Description</BoldText>
+
 				<Text style={style.description}>{data.description}</Text>
 
 				<TouchableOpacity
