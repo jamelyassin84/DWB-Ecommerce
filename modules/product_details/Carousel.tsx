@@ -36,7 +36,7 @@ const Carousel: FC<Props> = (props) => {
 					}}
 					style={{
 						borderRadius: 15,
-						marginRight: 20,
+						marginRight: 13,
 						borderWidth: 2,
 						borderColor:
 							photoNumber === 0
@@ -46,8 +46,8 @@ const Carousel: FC<Props> = (props) => {
 					<Image
 						source={{ uri: props.firstPhoto }}
 						style={{
-							width: 76,
-							height: 56,
+							width: 80,
+							height: 58,
 							resizeMode: 'stretch',
 							borderRadius:
 								Platform.OS === 'android' ? 150 / 2 : 15,
@@ -69,14 +69,14 @@ const Carousel: FC<Props> = (props) => {
 							index + 1 === photoNumber
 								? Colors[colorscheme].tint
 								: 'transparent',
-						marginRight: 20,
+						marginRight: 13,
 					}}>
 					<Image
 						source={{ uri: photo.url }}
 						key={index}
 						style={{
-							width: 76,
-							height: 56,
+							width: 80,
+							height: 58,
 							resizeMode: 'stretch',
 							borderRadius:
 								Platform.OS === 'android' ? 150 / 2 : 15,

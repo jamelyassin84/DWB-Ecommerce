@@ -24,11 +24,12 @@ const _ProductDetail: FC<Props> = ({ route }: any) => {
 		title: {
 			marginLeft: '5%',
 			fontSize: 21,
+			marginTop: -7,
 		},
 		subtitle: {
 			color: '#5F6A84',
 			marginLeft: '5%',
-			fontSize: 16,
+			fontSize: 14,
 			marginTop: 5,
 		},
 		price: {

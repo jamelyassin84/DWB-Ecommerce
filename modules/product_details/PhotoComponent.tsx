@@ -23,6 +23,7 @@ const PhotoComponent: FC<Props> = (props) => {
 					alignItems: 'center',
 					flexDirection: 'row',
 					paddingHorizontal: 20,
+					marginBottom: 6,
 				}}
 			/>
 			<Carousel
