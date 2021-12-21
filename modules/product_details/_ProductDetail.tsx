@@ -14,6 +14,7 @@ import { currencyFormat } from '../../constants/Helpers'
 import PhotoComponent from './PhotoComponent'
 import * as Clipboard from 'expo-clipboard'
 import VariantBadges from './VariantBadges'
+import { environment } from '../../environments/environment.dev'
 
 type Props = {}
 
@@ -88,21 +89,19 @@ const _ProductDetail: FC<Props> = ({ route }: any) => {
 						</Text>
 					)}
 				</View>
-
 				<VariantBadges data={data.variants} />
-
 				<BoldText style={style.descriptionTitle}>Description</BoldText>
-
 				<Text style={style.description}>{data.description}</Text>
-
 				<TouchableOpacity
 					onPress={() => {
-						Clipboard.setString(data.slug)
+						Clipboard.setString(
+							`${environment.web}product-details/${data.slug}`,
+						)
 						Alert.alert(
 							'Rive',
-							`Your product link is: ${'\n \n'} https://rive.ae/products/${
-								data.slug
-							}`,
+							`Your product link is: ${'\n \n'} ${
+								environment.web
+							}product-details${data.slug}`,
 							[
 								{
 									text: 'Cancel',
