@@ -2,12 +2,11 @@ import React, { FC, useCallback, useMemo, useRef } from 'react'
 import HomeCard from '../../components/HomeCard'
 import HomeLayout from '../../components/HomeLayout'
 import ScrollViewWithRefresh from '../../components/ScrollViewWithRefresh'
-import { View } from '../../components/Themed'
+import { BoldText, View } from '../../components/Themed'
 import Title from '../../components/Title'
 import useColorScheme from '../../hooks/useColorScheme'
 import FloatingButton from './FloatingButton'
 import ProductComponent from './ProductComponent'
-import { productDummyData, ProductType } from './ProductDummyData'
 import BottomSheet, {
 	BottomSheetBackdrop,
 	BottomSheetScrollView,
@@ -17,6 +16,7 @@ import Colors from '../../constants/Colors'
 import BottomSheetHeader from '../../components/BottomSheetHeader'
 import { APIService } from '../../api/base.api'
 import { Product } from '../../models/Product'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 type Props = {}
 
@@ -38,21 +38,28 @@ const _Products: FC<Props> = (props) => {
 		}
 	}, [])
 
+	const [loading, setLoading] = React.useState(false)
 	React.useEffect(() => {
 		setMounted(true)
-		getProducts()
+		fetchToken()
 	}, [])
 
-	const [products, setProducts] = React.useState<Product[]>([])
+	const fetchToken = async () => {
+		const token = await AsyncStorage.getItem('token')
+		getProducts(token)
+	}
 
-	const getProducts = async (): Promise<void> => {
-		await new APIService('products')
-			.show(1)
+	const [products, setProducts] = React.useState<Product[]>([])
+	const getProducts = (token: string | any): void => {
+		setLoading(true)
+		new APIService('products')
+			.show(1, undefined, token)
 			.then((data: Product[] | any) => {
 				setProducts(data)
+				setLoading(false)
 			})
 			.catch((error) => {
-				console.log(error)
+				setLoading(false)
 			})
 	}
 
@@ -66,7 +73,9 @@ const _Products: FC<Props> = (props) => {
 				}}
 			/>
 			<HomeLayout title="Products">
-				<ScrollViewWithRefresh onRefresh={() => {}} loading={false}>
+				<ScrollViewWithRefresh
+					onRefresh={() => fetchToken()}
+					loading={false}>
 					<HomeCard>
 						<Title text={`My products (${products.length})`} />
 						{products.map((item: Product, index: number) => (
@@ -79,6 +88,16 @@ const _Products: FC<Props> = (props) => {
 								data={item}
 							/>
 						))}
+
+						{products.length === 0 && (
+							<BoldText
+								style={{
+									alignSelf: 'center',
+									padding: '20%',
+								}}>
+								No Products to show..
+							</BoldText>
+						)}
 					</HomeCard>
 				</ScrollViewWithRefresh>
 			</HomeLayout>

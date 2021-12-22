@@ -18,14 +18,14 @@ const ScrollViewWithRefresh: FC<Props> = (props) => {
 			style={{
 				height: Dimensions.get('screen').height,
 				width: Dimensions.get('screen').width,
-				backgroundColor: props.backgroundColor
+				backgroundColor: props.backgroundColor,
 			}}
 			showsVerticalScrollIndicator={false}
 			refreshControl={
 				<RefreshControl
 					tintColor={Colors[colorScheme].tint}
 					refreshing={props.loading}
-					onRefresh={props.onRefresh()}
+					onRefresh={() => props.onRefresh()}
 				/>
 			}>
 			{props.children}

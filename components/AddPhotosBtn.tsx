@@ -43,7 +43,7 @@ const AddPhotosBtn: FC<Props> = (props) => {
 		let result: any = await ImagePicker.launchImageLibraryAsync({
 			mediaTypes: ImagePicker.MediaTypeOptions.All,
 			allowsEditing: true,
-			aspect: [3, 10],
+			aspect: [2, 1],
 			allowsMultipleSelection: true,
 			quality: 1,
 		})

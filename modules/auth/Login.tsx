@@ -56,7 +56,7 @@ const Login: FC<Props> = (props) => {
 				navigation.navigate('Root')
 
 				await AsyncStorage.setItem('user', JSON.stringify(data.user))
-				await AsyncStorage.setItem('token', data.token)
+				await AsyncStorage.setItem('token', data.token.plainTextToken)
 			})
 			.catch((api) => {
 				if (hasData(api?.response?.data?.errors)) {
@@ -66,6 +66,7 @@ const Login: FC<Props> = (props) => {
 					alert('Network Error Try Again')
 				}
 				setButtonIsDisabled(false)
+				setLoginError(true)
 			})
 	}
 

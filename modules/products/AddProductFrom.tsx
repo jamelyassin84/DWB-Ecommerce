@@ -13,6 +13,7 @@ import { Product } from '../../models/Product'
 import AddDiscount from './AddDiscount'
 import AddPhotosComponent from './AddPhotosComponent'
 import AddVariant from './AddVariant'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 type Props = {
 	close: Function
@@ -45,7 +46,12 @@ const AddProductFrom: FC<Props> = () => {
 		}
 	}
 
-	const addProduct = async () => {
+	const fetchToken = async () => {
+		const token = await AsyncStorage.getItem('token')
+		addProduct(token)
+	}
+
+	const addProduct = async (token: any) => {
 		const data: Product | any = {
 			product_name: product_name,
 			brief_description: brief_description,
@@ -81,9 +87,8 @@ const AddProductFrom: FC<Props> = () => {
 		})
 
 		await new APIService(API.Products)
-			.store(formData, true)
-			.then((data) => {
-				console.log(data)
+			.store(formData, true, token)
+			.then(() => {
 				Alert.alert(
 					'Product Upload Successful',
 					'Your Product is ready!',
@@ -97,8 +102,9 @@ const AddProductFrom: FC<Props> = () => {
 				)
 			})
 			.catch((error) => {
-				alert('error')
-				console.log(error)
+				if (!error?.response) {
+					alert('Network Error Try Again')
+				}
 			})
 	}
 
@@ -226,7 +232,7 @@ const AddProductFrom: FC<Props> = () => {
 
 				<PrimaryButton
 					text="add product"
-					callback={() => addProduct()}
+					callback={() => fetchToken()}
 				/>
 
 				<View style={{ marginTop: 180 }}></View>

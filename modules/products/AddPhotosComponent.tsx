@@ -51,8 +51,8 @@ const AddPhotosComponent: FC<Props> = (props) => {
 		},
 		image: {
 			width: 160,
-			height: 120,
-			resizeMode: 'cover',
+			height: 150,
+			resizeMode: 'stretch',
 			borderRadius: 10,
 			borderWidth: 1,
 			borderColor: 'rgba(150,150,150,.2)',

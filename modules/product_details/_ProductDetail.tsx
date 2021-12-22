@@ -78,14 +78,11 @@ const _ProductDetail: FC<Props> = ({ route }: any) => {
 				<Text style={style.subtitle}>{data.brief_description}</Text>
 				<View style={{ flexDirection: 'row' }}>
 					<BoldText style={style.price}>
-						{currencyFormat(data.price, data.currency)}
+						{currencyFormat(data.discounted_price, data.currency)}
 					</BoldText>
-					{data.discounted_price && (
+					{data.discounted_price !== data.price && (
 						<Text style={style.discounted}>
-							{currencyFormat(
-								data.discounted_price,
-								data.currency,
-							)}
+							{currencyFormat(data.price, data.currency)}
 						</Text>
 					)}
 				</View>

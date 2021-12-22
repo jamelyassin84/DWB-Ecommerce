@@ -10,31 +10,35 @@ type Props = {
 }
 
 const VariantBadges: FC<Props> = (props) => {
-	React.useEffect(() => {
-		console.log(JSON.parse(props.data))
-	}, [])
-
 	return (
 		<View style={style.wrapper}>
-			{JSON.parse(props.data).map((item: VariantType, index: number) => (
-				<View key={index}>
-					<BoldText style={style.variant}>{item.variant} : </BoldText>
+			{props.data !== null &&
+				JSON.parse(props.data).map(
+					(item: VariantType, index: number) => (
+						<View key={index}>
+							<BoldText style={style.variant}>
+								{item.variant} :{' '}
+							</BoldText>
 
-					<ScrollView
-						showsHorizontalScrollIndicator={false}
-						horizontal={true}>
-						{JSON.parse(JSON.stringify(item.variants)).map(
-							(type: string, key: number) => (
-								<View style={style.variantBadge} key={key}>
-									<BoldText style={style.variantBadgeText}>
-										{type}
-									</BoldText>
-								</View>
-							),
-						)}
-					</ScrollView>
-				</View>
-			))}
+							<ScrollView
+								showsHorizontalScrollIndicator={false}
+								horizontal={true}>
+								{JSON.parse(JSON.stringify(item.variants)).map(
+									(type: string, key: number) => (
+										<View
+											style={style.variantBadge}
+											key={key}>
+											<BoldText
+												style={style.variantBadgeText}>
+												{type}
+											</BoldText>
+										</View>
+									),
+								)}
+							</ScrollView>
+						</View>
+					),
+				)}
 		</View>
 	)
 }
