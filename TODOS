@@ -28,3 +28,4 @@ keytool -keystore path-to-debug-or-production-keystore -list -v
 
 
 http://10.39.1.39:4200/product-details/Adidas-White-Raven-Unisex-Casual-Shoes
+http://10.39.1.39:4200/product-details/Nike-Precision-IV-Unisex-Basketball-Shoes
