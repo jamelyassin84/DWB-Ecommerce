@@ -4,6 +4,7 @@ import {
 	FlatList,
 	Image,
 	LogBox,
+	Platform,
 	StyleSheet,
 	TouchableOpacity,
 } from 'react-native'
@@ -51,7 +52,7 @@ const AddPhotosComponent: FC<Props> = (props) => {
 		},
 		image: {
 			width: 160,
-			height: 150,
+			height: Platform.OS === 'ios' ? 110 : 150,
 			resizeMode: 'stretch',
 			borderRadius: 10,
 			borderWidth: 1,
