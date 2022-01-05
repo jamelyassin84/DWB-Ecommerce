@@ -1,44 +1,43 @@
 import React, { FC } from 'react'
 import { StyleSheet, Text } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import Container from '../../components/Layout'
 import { BoldText, View } from '../../components/Themed'
-import { VariantType } from '../products/AddProductFrom'
+import { groupByKey } from '../../constants/Helpers'
+import { Variant } from '../../models/Variant.type'
 
 type Props = {
-	data: string
+	data: Variant[]
 }
 
 const VariantBadges: FC<Props> = (props) => {
+	const [variants, setVariants] = React.useState<any[]>([])
+
+	React.useEffect(() => {
+		setVariants(groupByKey(props.data, 'name'))
+	}, [])
+
 	return (
 		<View style={style.wrapper}>
 			{props.data !== null &&
-				JSON.parse(props.data).map(
-					(item: VariantType, index: number) => (
-						<View key={index}>
-							<BoldText style={style.variant}>
-								{item.variant} :{' '}
-							</BoldText>
+				variants.map((item: any, index: number) => (
+					<View key={index}>
+						<BoldText style={style.variant}>
+							{item[0].name} :
+						</BoldText>
 
-							<ScrollView
-								showsHorizontalScrollIndicator={false}
-								horizontal={true}>
-								{JSON.parse(JSON.stringify(item.variants)).map(
-									(type: string, key: number) => (
-										<View
-											style={style.variantBadge}
-											key={key}>
-											<BoldText
-												style={style.variantBadgeText}>
-												{type}
-											</BoldText>
-										</View>
-									),
-								)}
-							</ScrollView>
-						</View>
-					),
-				)}
+						<ScrollView
+							showsHorizontalScrollIndicator={false}
+							horizontal={true}>
+							{item.map((type: Variant, key: number) => (
+								<View style={style.variantBadge} key={key}>
+									<BoldText style={style.variantBadgeText}>
+										{type.value}
+									</BoldText>
+								</View>
+							))}
+						</ScrollView>
+					</View>
+				))}
 		</View>
 	)
 }

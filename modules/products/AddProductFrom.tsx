@@ -243,11 +243,6 @@ const AddProductFrom: FC<Props> = () => {
 
 export default AddProductFrom
 
-export type VariantType = {
-	variant: string
-	variants: string
-}
-
 const variantForm = {
 	variant: null,
 	variants: null,

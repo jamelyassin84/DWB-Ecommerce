@@ -40,7 +40,6 @@ const _Products: FC<Props> = (props) => {
 
 	const [loading, setLoading] = React.useState(false)
 	React.useEffect(() => {
-		setMounted(true)
 		fetchToken()
 	}, [])
 
@@ -68,8 +67,11 @@ const _Products: FC<Props> = (props) => {
 			<FloatingButton
 				isShowing={floatingButtonIsShowing}
 				open={() => {
-					addProductRef.current?.snapToIndex(1)
-					setFloatingButtonIsShowing(false)
+					setMounted(true)
+					setTimeout(() => {
+						addProductRef.current?.snapToIndex(1)
+						setFloatingButtonIsShowing(false)
+					}, 400)
 				}}
 			/>
 			<HomeLayout title="Products">
@@ -81,8 +83,8 @@ const _Products: FC<Props> = (props) => {
 						{products.map((item: Product, index: number) => (
 							<ProductComponent
 								key={index}
-								product={item.product_name}
-								image={item['image-url']}
+								product={item.name}
+								image={item.url}
 								price={item.price}
 								currency={item.currency}
 								data={item}

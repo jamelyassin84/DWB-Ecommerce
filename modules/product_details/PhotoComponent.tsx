@@ -8,7 +8,7 @@ type Props = {
 }
 
 const PhotoComponent: FC<Props> = (props) => {
-	const [image, setImage] = React.useState(props.data['image-url'])
+	const [image, setImage] = React.useState(props.data.url)
 
 	return (
 		<View>
@@ -30,7 +30,7 @@ const PhotoComponent: FC<Props> = (props) => {
 				onSelect={(image: string) => {
 					setImage(image)
 				}}
-				firstPhoto={props.data['image-url']}
+				firstPhoto={props.data.url}
 				data={props.data}
 			/>
 		</View>

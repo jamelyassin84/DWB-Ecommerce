@@ -78,7 +78,7 @@ export function only<T, K extends keyof T>(data: T, keys: Array<K>) {
 	return result
 }
 
-export function groupBy(data: Array<any>, property: string) {
+export function groupByKey(data: Array<any>, property: string) {
 	if (data.length > 0 && !(property in data[0])) {
 		throw new Error(`${property} does not exist in array.`)
 	}

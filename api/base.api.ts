@@ -36,7 +36,6 @@ export class APIService<T> {
 	}
 
 	async store(payload: FreeObject, formData = false, token?: any | string) {
-		console.log(token)
 		const { data } = await axios.post<T[]>(
 			`${environment.api}${this.url}`,
 			payload,

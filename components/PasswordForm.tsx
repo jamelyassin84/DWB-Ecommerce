@@ -49,7 +49,7 @@ const PasswordForm: FC<Props> = (props) => {
 		hideIcon: {
 			alignSelf: 'flex-end',
 			right: 35,
-			transform: [{ translateY: Platform.OS === 'ios' ? 40 : 48 }],
+			transform: [{ translateY: Platform.OS === 'ios' ? 40 : 43 }],
 			position: 'absolute',
 			zIndex: 9,
 		},

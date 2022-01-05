@@ -59,6 +59,7 @@ const Login: FC<Props> = (props) => {
 				await AsyncStorage.setItem('token', data.token.plainTextToken)
 			})
 			.catch((api) => {
+				setButtonIsDisabled(false)
 				if (hasData(api?.response?.data?.errors)) {
 					setLoginError(true)
 				}
