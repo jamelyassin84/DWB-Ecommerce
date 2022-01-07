@@ -17,19 +17,21 @@ const SettingList: FC<Props> = (props) => {
 			flexDirection: 'row',
 			justifyContent: 'center',
 			paddingVertical: 15,
-			alignItems: 'center'
+			alignItems: 'center',
 		},
 		text: {
 			flex: 1,
 			marginLeft: 15,
 			color: Colors[colorScheme].text,
-			fontSize: 14
-		}
+			fontSize: 14,
+		},
 	})
 
 	return (
 		<View>
-			<View style={style.button}>
+			<TouchableOpacity
+				style={style.button}
+				onPress={() => navigation.navigate('_EditProfile')}>
 				<AntDesign
 					name="user"
 					size={24}
@@ -41,9 +43,11 @@ const SettingList: FC<Props> = (props) => {
 					size={24}
 					color={Colors[colorScheme].tabIconDefault}
 				/>
-			</View>
+			</TouchableOpacity>
 
-			<View style={style.button}>
+			<TouchableOpacity
+				style={style.button}
+				onPress={() => navigation.navigate('_ChangePassword')}>
 				<Entypo
 					name="lock"
 					size={24}
@@ -55,7 +59,7 @@ const SettingList: FC<Props> = (props) => {
 					size={24}
 					color={Colors[colorScheme].tabIconDefault}
 				/>
-			</View>
+			</TouchableOpacity>
 		</View>
 	)
 }

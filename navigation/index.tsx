@@ -7,7 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import {
 	NavigationContainer,
 	DefaultTheme,
-	DarkTheme
+	DarkTheme,
 } from '@react-navigation/native'
 import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
@@ -21,9 +21,13 @@ import _PasswordReset from '../modules/PasswordReset/_PasswordReset'
 import _Profile from '../modules/Profile/_Profile'
 import AddProduct from '../modals/AddProduct'
 import ModalScreen from '../modals/ModalScreen'
+import _EditProfile from '../modules/settings/edit-profile/_EditProfile'
+import _ChangePassword from '../modules/settings/change-password/_ChangePassword'
+import _ShowRecentTransaction from '../modules/payment/show-recent-transactions/_ShowRecentTransaction'
+import _ManageBankAccount from '../modules/payment/manage-bank-account/_ManageBankAccount'
 
 export default function Navigation({
-	colorScheme
+	colorScheme,
 }: {
 	colorScheme: ColorSchemeName
 }) {
@@ -59,18 +63,42 @@ const RootNavigator = () => {
 				component={_PasswordReset}
 				options={{ headerShown: false }}
 			/>
+
+			<Stack.Screen
+				name="_ManageBankAccount"
+				component={_ManageBankAccount}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
+				name="_ShowRecentTransaction"
+				component={_ShowRecentTransaction}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
+				name="_ChangePassword"
+				component={_ChangePassword}
+				options={{ headerShown: false }}
+			/>
+
+			<Stack.Screen
+				name="_EditProfile"
+				component={_EditProfile}
+				options={{ headerShown: false }}
+			/>
+
 			<Stack.Screen
 				name="Root"
 				component={BottomTabNavigator}
 				options={{ headerShown: false }}
 			/>
+
 			<Stack.Group
 				screenOptions={{
 					presentation: 'modal',
 					headerTitle: 'Select Month',
 					headerBackButtonMenuEnabled: true,
 					headerBackTitle: 'Cancel',
-					gestureEnabled: true
+					gestureEnabled: true,
 				}}>
 				<Stack.Screen name="SelectMonth" component={ModalScreen} />
 			</Stack.Group>
@@ -80,7 +108,7 @@ const RootNavigator = () => {
 					headerTitle: 'Add Product',
 					headerBackButtonMenuEnabled: true,
 					headerBackTitle: 'Cancel',
-					gestureEnabled: true
+					gestureEnabled: true,
 				}}>
 				<Stack.Screen name="AddProduct" component={AddProduct} />
 			</Stack.Group>
@@ -99,7 +127,7 @@ const BottomTabNavigator = () => {
 				tabBarActiveTintColor: Colors[colorScheme].tint,
 				tabBarInactiveTintColor: Colors[colorScheme].tabIconDefault,
 				tabBarStyle: { borderRadius: 20, height: 80 },
-				tabBarHideOnKeyboard: true
+				tabBarHideOnKeyboard: true,
 			}}>
 			<BottomTab.Screen
 				name="Home"
@@ -110,21 +138,21 @@ const BottomTabNavigator = () => {
 					headerTitleStyle: {
 						fontFamily: 'Montserrat-bold',
 						fontSize: 21,
-						marginBottom: -10
+						marginBottom: -10,
 					},
 					tabBarLabelStyle: {
 						fontFamily: 'Montserrat-bold',
 						fontSize: 11,
 						transform: [
 							{
-								translateY: Platform.OS === 'android' ? -14 : 0
-							}
-						]
+								translateY: Platform.OS === 'android' ? -14 : 0,
+							},
+						],
 					},
 					tabBarIcon: ({ color }) => (
 						<Octicons name="home" size={24} color={color} />
 					),
-					headerShown: false
+					headerShown: false,
 				}}
 			/>
 			<BottomTab.Screen
@@ -136,16 +164,16 @@ const BottomTabNavigator = () => {
 					headerTitleStyle: {
 						fontFamily: 'Montserrat-bold',
 						fontSize: 21,
-						marginBottom: -10
+						marginBottom: -10,
 					},
 					tabBarLabelStyle: {
 						fontFamily: 'Montserrat-bold',
 						fontSize: 11,
 						transform: [
 							{
-								translateY: Platform.OS === 'android' ? -14 : 0
-							}
-						]
+								translateY: Platform.OS === 'android' ? -14 : 0,
+							},
+						],
 					},
 					tabBarIcon: ({ color }) => (
 						<FontAwesome5
@@ -154,7 +182,7 @@ const BottomTabNavigator = () => {
 							color={color}
 						/>
 					),
-					headerShown: false
+					headerShown: false,
 				}}
 			/>
 			<BottomTab.Screen
@@ -166,21 +194,21 @@ const BottomTabNavigator = () => {
 					headerTitleStyle: {
 						fontFamily: 'Montserrat-bold',
 						fontSize: 21,
-						marginBottom: -10
+						marginBottom: -10,
 					},
 					tabBarLabelStyle: {
 						fontFamily: 'Montserrat-bold',
 						fontSize: 11,
 						transform: [
 							{
-								translateY: Platform.OS === 'android' ? -14 : 0
-							}
-						]
+								translateY: Platform.OS === 'android' ? -14 : 0,
+							},
+						],
 					},
 					tabBarIcon: ({ color }) => (
 						<AntDesign name="creditcard" size={24} color={color} />
 					),
-					headerShown: false
+					headerShown: false,
 				}}
 			/>
 			<BottomTab.Screen
@@ -192,21 +220,21 @@ const BottomTabNavigator = () => {
 					headerTitleStyle: {
 						fontFamily: 'Montserrat-bold',
 						fontSize: 21,
-						marginBottom: -10
+						marginBottom: -10,
 					},
 					tabBarLabelStyle: {
 						fontFamily: 'Montserrat-bold',
 						fontSize: 11,
 						transform: [
 							{
-								translateY: Platform.OS === 'android' ? -14 : 0
-							}
-						]
+								translateY: Platform.OS === 'android' ? -14 : 0,
+							},
+						],
 					},
 					tabBarIcon: ({ color }) => (
 						<AntDesign name="menuunfold" size={24} color={color} />
 					),
-					headerShown: false
+					headerShown: false,
 				}}
 			/>
 		</BottomTab.Navigator>

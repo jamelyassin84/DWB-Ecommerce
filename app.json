@@ -8,9 +8,9 @@
 		"scheme": "rive",
 		"userInterfaceStyle": "automatic",
 		"splash": {
-			"image": "./assets/images/splash.png",
+			"image": "./assets/images/new_splash.png",
 			"resizeMode": "contain",
-			"backgroundColor": "#ffffff"
+			"backgroundColor": "#E4F5F3"
 		},
 		"updates": {
 			"fallbackToCacheTimeout": 0

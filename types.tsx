@@ -1,7 +1,7 @@
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
 import {
 	CompositeScreenProps,
-	NavigatorScreenParams
+	NavigatorScreenParams,
 } from '@react-navigation/native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
@@ -19,6 +19,11 @@ export type RootStackParamList = {
 	PasswordReset: any
 	Profile: any
 	AddProduct: any
+
+	_ManageBankAccount: undefined
+	_ShowRecentTransaction: undefined
+	_ChangePassword: undefined
+	_EditProfile: undefined
 }
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =

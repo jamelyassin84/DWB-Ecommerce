@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { FC } from 'react'
 import { Text } from 'react-native'
 import HomeCard from '../../components/HomeCard'
@@ -13,6 +14,7 @@ import SelectMonth from './SelectMonth'
 type Props = {}
 
 const _Payment: FC<Props> = (props) => {
+	const navigation = useNavigation()
 	return (
 		<HomeLayout title="Income">
 			<ScrollViewWithRefresh onRefresh={() => {}} loading={false}>
@@ -22,7 +24,12 @@ const _Payment: FC<Props> = (props) => {
 					<PaymentChart />
 				</HomeCard>
 				{paymentListData.map((nav: PaymentListType, index: number) => (
-					<PaymentList key={index} nav={nav.name} image={nav.image} />
+					<PaymentList
+						callback={() => navigation.navigate(nav.route)}
+						key={index}
+						nav={nav.name}
+						image={nav.image}
+					/>
 				))}
 			</ScrollViewWithRefresh>
 		</HomeLayout>
