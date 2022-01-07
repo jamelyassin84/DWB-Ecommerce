@@ -1,20 +1,35 @@
 import React, { FC } from 'react'
-import { StyleSheet, Text } from 'react-native'
-import { View } from '../../../components/Themed'
+import { StyleSheet } from 'react-native'
+import { BoldText, Text, View } from '../../../components/Themed'
+import toDate from '../../../constants/Helpers'
+import { Transaction } from '../../../models/Transactions'
 
-type Props = {}
+type Props = {
+	transaction: Transaction
+}
 
 const Transactions: FC<Props> = (props) => {
 	return (
 		<View style={style.container}>
 			<View style={style.textWrapper}>
-				<Text style={style.referenceNumber}>AE126465265UI</Text>
-				<Text style={style.title}>Nike PRECISION IV</Text>
-				<Text style={style.description}>Unisex Basketball Shoes</Text>
-				<Text style={style.variant}>Size : 37 US</Text>
+				<Text style={style.referenceNumber}>
+					{props.transaction.reference_number}
+				</Text>
+				<Text style={style.title}>
+					{props.transaction.product.name}
+				</Text>
+				<Text style={style.description}>
+					{props.transaction.product.brief_description}
+				</Text>
+				<Text style={style.variant}>
+					{toDate(props.transaction.created_at)}
+				</Text>
 			</View>
 			<View style={style.amountWrapper}>
-				<Text style={style.amount}>599 AED</Text>
+				<BoldText style={style.amount}>
+					{props.transaction.amount}{' '}
+					{props.transaction.product.currency}
+				</BoldText>
 			</View>
 		</View>
 	)
@@ -27,26 +42,26 @@ const style = StyleSheet.create({
 		paddingRight: 43,
 		paddingHorizontal: 32,
 		borderBottomWidth: 1,
-		borderBottomColor: 'lightgray',
+		borderBottomColor: 'rgba(150,150,150,.2)',
 	},
 	textWrapper: {
 		flex: 1,
 	},
 	referenceNumber: {
-		fontSize: 16,
+		fontSize: 18,
 		color: '#2E70E6',
 	},
 	title: {
 		color: '#000F34',
-		fontSize: 12,
+		fontSize: 14,
 	},
 	description: {
-		color: '#000F34',
-		fontSize: 12,
+		color: 'gray',
+		fontSize: 14,
 	},
 	variant: {
-		color: '#000F34',
-		fontSize: 12,
+		color: 'gray',
+		fontSize: 14,
 	},
 	amountWrapper: {},
 	amount: {

@@ -14,4 +14,7 @@ export type Product = {
 	created_at?: any
 	updated_at?: any
 	chosenVariants?: any
+	id?: number
+	is_temporary_unavailable?: number
+	quantity?: number
 }

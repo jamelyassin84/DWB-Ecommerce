@@ -17,6 +17,8 @@ import BottomSheetHeader from '../../components/BottomSheetHeader'
 import { APIService } from '../../api/base.api'
 import { Product } from '../../models/Product'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { API } from '../../api/api.routes'
+import { User } from '../../models/User'
 
 type Props = {}
 
@@ -45,14 +47,16 @@ const _Products: FC<Props> = (props) => {
 
 	const fetchToken = async () => {
 		const token = await AsyncStorage.getItem('token')
-		getProducts(token)
+		const user = await AsyncStorage.getItem('user')
+		getProducts(token, user)
 	}
 
 	const [products, setProducts] = React.useState<Product[]>([])
-	const getProducts = (token: string | any): void => {
+	const getProducts = (token: string | any, user: any): void => {
+		user = JSON.parse(user)
 		setLoading(true)
-		new APIService('products')
-			.show(1, undefined, token)
+		new APIService(API.Products)
+			.show(user.id, undefined, token)
 			.then((data: Product[] | any) => {
 				setProducts(data)
 				setLoading(false)

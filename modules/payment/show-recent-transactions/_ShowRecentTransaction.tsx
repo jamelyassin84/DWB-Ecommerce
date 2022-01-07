@@ -1,14 +1,41 @@
 import React, { FC } from 'react'
 import { StyleSheet, Text } from 'react-native'
+import { API } from '../../../api/api.routes'
+import { APIService } from '../../../api/base.api'
 import Container from '../../../components/Layout'
 import { BoldText, View } from '../../../components/Themed'
 import TitleBar from '../../../components/TitleBar'
 import Transactions from './Transactions'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import ScrollViewWithRefresh from '../../../components/ScrollViewWithRefresh'
+import { Transaction } from '../../../models/Transactions'
 
 type Props = {}
 
 const _ShowRecentTransaction: FC<Props> = (props) => {
-	const getTransactions = () => {}
+	const [loading, setLoading] = React.useState(false)
+	React.useEffect(() => {
+		fetchToken()
+	}, [])
+
+	const fetchToken = async () => {
+		const token = await AsyncStorage.getItem('token')
+		getTransactions(token)
+	}
+
+	const [transactions, seTransactions] = React.useState<Transaction[]>([])
+	const getTransactions = (token: string | any): void => {
+		setLoading(true)
+		new APIService(API.Transactions)
+			.show(1, undefined, token)
+			.then((data: any) => {
+				seTransactions(data)
+				setLoading(false)
+			})
+			.catch((error) => {
+				setLoading(false)
+			})
+	}
 
 	return (
 		<Container>
@@ -17,7 +44,14 @@ const _ShowRecentTransaction: FC<Props> = (props) => {
 				<BoldText style={style.ref}>Reference No.</BoldText>
 				<BoldText style={style.amount}>Amount</BoldText>
 			</View>
-			<Transactions />
+
+			<ScrollViewWithRefresh
+				onRefresh={() => fetchToken()}
+				loading={false}>
+				{transactions.map((transaction: Transaction, index: number) => (
+					<Transactions transaction={transaction} key={index} />
+				))}
+			</ScrollViewWithRefresh>
 		</Container>
 	)
 }
@@ -26,7 +60,6 @@ const style = StyleSheet.create({
 	view: {
 		flexDirection: 'row',
 		paddingHorizontal: 43,
-		marginBottom: 20,
 	},
 	ref: {
 		flex: 1,

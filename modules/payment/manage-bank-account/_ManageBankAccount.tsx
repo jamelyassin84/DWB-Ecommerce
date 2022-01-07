@@ -29,35 +29,35 @@ const _ManageBankAccount: FC<Props> = (props) => {
 					<View style={style.textInputContainer}>
 						<BoldText style={style.label}>Name</BoldText>
 						<TextInput
-							value={'Mohammed Ali'}
+							placeholder={'Mohammed Ali'}
 							style={style.textInput}
 						/>
 					</View>
 					<View style={style.textInputContainer}>
 						<BoldText style={style.label}>Bank Name</BoldText>
 						<TextInput
-							value={'Emirates NBD'}
+							placeholder={'Emirates NBD'}
 							style={style.textInput}
 						/>
 					</View>
 					<View style={style.textInputContainer}>
 						<BoldText style={style.label}>Account No.</BoldText>
 						<TextInput
-							value={'000000000'}
+							placeholder={'000000000'}
 							style={style.textInput}
 						/>
 					</View>
 					<View style={style.textInputContainer}>
 						<BoldText style={style.label}>IBAN No.</BoldText>
 						<TextInput
-							value={'AE000000000'}
+							placeholder={'AE000000000'}
 							style={style.textInput}
 						/>
 					</View>
 					<View style={style.textInputContainer}>
 						<BoldText style={style.label}>Swift No.</BoldText>
 						<TextInput
-							value={'000000000'}
+							placeholder={'000000000'}
 							style={style.textInput}
 						/>
 					</View>
@@ -137,7 +137,7 @@ const style = StyleSheet.create({
 	image: {
 		height: 50,
 		width: 338,
-		marginTop: 50,
+		marginTop: 20,
 		resizeMode: 'contain',
 		alignSelf: 'center',
 	},
