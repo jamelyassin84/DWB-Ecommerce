@@ -24,6 +24,11 @@ export type RootStackParamList = {
 	_ShowRecentTransaction: undefined
 	_ChangePassword: undefined
 	_EditProfile: undefined
+
+	Step1: undefined
+	Step2: undefined
+	Step3: undefined
+	Step4: undefined
 }
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =

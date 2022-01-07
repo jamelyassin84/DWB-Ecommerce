@@ -25,6 +25,10 @@ import _EditProfile from '../modules/settings/edit-profile/_EditProfile'
 import _ChangePassword from '../modules/settings/change-password/_ChangePassword'
 import _ShowRecentTransaction from '../modules/payment/show-recent-transactions/_ShowRecentTransaction'
 import _ManageBankAccount from '../modules/payment/manage-bank-account/_ManageBankAccount'
+import Step1 from '../modules/stepper/Step1'
+import Step2 from '../modules/stepper/Step2'
+import Step3 from '../modules/stepper/Step3'
+import Step4 from '../modules/stepper/Step4'
 
 export default function Navigation({
 	colorScheme,
@@ -77,6 +81,27 @@ const RootNavigator = () => {
 			<Stack.Screen
 				name="_ChangePassword"
 				component={_ChangePassword}
+				options={{ headerShown: false }}
+			/>
+
+			<Stack.Screen
+				name="Step1"
+				component={Step1}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
+				name="Step2"
+				component={Step2}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
+				name="Step3"
+				component={Step3}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
+				name="Step4"
+				component={Step4}
 				options={{ headerShown: false }}
 			/>
 

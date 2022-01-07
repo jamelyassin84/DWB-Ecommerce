@@ -53,10 +53,27 @@ const Login: FC<Props> = (props) => {
 			})
 			.then(async (data: LoginType | any) => {
 				setButtonIsDisabled(false)
-				navigation.navigate('Root')
 
-				await AsyncStorage.setItem('user', JSON.stringify(data.user))
-				await AsyncStorage.setItem('token', data.token.plainTextToken)
+				const newUser = await AsyncStorage.getItem(
+					'has-under-gone-stepper',
+				)
+				if (newUser === undefined || newUser === null) {
+					await AsyncStorage.setItem(
+						'user',
+						JSON.stringify(data.user),
+					)
+					await AsyncStorage.setItem(
+						'token',
+						data.token.plainTextToken,
+					)
+					await AsyncStorage.setItem(
+						'has-under-gone-stepper',
+						JSON.stringify(true),
+					)
+					return navigation.navigate('Step1')
+				}
+				// return navigation.navigate('Step1')
+				navigation.navigate('Root')
 			})
 			.catch((api) => {
 				setButtonIsDisabled(false)
