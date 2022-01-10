@@ -1,16 +1,16 @@
-import { useNavigation } from '@react-navigation/core'
 import React, { FC } from 'react'
+import { useNavigation } from '@react-navigation/core'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import { API } from '../../api/api.routes'
 import { APIService } from '../../api/base.api'
+import { BoldText, View } from '../../components/overrides/Themed'
+import { hasData } from '../../constants/Helpers'
+import { User } from '../../models/User'
 import ErrorText from '../../components/forms/ErrorText'
 import Form from '../../components/forms/Form'
 import PasswordForm from '../../components/forms/PasswordForm'
 import PrimaryButton from '../../components/app/PrimaryButton'
-import { BoldText, View } from '../../components/overrides/Themed'
-import { hasData } from '../../constants/Helpers'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { User } from '../../models/User'
 
 type Props = {}
 
@@ -58,20 +58,15 @@ const Login: FC<Props> = (props) => {
 					'has-under-gone-stepper',
 				)
 				if (newUser === undefined || newUser === null) {
-					await AsyncStorage.setItem(
-						'user',
-						JSON.stringify(data.user),
-					)
-					await AsyncStorage.setItem(
-						'token',
-						data.token.plainTextToken,
-					)
+					await storeDataToStorage(data)
 					await AsyncStorage.setItem(
 						'has-under-gone-stepper',
 						JSON.stringify(true),
 					)
 					return navigation.navigate('Step1')
 				}
+
+				await storeDataToStorage(data)
 				// return navigation.navigate('Step1')
 				navigation.navigate('Root')
 			})
@@ -86,6 +81,11 @@ const Login: FC<Props> = (props) => {
 				setButtonIsDisabled(false)
 				setLoginError(true)
 			})
+	}
+
+	const storeDataToStorage = async (data: LoginType): Promise<void> => {
+		await AsyncStorage.setItem('user', JSON.stringify(data.user))
+		await AsyncStorage.setItem('token', data.token.plainTextToken)
 	}
 
 	const removeErrors = (): void => {
@@ -152,8 +152,8 @@ const Login: FC<Props> = (props) => {
 
 export default Login
 
-type LoginType = {
+export type LoginType = {
 	user: User
-	token: string
+	token: any
 	message: string
 }

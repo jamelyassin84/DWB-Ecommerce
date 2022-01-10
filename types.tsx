@@ -4,6 +4,8 @@ import {
 	NavigatorScreenParams,
 } from '@react-navigation/native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { Seller } from './models/Seller'
+import { User } from './models/User'
 
 declare global {
 	namespace ReactNavigation {
@@ -13,9 +15,12 @@ declare global {
 
 export type RootStackParamList = {
 	Auth: any
-	EnterVerificationCode: undefined
-	VerifyPhoneNumber: undefined
-
+	EnterVerificationCode: { token: any }
+	VerifyPhoneNumber: {
+		seller: Seller
+		user: User
+		token: any
+	}
 	Root: NavigatorScreenParams<RootTabParamList> | undefined
 	SelectMonth: any
 	ProductDetail: any

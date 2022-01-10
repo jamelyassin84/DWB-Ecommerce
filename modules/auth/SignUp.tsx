@@ -10,6 +10,8 @@ import PrimaryButton from '../../components/app/PrimaryButton'
 import { View } from '../../components/overrides/Themed'
 import { hasData } from '../../constants/Helpers'
 import { User } from '../../models/User'
+import { LoginType } from './Login'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 type Props = {
 	onFinished: Function
@@ -46,6 +48,7 @@ const SignUp: FC<Props> = (props) => {
 			email: email,
 			password: password,
 			mode: 'Default',
+			type: 'Seller',
 		}
 
 		for (let key in user) {
@@ -62,14 +65,20 @@ const SignUp: FC<Props> = (props) => {
 		processCredentials(user)
 	}
 
-	const processCredentials = async (user: User) => {
+	const processCredentials = async (user: User): Promise<void> => {
 		await new APIService(API.Register)
 			.store(user)
-			.then(() => {
+			.then(async (data: LoginType | any) => {
 				setButtonIsDisabled(false)
-				props.onFinished()
+				await storeDataToStorage(data)
+				navigation.navigate('VerifyPhoneNumber', {
+					seller: data.seller,
+					user: data.user,
+					token: data.token.plainTextToken,
+				})
 			})
 			.catch((api) => {
+				console.log(api)
 				if (hasData(api?.response?.data?.errors?.name)) {
 					setNameError(true)
 				}
@@ -84,6 +93,11 @@ const SignUp: FC<Props> = (props) => {
 				}
 				setButtonIsDisabled(false)
 			})
+	}
+
+	const storeDataToStorage = async (data: LoginType): Promise<void> => {
+		await AsyncStorage.setItem('user', JSON.stringify(data.user))
+		await AsyncStorage.setItem('token', data.token.plainTextToken)
 	}
 
 	const removeErrors = (): void => {

@@ -6,4 +6,5 @@ export enum API {
 	Transactions = 'transactions',
 	ChangePassword = 'change_password',
 	ChangeDetails = 'change_details',
+	Verify = 'verify',
 }
