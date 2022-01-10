@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
-import HomeCard from '../../components/HomeCard'
-import HomeLayout from '../../components/HomeLayout'
-import Title from '../../components/Title'
+import HomeCard from '../../components/app/HomeCard'
+import HomeLayout from '../../components/app/HomeLayout'
+import Title from '../../components/app/Title'
 import SettingList from './SettingList'
 import SettingListWithToggler from './SettingListWithToggler'
 

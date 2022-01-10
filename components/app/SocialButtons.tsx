@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import { Image, StyleSheet, TouchableOpacity } from 'react-native'
-import Colors from '../constants/Colors'
-import useColorScheme from '../hooks/useColorScheme'
-import { BoldText, Text } from './Themed'
+import Colors from '../../constants/Colors'
+import useColorScheme from '../../hooks/useColorScheme'
+import { BoldText, Text } from '../overrides/Themed'
 type Props = {
 	text: string
 	image: string | any
@@ -21,11 +21,11 @@ const SocialButtons: FC<Props> = (props) => {
 			borderColor: '#CAD0DB',
 			paddingHorizontal: 20,
 			paddingVertical: 12,
-			alignSelf: 'center'
+			alignSelf: 'center',
 		},
 		imageContainer: {},
 		image: { width: 25, height: 25, resizeMode: 'contain' },
-		text: { fontSize: 16, flex: 1, textAlign: 'center' }
+		text: { fontSize: 16, flex: 1, textAlign: 'center' },
 	})
 
 	return (

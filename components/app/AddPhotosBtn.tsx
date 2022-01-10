@@ -1,9 +1,9 @@
 import { Feather } from '@expo/vector-icons'
 import React, { FC } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
-import Colors from '../constants/Colors'
-import useColorScheme from '../hooks/useColorScheme'
-import { BoldText, View } from './Themed'
+import Colors from '../../constants/Colors'
+import useColorScheme from '../../hooks/useColorScheme'
+import { BoldText, View } from '../overrides/Themed'
 import * as ImagePicker from 'expo-image-picker'
 
 type Props = {

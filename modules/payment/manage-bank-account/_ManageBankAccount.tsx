@@ -5,9 +5,9 @@ import {
 	TextInput,
 	TouchableOpacity,
 } from 'react-native-gesture-handler'
-import Container from '../../../components/Layout'
-import { BoldText, Text, View } from '../../../components/Themed'
-import TitleBar from '../../../components/TitleBar'
+import Container from '../../../components/app/Layout'
+import { BoldText, Text, View } from '../../../components/overrides/Themed'
+import TitleBar from '../../../components/app/TitleBar'
 
 type Props = {}
 

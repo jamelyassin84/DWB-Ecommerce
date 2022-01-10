@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native'
-import Container from '../../components/Layout'
+import Container from '../../components/app/Layout'
 import Login from './Login'
 import LoginAndSignUpTab from './LoginAndSignUpTab'
 import SignUp from './SignUp'

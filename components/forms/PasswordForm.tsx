@@ -7,9 +7,9 @@ import {
 	TouchableOpacity,
 	View,
 } from 'react-native'
-import Colors from '../constants/Colors'
-import useColorScheme from '../hooks/useColorScheme'
-import { BoldText, Text } from './Themed'
+import Colors from '../../constants/Colors'
+import useColorScheme from '../../hooks/useColorScheme'
+import { BoldText, Text } from '../overrides/Themed'
 
 type Props = {
 	label: string
@@ -102,8 +102,8 @@ const PasswordForm: FC<Props> = (props) => {
 				<Image
 					source={
 						showField
-							? require('../assets/app/images/auth/show.png')
-							: require('../assets/app/images/auth/unshow.png')
+							? require('../../assets/app/images/auth/show.png')
+							: require('../../assets/app/images/auth/unshow.png')
 					}
 					style={{ width: 20, height: 20, resizeMode: 'contain' }}
 				/>

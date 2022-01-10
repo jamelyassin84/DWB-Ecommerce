@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
-import { View } from '../../components/Themed'
-import Title from '../../components/Title'
+import { View } from '../../components/overrides/Themed'
+import Title from '../../components/app/Title'
 import SelectAMonth from './SelectAMonth'
 
 type Props = {

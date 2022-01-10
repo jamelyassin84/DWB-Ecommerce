@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
-import { Text, View } from '../../components/Themed'
-import Title from '../../components/Title'
+import { Text, View } from '../../components/overrides/Themed'
+import Title from '../../components/app/Title'
 import { homeProducts, HomeProductType } from './DummyHomeProducts'
 import HomeProducts from './HomeProducts'
 

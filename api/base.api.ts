@@ -8,7 +8,7 @@ export class APIService<T> {
 		this.url = url
 	}
 
-	headers(token: string | any): any {
+	headers(token: any): any {
 		return {
 			headers: {
 				Accept: 'application/json',
@@ -17,7 +17,7 @@ export class APIService<T> {
 		}
 	}
 
-	async index(token?: any | string) {
+	async index(token?: string) {
 		const { data } = await axios.get<T[]>(
 			`${environment.api}${this.url}`,
 			this.headers(token),
@@ -25,7 +25,7 @@ export class APIService<T> {
 		return data
 	}
 
-	async show(id: number, params?: string, token?: any | string) {
+	async show(id: number, params?: string, token?: string) {
 		const { data } = await axios.get<T[]>(
 			`${environment.api}${this.url}/${id}${
 				params !== undefined ? '?' + params : ''
@@ -35,7 +35,7 @@ export class APIService<T> {
 		return data
 	}
 
-	async store(payload: FreeObject, formData = false, token?: any | string) {
+	async store(payload: FreeObject, formData = false, token?: string) {
 		const { data } = await axios.post<T[]>(
 			`${environment.api}${this.url}`,
 			payload,
@@ -51,7 +51,7 @@ export class APIService<T> {
 		return data
 	}
 
-	async update(payload: FreeObject, id: number, token?: any | string) {
+	async update(payload: FreeObject, id: number, token?: string) {
 		const { data } = await axios.put<T[]>(
 			`${environment.api}${this.url}/${id}`,
 			payload,
@@ -60,7 +60,7 @@ export class APIService<T> {
 		return data
 	}
 
-	async delete(id: number, token?: any | string) {
+	async delete(id: number, token?: string) {
 		const { data } = await axios.get<T[]>(
 			`${environment.api}${this.url}/${id}`,
 			this.headers(token),
@@ -68,7 +68,7 @@ export class APIService<T> {
 		return data
 	}
 
-	async fetchWithParams(params: string, token?: any | string) {
+	async fetchWithParams(params: string, token?: string) {
 		const { data } = await axios.get<T[]>(
 			this.resolveURL(params),
 			this.headers(token),

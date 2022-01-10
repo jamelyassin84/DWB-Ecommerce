@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Image, StyleSheet, Text } from 'react-native'
-import Container from '../../components/Layout'
-import { View } from '../../components/Themed'
+import Container from '../../components/app/Layout'
+import { View } from '../../components/overrides/Themed'
 
 type Props = {}
 
@@ -11,8 +11,8 @@ const PaymentChart: FC<Props> = (props) => {
 		image: {
 			width: '100%',
 			height: 290,
-			resizeMode: 'contain'
-		}
+			resizeMode: 'contain',
+		},
 	})
 
 	return (

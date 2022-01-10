@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import { Dimensions, Image, Text } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
-import Form from '../../../components/Form'
-import Container from '../../../components/Layout'
-import TitleBar from '../../../components/TitleBar'
+import Form from '../../../components/forms/Form'
+import Container from '../../../components/app/Layout'
+import TitleBar from '../../../components/app/TitleBar'
 
 type Props = {}
 

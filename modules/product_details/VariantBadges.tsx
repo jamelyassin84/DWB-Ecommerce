@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { StyleSheet, Text } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import { BoldText, View } from '../../components/Themed'
+import { BoldText, View } from '../../components/overrides/Themed'
 import { groupByKey } from '../../constants/Helpers'
 import { Variant } from '../../models/Variant.type'
 

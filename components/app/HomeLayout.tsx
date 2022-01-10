@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import { Dimensions, Platform, View } from 'react-native'
-import useColorScheme from '../hooks/useColorScheme'
-import Colors from '../constants/Colors'
+import useColorScheme from '../../hooks/useColorScheme'
+import Colors from '../../constants/Colors'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { BoldText, Text } from './Themed'
+import { BoldText, Text } from '../overrides/Themed'
 
 type Props = {
 	title?: string

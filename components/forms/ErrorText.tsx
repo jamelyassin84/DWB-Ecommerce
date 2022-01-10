@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Text, View } from './Themed'
+import { Text, View } from '../overrides/Themed'
 
 type Props = {
 	true: boolean
@@ -15,7 +15,7 @@ const ErrorText: FC<Props> = (props) => {
 						paddingHorizontal: 20,
 						color: '#E73553',
 						marginTop: -10,
-						marginBottom: 20
+						marginBottom: 20,
 					}}>
 					{props.text}
 				</Text>

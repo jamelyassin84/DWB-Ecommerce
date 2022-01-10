@@ -1,7 +1,7 @@
 import { FontAwesome5 } from '@expo/vector-icons'
 import React, { FC } from 'react'
 import { TouchableOpacity } from 'react-native'
-import { BoldText, Text, View } from '../../components/Themed'
+import { BoldText, Text, View } from '../../components/overrides/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
 import { Months } from './DummyHomeProducts'

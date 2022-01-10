@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons'
 import React, { FC } from 'react'
 import { StyleSheet, Switch, TouchableOpacity, View } from 'react-native'
-import { BoldText } from '../../components/Themed'
+import { BoldText } from '../../components/overrides/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
 
@@ -15,26 +15,26 @@ const SettingListWithToggler: FC<Props> = (props) => {
 			flexDirection: 'row',
 			justifyContent: 'center',
 			paddingVertical: 15,
-			alignItems: 'center'
+			alignItems: 'center',
 		},
 		text: {
 			flex: 1,
 			marginLeft: 15,
 			color: Colors[colorScheme].text,
-			fontSize: 14
+			fontSize: 14,
 		},
 		logoutBtn: {
 			flexDirection: 'row',
 			justifyContent: 'center',
 			paddingVertical: 15,
-			alignItems: 'center'
+			alignItems: 'center',
 		},
 		logoutBtnText: {
 			flex: 1,
 			color: Colors[colorScheme].tint,
 			fontSize: 18,
-			textAlign: 'center'
-		}
+			textAlign: 'center',
+		},
 	})
 
 	return (
@@ -49,7 +49,7 @@ const SettingListWithToggler: FC<Props> = (props) => {
 				<Switch
 					trackColor={{
 						false: 'rgba(150,150,150,.5)',
-						true: Colors[colorScheme].tint
+						true: Colors[colorScheme].tint,
 					}}
 					thumbColor={Colors[colorScheme].background}
 					value={false}
@@ -66,7 +66,7 @@ const SettingListWithToggler: FC<Props> = (props) => {
 				<Switch
 					trackColor={{
 						false: 'rgba(150,150,150,.5)',
-						true: Colors[colorScheme].tint
+						true: Colors[colorScheme].tint,
 					}}
 					thumbColor={Colors[colorScheme].background}
 					value={true}

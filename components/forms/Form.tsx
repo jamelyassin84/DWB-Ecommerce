@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import { StyleSheet, TextInput, View } from 'react-native'
-import Colors from '../constants/Colors'
-import useColorScheme from '../hooks/useColorScheme'
-import { BoldText, Text } from './Themed'
+import Colors from '../../constants/Colors'
+import useColorScheme from '../../hooks/useColorScheme'
+import { BoldText, Text } from '../overrides/Themed'
 
 type Props = {
 	label?: string

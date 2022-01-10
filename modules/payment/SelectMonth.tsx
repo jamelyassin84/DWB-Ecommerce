@@ -1,8 +1,8 @@
 import { Entypo } from '@expo/vector-icons'
 import React, { FC } from 'react'
 import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native'
-import Container from '../../components/Layout'
-import { BoldText, View } from '../../components/Themed'
+import Container from '../../components/app/Layout'
+import { BoldText, View } from '../../components/overrides/Themed'
 
 type Props = {}
 
@@ -12,7 +12,7 @@ const SelectMonth: FC<Props> = (props) => {
 			fontSize: 18,
 			color: '#5F6A84',
 			textAlign: 'center',
-			marginTop: 5
+			marginTop: 5,
 		},
 		balanceContainer: {
 			width: '50%',
@@ -20,11 +20,11 @@ const SelectMonth: FC<Props> = (props) => {
 			alignSelf: 'center',
 			flexDirection: 'row',
 			marginTop: 10,
-			justifyContent: 'space-between'
+			justifyContent: 'space-between',
 		},
 		balance: {
-			fontSize: 27
-		}
+			fontSize: 27,
+		},
 	})
 
 	return (

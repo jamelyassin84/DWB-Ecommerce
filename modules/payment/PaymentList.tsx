@@ -2,7 +2,7 @@ import { Entypo } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import React, { FC } from 'react'
 import { StyleSheet, TouchableOpacity, Image } from 'react-native'
-import { BoldText, Text, View } from '../../components/Themed'
+import { BoldText, Text, View } from '../../components/overrides/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
 

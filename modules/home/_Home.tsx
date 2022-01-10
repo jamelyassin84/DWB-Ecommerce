@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useMemo, useRef } from 'react'
-import HomeCard from '../../components/HomeCard'
-import HomeLayout from '../../components/HomeLayout'
-import ScrollViewWithRefresh from '../../components/ScrollViewWithRefresh'
+import HomeCard from '../../components/app/HomeCard'
+import HomeLayout from '../../components/app/HomeLayout'
+import ScrollViewWithRefresh from '../../components/app/ScrollViewWithRefresh'
 import HomeChart from './HomeChart'
 import SalesSummary from './SalesSummary'
 import TopSellingProducts from './TopSellingProducts'
@@ -13,7 +13,7 @@ import BottomSheet, {
 import Calendar from './Calendar'
 import useColorScheme from '../../hooks/useColorScheme'
 import Colors from '../../constants/Colors'
-import BottomSheetHeader from '../../components/BottomSheetHeader'
+import BottomSheetHeader from '../../components/app/BottomSheetHeader'
 
 type Props = {}
 

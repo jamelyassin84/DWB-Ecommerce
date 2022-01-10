@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Image } from 'react-native'
-import { View } from '../../components/Themed'
+import { View } from '../../components/overrides/Themed'
 import Carousel from './Carousel'
 
 type Props = {

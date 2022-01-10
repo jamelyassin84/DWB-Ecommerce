@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Text, TouchableOpacity } from 'react-native'
-import { BoldText, View } from '../../components/Themed'
+import { BoldText, View } from '../../components/overrides/Themed'
 
 type Props = {
 	addVariant: Function

@@ -8,7 +8,7 @@ import {
 	StyleSheet,
 	TouchableOpacity,
 } from 'react-native'
-import { BoldText, Text, View } from '../../components/Themed'
+import { BoldText, Text, View } from '../../components/overrides/Themed'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
 

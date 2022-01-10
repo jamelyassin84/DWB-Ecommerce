@@ -2,9 +2,9 @@ import { Ionicons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/core'
 import React, { FC } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
-import Colors from '../constants/Colors'
-import useColorScheme from '../hooks/useColorScheme'
-import { BoldText, Text, View } from './Themed'
+import Colors from '../../constants/Colors'
+import useColorScheme from '../../hooks/useColorScheme'
+import { BoldText, Text, View } from '../overrides/Themed'
 
 type Props = {
 	title: string

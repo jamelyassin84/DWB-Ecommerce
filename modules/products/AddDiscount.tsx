@@ -1,8 +1,8 @@
 import { AntDesign } from '@expo/vector-icons'
 import React, { FC } from 'react'
 import { StyleSheet } from 'react-native'
-import Form from '../../components/Form'
-import { BoldText, Text, View } from '../../components/Themed'
+import Form from '../../components/forms/Form'
+import { BoldText, Text, View } from '../../components/overrides/Themed'
 import useColorScheme from '../../hooks/useColorScheme'
 
 type Props = {

@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { StyleSheet } from 'react-native'
-import { BoldText, Text, View } from '../../../components/Themed'
+import { BoldText, Text, View } from '../../../components/overrides/Themed'
 import toDate from '../../../constants/Helpers'
 import { Transaction } from '../../../models/Transactions'
 
