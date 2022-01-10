@@ -12,6 +12,7 @@ type Props = {
 	error?: boolean
 	focus?: boolean
 	onSubmitEditing?: Function
+	value?: string
 }
 
 const Form: FC<Props> = (props) => {
@@ -64,6 +65,7 @@ const Form: FC<Props> = (props) => {
 				onSubmitEditing={() => {
 					props.onSubmitEditing ? props.onSubmitEditing() : void 0
 				}}
+				value={props.value}
 				onFocus={() => setIsFocused(true)}
 				onBlur={() => setIsFocused(false)}
 				onChangeText={(text) => {

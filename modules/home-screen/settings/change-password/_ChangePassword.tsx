@@ -4,13 +4,12 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { API } from '../../../../api/api.routes'
 import { APIService } from '../../../../api/base.api'
 import { BoldText } from '../../../../components/overrides/Themed'
+import { AxiosError } from 'axios'
 import Container from '../../../../components/app/Layout'
 import TitleBar from '../../../../components/app/TitleBar'
 import ErrorText from '../../../../components/forms/ErrorText'
 import PasswordForm from '../../../../components/forms/PasswordForm'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { hasData } from '../../../../constants/Helpers'
-import { AxiosError } from 'axios'
 
 type Props = {}
 
@@ -65,8 +64,7 @@ const _ChangePassword: FC<Props> = (props) => {
 		}
 		new APIService(API.ChangePassword)
 			.store(data, false, token)
-			.then((data) => {
-				console.log(data)
+			.then(() => {
 				setButtonIsDisabled(false)
 				Alert.alert(
 					'Account Updated.',
