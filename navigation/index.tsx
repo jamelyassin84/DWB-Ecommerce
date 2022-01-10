@@ -11,20 +11,18 @@ import {
 } from '@react-navigation/native'
 import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
-import _Home from '../modules/home/_Home'
-import _Products from '../modules/products/_Products'
-import _Payment from '../modules/payment/_Payment'
-import _Settings from '../modules/settings/_Settings'
+import _Home from '../modules/home-screen/home/_Home'
+import _Products from '../modules/home-screen/products/_Products'
+import _Payment from '../modules/home-screen/payment/_Payment'
+import _Settings from '../modules/home-screen/settings/_Settings'
 import _Auth from '../modules/auth/_Auth'
-import _ProductDetail from '../modules/product_details/_ProductDetail'
-import _PasswordReset from '../modules/PasswordReset/_PasswordReset'
-import _Profile from '../modules/Profile/_Profile'
+import _ProductDetail from '../modules/home-screen/products/product_details/_ProductDetail'
 import AddProduct from '../modals/AddProduct'
 import ModalScreen from '../modals/ModalScreen'
-import _EditProfile from '../modules/settings/edit-profile/_EditProfile'
-import _ChangePassword from '../modules/settings/change-password/_ChangePassword'
-import _ShowRecentTransaction from '../modules/payment/show-recent-transactions/_ShowRecentTransaction'
-import _ManageBankAccount from '../modules/payment/manage-bank-account/_ManageBankAccount'
+import _EditProfile from '../modules/home-screen/settings/edit-profile/_EditProfile'
+import _ChangePassword from '../modules/home-screen/settings/change-password/_ChangePassword'
+import _ShowRecentTransaction from '../modules/home-screen/payment/show-recent-transactions/_ShowRecentTransaction'
+import _ManageBankAccount from '../modules/home-screen/payment/manage-bank-account/_ManageBankAccount'
 import Step1 from '../modules/stepper/Step1'
 import Step2 from '../modules/stepper/Step2'
 import Step3 from '../modules/stepper/Step3'
@@ -55,16 +53,6 @@ const RootNavigator = () => {
 			<Stack.Screen
 				name="ProductDetail"
 				component={_ProductDetail}
-				options={{ headerShown: false }}
-			/>
-			<Stack.Screen
-				name="Profile"
-				component={_Profile}
-				options={{ headerShown: false }}
-			/>
-			<Stack.Screen
-				name="PasswordReset"
-				component={_PasswordReset}
 				options={{ headerShown: false }}
 			/>
 
