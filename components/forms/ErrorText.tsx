@@ -12,7 +12,7 @@ const ErrorText: FC<Props> = (props) => {
 			{props.true && (
 				<Text
 					style={{
-						paddingHorizontal: 20,
+						paddingHorizontal: 25,
 						color: '#E73553',
 						marginTop: -10,
 						marginBottom: 20,

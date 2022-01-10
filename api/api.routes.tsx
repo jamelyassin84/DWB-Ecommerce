@@ -4,4 +4,6 @@ export enum API {
 	Register = 'auth/register',
 	Products = 'products',
 	Transactions = 'transactions',
+	ChangePassword = 'change_password',
+	ChangeDetails = 'change_details',
 }

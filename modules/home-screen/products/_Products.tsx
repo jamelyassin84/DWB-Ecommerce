@@ -18,7 +18,6 @@ import { APIService } from '../../../api/base.api'
 import { Product } from '../../../models/Product'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { API } from '../../../api/api.routes'
-import { User } from '../../../models/User'
 
 type Props = {}
 
