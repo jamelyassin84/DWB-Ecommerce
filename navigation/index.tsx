@@ -27,6 +27,8 @@ import Step1 from '../modules/stepper/Step1'
 import Step2 from '../modules/stepper/Step2'
 import Step3 from '../modules/stepper/Step3'
 import Step4 from '../modules/stepper/Step4'
+import EnterVerificationCode from '../modules/auth/EnterVerificationCode'
+import VerifyPhoneNumber from '../modules/auth/VerifyPhoneNumber'
 
 export default function Navigation({
 	colorScheme,
@@ -48,6 +50,16 @@ const RootNavigator = () => {
 			<Stack.Screen
 				name="Auth"
 				component={_Auth}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
+				name="VerifyPhoneNumber"
+				component={VerifyPhoneNumber}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
+				name="EnterVerificationCode"
+				component={EnterVerificationCode}
 				options={{ headerShown: false }}
 			/>
 			<Stack.Screen

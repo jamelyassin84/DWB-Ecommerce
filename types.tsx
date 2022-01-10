@@ -12,9 +12,12 @@ declare global {
 }
 
 export type RootStackParamList = {
+	Auth: any
+	EnterVerificationCode: undefined
+	VerifyPhoneNumber: undefined
+
 	Root: NavigatorScreenParams<RootTabParamList> | undefined
 	SelectMonth: any
-	Auth: any
 	ProductDetail: any
 	PasswordReset: any
 	Profile: any
