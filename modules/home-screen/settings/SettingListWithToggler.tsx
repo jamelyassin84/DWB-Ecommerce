@@ -4,11 +4,17 @@ import { StyleSheet, Switch, TouchableOpacity, View } from 'react-native'
 import { BoldText } from '../../../components/overrides/Themed'
 import Colors from '../../../constants/Colors'
 import useColorScheme from '../../../hooks/useColorScheme'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { AxiosError } from 'axios'
+import { APIService } from '../../../api/base.api'
+import { API } from '../../../api/api.routes'
+import { useNavigation } from '@react-navigation/native'
 
 type Props = {}
 
 const SettingListWithToggler: FC<Props> = (props) => {
 	const colorScheme = useColorScheme()
+	const navigation = useNavigation()
 
 	const style = StyleSheet.create({
 		button: {
@@ -36,6 +42,29 @@ const SettingListWithToggler: FC<Props> = (props) => {
 			textAlign: 'center',
 		},
 	})
+
+	const [token, setToken] = React.useState<string | any>('')
+
+	React.useEffect(() => {
+		fetchToken()
+	}, [])
+
+	const fetchToken = async () => {
+		const token = await AsyncStorage.getItem('token')
+		setToken(token)
+	}
+
+	const logout = () => {
+		new APIService(API.LogOut)
+			.store({}, false, token)
+			.then((data: any) => {
+				navigation.navigate('Auth')
+			})
+			.catch((reason: AxiosError<{ additionalInfo: string }>) => {
+				console.log(reason)
+				alert('Something went wrong')
+			})
+	}
 
 	return (
 		<View>
@@ -73,7 +102,7 @@ const SettingListWithToggler: FC<Props> = (props) => {
 				/>
 			</View>
 
-			<TouchableOpacity style={style.logoutBtn}>
+			<TouchableOpacity style={style.logoutBtn} onPress={() => logout()}>
 				<BoldText style={style.logoutBtnText}>Logout</BoldText>
 			</TouchableOpacity>
 		</View>

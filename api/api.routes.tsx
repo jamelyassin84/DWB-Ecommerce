@@ -9,4 +9,5 @@ export enum API {
 	Verify = 'verify',
 	Code = 'send_code',
 	Resend = 'resend',
+	LogOut = 'log_out',
 }

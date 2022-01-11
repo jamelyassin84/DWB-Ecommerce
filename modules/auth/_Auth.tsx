@@ -5,11 +5,22 @@ import Login from './Login'
 import LoginAndSignUpTab from './LoginAndSignUpTab'
 import SignUp from './SignUp'
 import Socials from './Socials'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 type Props = {}
 
 const _Auth: FC<Props> = (props) => {
 	const [shouldLogin, setShouldLogin] = React.useState<boolean>(false)
+
+	React.useEffect(() => {
+		checkIfUserIsNew()
+	}, [])
+
+	const checkIfUserIsNew = async () => {
+		const newUser = await AsyncStorage.getItem('has-under-gone-stepper')
+		if (newUser === undefined || newUser === null)
+			return setShouldLogin(true)
+	}
 
 	return (
 		<Container>
