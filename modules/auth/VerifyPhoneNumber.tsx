@@ -28,7 +28,7 @@ const VerifyPhoneNumber: FC<Props> = ({ route }: any) => {
 					JSON.stringify(data.seller),
 				)
 				navigation.navigate('EnterVerificationCode', {
-					token: data.token.plainTextToken,
+					token: token,
 				})
 			})
 			.catch(() => {
@@ -52,7 +52,6 @@ const VerifyPhoneNumber: FC<Props> = ({ route }: any) => {
 			</Text>
 
 			<EnterMobileNumberForm text={(text: string) => setPhone(text)} />
-			{/* <ErrorText true={true} text="Verification code is incorrect" /> */}
 
 			<TouchableOpacity
 				disabled={buttonIsDisabled}

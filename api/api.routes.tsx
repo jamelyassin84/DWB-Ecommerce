@@ -7,4 +7,5 @@ export enum API {
 	ChangePassword = 'change_password',
 	ChangeDetails = 'change_details',
 	Verify = 'verify',
+	Code = 'send_code',
 }
