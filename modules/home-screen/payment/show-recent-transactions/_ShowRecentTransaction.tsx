@@ -20,19 +20,21 @@ const _ShowRecentTransaction: FC<Props> = (props) => {
 
 	const fetchToken = async () => {
 		const token = await AsyncStorage.getItem('token')
-		getTransactions(token)
+		const user = await AsyncStorage.getItem('user')
+		getTransactions(token, user)
 	}
 
 	const [transactions, seTransactions] = React.useState<Transaction[]>([])
-	const getTransactions = (token: string | any): void => {
+	const getTransactions = (token: string | any, user: any): void => {
+		user = JSON.parse(user)
 		setLoading(true)
 		new APIService(API.Transactions)
-			.show(1, undefined, token)
+			.show(user.id, undefined, token)
 			.then((data: any) => {
 				seTransactions(data)
 				setLoading(false)
 			})
-			.catch((error) => {
+			.catch(() => {
 				setLoading(false)
 			})
 	}
@@ -47,7 +49,7 @@ const _ShowRecentTransaction: FC<Props> = (props) => {
 
 			<ScrollViewWithRefresh
 				onRefresh={() => fetchToken()}
-				loading={false}>
+				loading={loading}>
 				{transactions.map((transaction: Transaction, index: number) => (
 					<Transactions transaction={transaction} key={index} />
 				))}

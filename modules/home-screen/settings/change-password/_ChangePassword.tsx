@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Alert, Dimensions, Image, StyleSheet } from 'react-native'
+import { Alert, Dimensions, Image, Platform, StyleSheet } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { API } from '../../../../api/api.routes'
 import { APIService } from '../../../../api/base.api'
@@ -194,7 +194,11 @@ const _ChangePassword: FC<Props> = (props) => {
 					<Image
 						style={{
 							height: 50,
-							width: Dimensions.get('screen').width - 28 * 2,
+							width:
+								Platform.OS === 'android'
+									? Dimensions.get('screen').width - 25 * 2
+									: Dimensions.get('screen').width - 21 * 2,
+							borderRadius: 12,
 						}}
 						source={require('../../../../assets/app/images/password-reset/save-changes.png')}
 					/>

@@ -1,5 +1,12 @@
 import React, { FC } from 'react'
-import { Alert, Dimensions, Image, StyleSheet, Text } from 'react-native'
+import {
+	Alert,
+	Dimensions,
+	Image,
+	Platform,
+	StyleSheet,
+	Text,
+} from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import Container from '../../../../components/app/Layout'
 import TitleBar from '../../../../components/app/TitleBar'
@@ -156,7 +163,11 @@ const _EditProfile: FC<Props> = (props) => {
 					<Image
 						style={{
 							height: 50,
-							width: Dimensions.get('screen').width - 28 * 2,
+							width:
+								Platform.OS === 'android'
+									? Dimensions.get('screen').width - 25 * 2
+									: Dimensions.get('screen').width - 21 * 2,
+							borderRadius: 12,
 						}}
 						source={require('../../../../assets/app/images/edit-profile/update.png')}
 					/>
