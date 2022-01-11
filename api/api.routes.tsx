@@ -8,4 +8,5 @@ export enum API {
 	ChangeDetails = 'change_details',
 	Verify = 'verify',
 	Code = 'send_code',
+	Resend = 'resend',
 }

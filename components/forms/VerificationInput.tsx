@@ -7,6 +7,7 @@ type Props = {
 	onSubmitEditing?: Function
 	value?: string
 	text: Function
+	backSpace: Function
 }
 
 const VerificationInput: FC<Props> = (props) => {
@@ -24,14 +25,19 @@ const VerificationInput: FC<Props> = (props) => {
 	return (
 		<View>
 			<TextInput
+				value={props.value}
 				ref={ref}
-				onFocus={() => setIsFocused(true)}
-				onBlur={() => setIsFocused(false)}
+				maxLength={1}
 				onChangeText={(text) => {
 					props.text(text)
 				}}
 				onSubmitEditing={() => {
 					props.onSubmitEditing ? props.onSubmitEditing() : void 0
+				}}
+				onKeyPress={({ nativeEvent }) => {
+					if (nativeEvent.key === 'Backspace') {
+						props.backSpace()
+					}
 				}}
 				style={{
 					flexDirection: 'row',
