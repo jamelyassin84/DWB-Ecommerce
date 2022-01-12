@@ -1,4 +1,4 @@
-import { Entypo } from '@expo/vector-icons'
+import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons'
 import React, { FC } from 'react'
 import { Image, StyleSheet } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
@@ -8,7 +8,7 @@ import useColorScheme from '../../../hooks/useColorScheme'
 
 type Props = {
 	nav: string
-	image: string | any
+	icon: 'bank' | 'currency-usd-circle'
 	callback: Function
 }
 
@@ -30,6 +30,7 @@ const PaymentList: FC<Props> = (props) => {
 			borderWidth: 1,
 			borderRadius: 10,
 			borderColor: 'rgba(150,150,150,.2)',
+			padding: 7,
 		},
 		image: {
 			width: 40,
@@ -49,7 +50,11 @@ const PaymentList: FC<Props> = (props) => {
 	return (
 		<TouchableOpacity style={style.button} onPress={() => props.callback()}>
 			<View style={style.imageContainer}>
-				<Image source={props.image} style={style.image} />
+				<MaterialCommunityIcons
+					name={props.icon}
+					size={24}
+					color="#7B74FF"
+				/>
 			</View>
 			<View style={style.textContainer}>
 				<BoldText>{props.nav}</BoldText>

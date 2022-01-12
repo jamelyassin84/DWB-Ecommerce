@@ -1,18 +1,18 @@
 export const paymentListData: PaymentListType[] = [
 	{
 		name: 'Show Recent Transactions',
-		image: require('../../../assets/app/images/payment/transaction.png'),
 		route: '_ShowRecentTransaction',
+		icon: 'currency-usd-circle',
 	},
 	{
 		name: 'Manage Bank Accounts',
-		image: require('../../../assets/app/images/payment/bank-fill.png'),
 		route: '_ManageBankAccount',
+		icon: 'bank',
 	},
 ]
 
 export type PaymentListType = {
 	route: string | any
 	name: string
-	image: string | any
+	icon: 'bank' | 'currency-usd-circle'
 }

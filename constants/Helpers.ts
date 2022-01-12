@@ -1,4 +1,7 @@
-export default function toDate(dateString: string) {
+export default function toDate(
+	dateString: string,
+	monthIsShort: boolean = false,
+) {
 	const months = [
 		'January',
 		'February',
@@ -14,7 +17,11 @@ export default function toDate(dateString: string) {
 		'December',
 	]
 	const date = new Date(new Date(dateString).getTime())
-	return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
+	return `${
+		monthIsShort
+			? months[date.getMonth()].substring(0, 3)
+			: months[date.getMonth()]
+	} ${date.getDate()}, ${date.getFullYear()}`
 }
 
 export function hasData(data: any) {

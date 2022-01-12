@@ -1,6 +1,10 @@
 import React, { FC } from 'react'
 import { StyleSheet } from 'react-native'
 import { BoldText, Text, View } from '../../../../components/overrides/Themed'
+import {
+	applicationPercentageInPercent,
+	deductAppPercentage,
+} from '../../../../constants/AppConstants'
 import toDate from '../../../../constants/Helpers'
 import { Transaction } from '../../../../models/Transactions'
 
@@ -21,13 +25,20 @@ const Transactions: FC<Props> = (props) => {
 				<Text style={style.description}>
 					{props.transaction.product.brief_description}
 				</Text>
+
 				<Text style={style.variant}>
-					{toDate(props.transaction.created_at)}
+					{toDate(props.transaction.created_at, true)}
 				</Text>
 			</View>
 			<View style={style.amountWrapper}>
+				<BoldText style={[style.variant, { color: '#0AD0E4' }]}>
+					App Fee: {applicationPercentageInPercent}
+				</BoldText>
+				<BoldText style={[style.variant]}>
+					Amount: {props.transaction.amount}
+				</BoldText>
 				<BoldText style={style.amount}>
-					{props.transaction.amount}{' '}
+					{deductAppPercentage(props.transaction.amount)}{' '}
 					{props.transaction.product.currency}
 				</BoldText>
 			</View>

@@ -14,11 +14,25 @@ type Props = {}
 
 const _Payment: FC<Props> = (props) => {
 	const navigation = useNavigation()
+
+	const [willRefresh, setWillRefresh] = React.useState(false)
+
+	React.useEffect(() => {
+		setWillRefresh(true)
+	}, [])
+
 	return (
 		<HomeLayout title="My Wallet">
-			<ScrollViewWithRefresh onRefresh={() => {}} loading={false}>
+			<ScrollViewWithRefresh
+				onRefresh={() => {
+					setWillRefresh(true)
+				}}
+				loading={false}>
 				<HomeCard>
-					<Balance />
+					<Balance
+						willFetch={willRefresh}
+						afterRefresh={() => setWillRefresh(false)}
+					/>
 					<SelectMonth />
 					<PaymentChart />
 				</HomeCard>
@@ -27,7 +41,7 @@ const _Payment: FC<Props> = (props) => {
 						callback={() => navigation.navigate(nav.route)}
 						key={index}
 						nav={nav.name}
-						image={nav.image}
+						icon={nav.icon}
 					/>
 				))}
 			</ScrollViewWithRefresh>

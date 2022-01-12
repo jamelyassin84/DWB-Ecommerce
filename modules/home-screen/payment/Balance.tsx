@@ -2,11 +2,42 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FC } from 'react'
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native'
 import { BoldText, Text } from '../../../components/overrides/Themed'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { APIService } from '../../../api/base.api'
+import { API } from '../../../api/api.routes'
+import { Seller } from '../../../models/Seller'
 
-type Props = {}
+type Props = {
+	willFetch: boolean
+	afterRefresh: Function
+}
 
 const Balance: FC<Props> = (props) => {
 	const navigation = useNavigation()
+
+	React.useEffect(() => {
+		fetchToken()
+	}, [props.willFetch === true])
+
+	const fetchToken = async () => {
+		const token = await AsyncStorage.getItem('token')
+		const user = await AsyncStorage.getItem('user')
+		getBalance(token, user)
+	}
+
+	const [seller, setSeller] = React.useState<Seller | any>()
+	const getBalance = (token: string | any, user: any): void => {
+		user = JSON.parse(user)
+		new APIService(API.Seller)
+			.show(user.id, undefined, token)
+			.then((data: any) => {
+				setSeller(data)
+				props.afterRefresh()
+			})
+			.catch(() => {
+				props.afterRefresh()
+			})
+	}
 
 	return (
 		<View>
@@ -19,7 +50,9 @@ const Balance: FC<Props> = (props) => {
 			<View style={style.anotherContainer}>
 				<View style={{ paddingTop: 17 }}>
 					<Text style={style.walletBalance}>Wallet balance</Text>
-					<BoldText style={style.balance}>AED 59.90</BoldText>
+					<BoldText style={style.balance}>
+						AED {seller?.balance || 0}
+					</BoldText>
 				</View>
 				<View>
 					<TouchableOpacity

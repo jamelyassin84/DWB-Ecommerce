@@ -8,6 +8,13 @@ export const GoogleConfig = {
 	scopes: ['profile', 'email'],
 }
 
+export const applicationPercentage = 0.03
+export const applicationPercentageInPercent = '3%'
+
+export function deductAppPercentage(amount: number) {
+	return amount - amount * applicationPercentage
+}
+
 export const homeChartConfig = () => {
 	return {
 		backgroundGradientFrom: 'white',

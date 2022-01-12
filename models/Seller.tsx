@@ -8,4 +8,5 @@ export type Seller = {
 	mode: string
 	updated_at: any
 	user_id: number
+	balance: number
 }

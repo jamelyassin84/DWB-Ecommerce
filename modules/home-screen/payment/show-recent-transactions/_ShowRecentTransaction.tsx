@@ -1,13 +1,13 @@
 import React, { FC } from 'react'
 import { StyleSheet } from 'react-native'
-import Transactions from './Transactions'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { APIService } from '../../../../api/base.api'
 import { API } from '../../../../api/api.routes'
 import { Transaction } from '../../../../models/Transactions'
-import TitleBar from '../../../../components/app/TitleBar'
-import Container from '../../../../components/app/Layout'
 import { BoldText, View } from '../../../../components/overrides/Themed'
+import TitleBar from '../../../../components/app/TitleBar'
+import Transactions from './Transactions'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import Container from '../../../../components/app/Layout'
 import ScrollViewWithRefresh from '../../../../components/app/ScrollViewWithRefresh'
 
 type Props = {}
@@ -44,7 +44,7 @@ const _ShowRecentTransaction: FC<Props> = (props) => {
 			<TitleBar title="Recent Transactions" />
 			<View style={style.view}>
 				<BoldText style={style.ref}>Reference No.</BoldText>
-				<BoldText style={style.amount}>Amount</BoldText>
+				<BoldText style={style.amount}>Amount </BoldText>
 			</View>
 
 			<ScrollViewWithRefresh

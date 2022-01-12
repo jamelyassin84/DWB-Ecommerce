@@ -4,6 +4,7 @@ export enum API {
 	Verify = 'auth/verify',
 	LogOut = 'auth/log_out',
 	Register = 'auth/register',
+	Seller = 'seller',
 	Products = 'products',
 	Transactions = 'transactions',
 	ChangePassword = 'change_password',

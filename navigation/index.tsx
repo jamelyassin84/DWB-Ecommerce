@@ -1,5 +1,11 @@
 import * as React from 'react'
-import { AntDesign, FontAwesome5, Octicons } from '@expo/vector-icons'
+import {
+	AntDesign,
+	Entypo,
+	FontAwesome5,
+	Fontisto,
+	Octicons,
+} from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { RootStackParamList, RootTabParamList } from '../types'
 import { ColorSchemeName, Platform } from 'react-native'
@@ -175,7 +181,7 @@ const BottomTabNavigator = () => {
 						],
 					},
 					tabBarIcon: ({ color }) => (
-						<Octicons name="home" size={24} color={color} />
+						<Entypo name="home" size={24} color={color} />
 					),
 					headerShown: false,
 				}}
@@ -231,7 +237,7 @@ const BottomTabNavigator = () => {
 						],
 					},
 					tabBarIcon: ({ color }) => (
-						<AntDesign name="creditcard" size={24} color={color} />
+						<Entypo name="wallet" size={24} color={color} />
 					),
 					headerShown: false,
 				}}
@@ -240,7 +246,7 @@ const BottomTabNavigator = () => {
 				name="Menu"
 				component={_Settings}
 				options={{
-					title: 'Menu',
+					title: 'Settings',
 					headerTitleAllowFontScaling: true,
 					headerTitleStyle: {
 						fontFamily: 'Montserrat-bold',
@@ -257,7 +263,11 @@ const BottomTabNavigator = () => {
 						],
 					},
 					tabBarIcon: ({ color }) => (
-						<AntDesign name="menuunfold" size={24} color={color} />
+						<Fontisto
+							name="player-settings"
+							size={24}
+							color={color}
+						/>
 					),
 					headerShown: false,
 				}}

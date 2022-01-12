@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { StyleSheet, Image, Platform } from 'react-native'
+import { StyleSheet, Image, Platform, Dimensions } from 'react-native'
 import {
 	ScrollView,
 	TextInput,
@@ -8,10 +8,35 @@ import {
 import Container from '../../../../components/app/Layout'
 import TitleBar from '../../../../components/app/TitleBar'
 import { BoldText, Text, View } from '../../../../components/overrides/Themed'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { APIService } from '../../../../api/base.api'
+import { Seller } from '../../../../models/Seller'
+import { API } from '../../../../api/api.routes'
 
 type Props = {}
 
 const _ManageBankAccount: FC<Props> = (props) => {
+	React.useEffect(() => {
+		fetchToken()
+	}, [])
+
+	const fetchToken = async () => {
+		const token = await AsyncStorage.getItem('token')
+		const user = await AsyncStorage.getItem('user')
+		getBalance(token, user)
+	}
+
+	const [seller, setSeller] = React.useState<Seller | any>()
+	const getBalance = (token: string | any, user: any): void => {
+		user = JSON.parse(user)
+		new APIService(API.Seller)
+			.show(user.id, undefined, token)
+			.then((data: any) => {
+				setSeller(data)
+			})
+			.catch(() => {})
+	}
+
 	return (
 		<Container>
 			<TitleBar title="Manage Bank Account" />
@@ -22,7 +47,9 @@ const _ManageBankAccount: FC<Props> = (props) => {
 							<Text style={style.availableBalance}>
 								Available Balance
 							</Text>
-							<BoldText style={style.balance}>559.90</BoldText>
+							<BoldText style={style.balance}>
+								{seller?.balance || 0}
+							</BoldText>
 							<BoldText style={style.currency}>AED</BoldText>
 						</View>
 					</View>
@@ -87,7 +114,7 @@ const style = StyleSheet.create({
 	bankAccountBorder: {
 		borderWidth: 20,
 		borderColor: '#2E70E6',
-		borderRadius: Platform.OS === 'ios' ? 50 : 270 / 2,
+		borderRadius: Platform.OS === 'ios' ? 200 : 270 / 2,
 		height: 270,
 		width: 270,
 		justifyContent: 'center',
@@ -123,12 +150,13 @@ const style = StyleSheet.create({
 	textInputContainer: {
 		width: '100%',
 		paddingVertical: 10,
-		borderTopColor: 'rgba(150,150,150,.2)',
-		borderTopWidth: 1,
+		borderBottomColor: 'rgba(150,150,150,.2)',
+		borderBottomWidth: 1,
 	},
 	label: {
 		fontSize: 16,
 		color: '#000F34',
+		marginBottom: Platform.OS === 'ios' ? 10 : 0,
 	},
 	textInput: {
 		fontSize: 14,
@@ -136,10 +164,11 @@ const style = StyleSheet.create({
 	},
 	image: {
 		height: 50,
-		width: 338,
+		width: Dimensions.get('screen').width - 43 * 2,
 		marginTop: 20,
-		resizeMode: 'contain',
+		resizeMode: 'cover',
 		alignSelf: 'center',
+		borderRadius: 12,
 	},
 })
 
