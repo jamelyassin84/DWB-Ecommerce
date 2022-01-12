@@ -1,10 +1,12 @@
 ## UI
 
-Use form
 Custom Animation
-
+Keyboard Avoiding
+Dark mode
+Circular Progress
 
 ## API
+
 Web
 
 Custom Chart
@@ -26,6 +28,4 @@ host.exp.Exponent
 
 keytool -keystore path-to-debug-or-production-keystore -list -v
 
-
-http://10.39.1.39:4200/product-details/Adidas-White-Raven-Unisex-Casual-Shoes
-http://10.39.1.39:4200/product-details/Nike-Precision-IV-Unisex-Basketball-Shoes
+https://www.npmjs.com/package/react-native-circular-progress-indicator
