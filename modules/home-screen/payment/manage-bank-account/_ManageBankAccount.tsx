@@ -12,6 +12,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { APIService } from '../../../../api/base.api'
 import { Seller } from '../../../../models/Seller'
 import { API } from '../../../../api/api.routes'
+import { AnimatedCircularProgress } from 'react-native-circular-progress'
 
 type Props = {}
 
@@ -20,10 +21,12 @@ const _ManageBankAccount: FC<Props> = (props) => {
 		fetchToken()
 	}, [])
 
+	const [fill, setFill] = React.useState<number>(0)
 	const fetchToken = async () => {
 		const token = await AsyncStorage.getItem('token')
 		const user = await AsyncStorage.getItem('user')
 		getBalance(token, user)
+		setFill(fill + 100)
 	}
 
 	const [seller, setSeller] = React.useState<Seller | any>()
@@ -43,15 +46,36 @@ const _ManageBankAccount: FC<Props> = (props) => {
 			<ScrollView>
 				<View style={style.container}>
 					<View style={style.bankAccountContainer}>
-						<View style={style.bankAccountBorder}>
-							<Text style={style.availableBalance}>
-								Available Balance
-							</Text>
-							<BoldText style={style.balance}>
-								{seller?.balance || 0}
-							</BoldText>
-							<BoldText style={style.currency}>AED</BoldText>
-						</View>
+						<AnimatedCircularProgress
+							size={270}
+							width={20}
+							fill={fill}
+							tintColor="#2E70E6"
+							rotation={130}
+							onAnimationComplete={() => {}}
+							backgroundColor="white"
+							style={{
+								shadowColor: '#000',
+								shadowOffset: {
+									width: 0,
+									height: 1,
+								},
+								shadowOpacity: 0.2,
+								shadowRadius: 1.41,
+								elevation: 2,
+							}}
+						/>
+						{fill === 100 && (
+							<View style={style.bankAccountBorder}>
+								<Text style={style.availableBalance}>
+									Available Balance
+								</Text>
+								<BoldText style={style.balance}>
+									{seller?.balance || 0}
+								</BoldText>
+								<BoldText style={style.currency}>AED</BoldText>
+							</View>
+						)}
 					</View>
 					<View style={style.textInputContainer}>
 						<BoldText style={style.label}>Name</BoldText>
@@ -112,22 +136,12 @@ const style = StyleSheet.create({
 		justifyContent: 'center',
 	},
 	bankAccountBorder: {
-		borderWidth: 20,
-		borderColor: '#2E70E6',
-		borderRadius: Platform.OS === 'ios' ? 200 : 270 / 2,
 		height: 270,
 		width: 270,
 		justifyContent: 'center',
 		backgroundColor: 'white',
-		shadowColor: '#000',
-		shadowOffset: {
-			width: 0,
-			height: 1,
-		},
-		shadowOpacity: 0.2,
-		shadowRadius: 1.41,
 
-		elevation: 2,
+		marginTop: -270,
 	},
 	availableBalance: {
 		color: '#000F34',
