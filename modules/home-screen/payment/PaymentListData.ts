@@ -4,11 +4,11 @@ export const paymentListData: PaymentListType[] = [
 		route: '_ShowRecentTransaction',
 		icon: 'currency-usd-circle',
 	},
-	{
-		name: 'Manage Bank Accounts',
-		route: '_ManageBankAccount',
-		icon: 'bank',
-	},
+	// {
+	// 	name: 'Manage Bank Accounts',
+	// 	route: '_ManageBankAccount',
+	// 	icon: 'bank',
+	// },
 ]
 
 export type PaymentListType = {

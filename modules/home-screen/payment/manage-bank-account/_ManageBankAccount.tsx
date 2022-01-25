@@ -13,6 +13,8 @@ import { APIService } from '../../../../api/base.api'
 import { Seller } from '../../../../models/Seller'
 import { API } from '../../../../api/api.routes'
 import { AnimatedCircularProgress } from 'react-native-circular-progress'
+import { currencyFormat } from '../../../../constants/Helpers'
+import Form from '../../../../components/forms/Form'
 
 type Props = {}
 
@@ -40,9 +42,11 @@ const _ManageBankAccount: FC<Props> = (props) => {
 			.catch(() => {})
 	}
 
+	const [amount, setAmount] = React.useState<number>(0)
+
 	return (
 		<Container>
-			<TitleBar title="Manage Bank Account" />
+			<TitleBar title="Wallet Balance" />
 			<ScrollView>
 				<View style={style.container}>
 					<View style={style.bankAccountContainer}>
@@ -71,48 +75,22 @@ const _ManageBankAccount: FC<Props> = (props) => {
 									Available Balance
 								</Text>
 								<BoldText style={style.balance}>
-									{seller?.balance || 0}
+									{currencyFormat(seller?.balance || 0)}
 								</BoldText>
 								<BoldText style={style.currency}>AED</BoldText>
 							</View>
 						)}
 					</View>
-					<View style={style.textInputContainer}>
-						<BoldText style={style.label}>Name</BoldText>
-						<TextInput
-							placeholder={'Mohammed Ali'}
-							style={style.textInput}
-						/>
-					</View>
-					<View style={style.textInputContainer}>
-						<BoldText style={style.label}>Bank Name</BoldText>
-						<TextInput
-							placeholder={'Emirates NBD'}
-							style={style.textInput}
-						/>
-					</View>
-					<View style={style.textInputContainer}>
-						<BoldText style={style.label}>Account No.</BoldText>
-						<TextInput
-							placeholder={'000000000'}
-							style={style.textInput}
-						/>
-					</View>
-					<View style={style.textInputContainer}>
-						<BoldText style={style.label}>IBAN No.</BoldText>
-						<TextInput
-							placeholder={'AE000000000'}
-							style={style.textInput}
-						/>
-					</View>
-					<View style={style.textInputContainer}>
-						<BoldText style={style.label}>Swift No.</BoldText>
-						<TextInput
-							placeholder={'000000000'}
-							style={style.textInput}
-						/>
-					</View>
 				</View>
+
+				<Form
+					text={(value: string) => {
+						setAmount(parseInt(value))
+					}}
+					label="Amount"
+					placeholder="0"
+				/>
+
 				<TouchableOpacity>
 					<Image
 						style={style.image}
@@ -131,7 +109,6 @@ const style = StyleSheet.create({
 		marginHorizontal: 43,
 	},
 	bankAccountContainer: {
-		marginBottom: 50,
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
@@ -140,7 +117,6 @@ const style = StyleSheet.create({
 		width: 270,
 		justifyContent: 'center',
 		backgroundColor: 'white',
-
 		marginTop: -270,
 	},
 	availableBalance: {
@@ -160,26 +136,9 @@ const style = StyleSheet.create({
 		fontSize: 27,
 		textAlign: 'center',
 	},
-
-	textInputContainer: {
-		width: '100%',
-		paddingVertical: 10,
-		borderBottomColor: 'rgba(150,150,150,.2)',
-		borderBottomWidth: 1,
-	},
-	label: {
-		fontSize: 16,
-		color: '#000F34',
-		marginBottom: Platform.OS === 'ios' ? 10 : 0,
-	},
-	textInput: {
-		fontSize: 14,
-		color: '#5F6A84',
-	},
 	image: {
 		height: 50,
-		width: Dimensions.get('screen').width - 43 * 2,
-		marginTop: 20,
+		width: Dimensions.get('screen').width - 22 * 2,
 		resizeMode: 'cover',
 		alignSelf: 'center',
 		borderRadius: 12,

@@ -6,6 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { APIService } from '../../../api/base.api'
 import { API } from '../../../api/api.routes'
 import { Seller } from '../../../models/Seller'
+import { currencyFormat } from '../../../constants/Helpers'
 
 type Props = {
 	willFetch: boolean
@@ -51,7 +52,7 @@ const Balance: FC<Props> = (props) => {
 				<View style={{ paddingTop: 17 }}>
 					<Text style={style.walletBalance}>Wallet balance</Text>
 					<BoldText style={style.balance}>
-						AED {seller?.balance || 0}
+						{currencyFormat(seller?.balance || 0, 'AED')}
 					</BoldText>
 				</View>
 				<View>
@@ -88,10 +89,12 @@ const style = StyleSheet.create({
 	walletBalance: {
 		color: '#E9EBF0',
 		fontSize: 16,
+		marginTop: -10,
 	},
 	balance: {
 		color: 'white',
-		fontSize: 30,
+		fontSize: 25,
+		marginTop: 10,
 	},
 	button: {
 		width: 100,

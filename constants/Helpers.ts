@@ -124,8 +124,11 @@ export function isOdd(num: number) {
 	return num % 2
 }
 
-export function currencyFormat(number: number, currency: string) {
-	return `${currency} ${number
+export function currencyFormat(
+	number: number,
+	currency: string | boolean = false,
+) {
+	return `${currency ? currency : ''} ${number
 		.toFixed(2)
 		.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}`
 }

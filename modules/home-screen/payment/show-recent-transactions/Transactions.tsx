@@ -16,9 +16,9 @@ const Transactions: FC<Props> = (props) => {
 	return (
 		<View style={style.container}>
 			<View style={style.textWrapper}>
-				<Text style={style.referenceNumber}>
+				{/* <Text style={style.referenceNumber}>
 					{props.transaction.reference_number}
-				</Text>
+				</Text> */}
 				<Text style={style.title}>
 					{props.transaction.product.name}
 				</Text>
@@ -59,7 +59,7 @@ const style = StyleSheet.create({
 		flex: 1,
 	},
 	referenceNumber: {
-		fontSize: 18,
+		fontSize: 12,
 		color: '#2E70E6',
 	},
 	title: {
