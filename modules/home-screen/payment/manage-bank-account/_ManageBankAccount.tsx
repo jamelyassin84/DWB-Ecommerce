@@ -24,8 +24,10 @@ const _ManageBankAccount: FC<Props> = (props) => {
 	}, [])
 
 	const [fill, setFill] = React.useState<number>(0)
+	const [token, setToken] = React.useState<string | null>()
 	const fetchToken = async () => {
 		const token = await AsyncStorage.getItem('token')
+		setToken(token)
 		const user = await AsyncStorage.getItem('user')
 		getBalance(token, user)
 		setFill(fill + 100)
@@ -43,6 +45,17 @@ const _ManageBankAccount: FC<Props> = (props) => {
 	}
 
 	const [amount, setAmount] = React.useState<number>(0)
+	const payout = () => {
+		// new APIService(API.Seller)
+		// 	.store({ amount: amount }, false, token as string)
+		// 	.then((data: any) => {
+		// 		console.log(data)
+		// 	})
+		// 	.catch((error) => {
+		// 		console.log(error)
+		// 	})
+		console.log(token)
+	}
 
 	return (
 		<Container>
@@ -55,7 +68,7 @@ const _ManageBankAccount: FC<Props> = (props) => {
 							width={20}
 							fill={fill}
 							tintColor="#2E70E6"
-							rotation={130}
+							rotation={0}
 							onAnimationComplete={() => {}}
 							backgroundColor="white"
 							style={{
@@ -89,9 +102,10 @@ const _ManageBankAccount: FC<Props> = (props) => {
 					}}
 					label="Amount"
 					placeholder="0"
+					numeric
 				/>
 
-				<TouchableOpacity>
+				<TouchableOpacity onPress={() => payout()}>
 					<Image
 						style={style.image}
 						source={require('../../../../assets/app/images/payment/withdraw.png')}
@@ -111,6 +125,7 @@ const style = StyleSheet.create({
 	bankAccountContainer: {
 		alignItems: 'center',
 		justifyContent: 'center',
+		marginBottom: -30,
 	},
 	bankAccountBorder: {
 		height: 270,

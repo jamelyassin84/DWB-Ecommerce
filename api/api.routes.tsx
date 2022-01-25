@@ -11,4 +11,5 @@ export enum API {
 	ChangeDetails = 'change_details',
 	Code = 'send_code',
 	Resend = 'resend',
+	PayOut = 'pay-out',
 }
