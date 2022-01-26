@@ -46,15 +46,11 @@ const _ManageBankAccount: FC<Props> = (props) => {
 
 	const [amount, setAmount] = React.useState<number>(0)
 	const payout = () => {
-		// new APIService(API.Seller)
-		// 	.store({ amount: amount }, false, token as string)
-		// 	.then((data: any) => {
-		// 		console.log(data)
-		// 	})
-		// 	.catch((error) => {
-		// 		console.log(error)
-		// 	})
-		console.log(token)
+		// Check if on boarded
+		// if on boarded
+		// Transfer
+		// if not on boarded
+		// Request onboard url to backend
 	}
 
 	return (
@@ -64,7 +60,7 @@ const _ManageBankAccount: FC<Props> = (props) => {
 				<View style={style.container}>
 					<View style={style.bankAccountContainer}>
 						<AnimatedCircularProgress
-							size={270}
+							size={250}
 							width={20}
 							fill={fill}
 							tintColor="#2E70E6"
@@ -128,11 +124,10 @@ const style = StyleSheet.create({
 		marginBottom: -30,
 	},
 	bankAccountBorder: {
-		height: 270,
-		width: 270,
+		height: 250,
+		width: 250,
 		justifyContent: 'center',
-		backgroundColor: 'white',
-		marginTop: -270,
+		marginTop: -250,
 	},
 	availableBalance: {
 		color: '#000F34',

@@ -38,19 +38,12 @@ const PaymentChart: FC<Props> = (props) => {
 				withInnerLines={true}
 				yAxisSuffix=""
 				verticalLabelRotation={0}
-				withDots={true}
-				withShadow={true}
-				withOuterLines={true}
-				withVerticalLines={true}
-				withHorizontalLines={false}
 				showValuesOnTopOfBars={false}
 				style={{
 					alignSelf: 'center',
 					marginLeft: Platform.OS === 'android' ? -20 : -25,
 					marginTop: 20,
 				}}
-				propsForVerticalLabels={{ fontWeight: 'bold' }}
-				propsForHorizontalLabels={{ fontWeight: 'bold' }}
 			/>
 		</View>
 	)

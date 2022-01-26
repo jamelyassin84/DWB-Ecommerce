@@ -49,7 +49,7 @@ const Balance: FC<Props> = (props) => {
 				/>
 			</View>
 			<View style={style.anotherContainer}>
-				<View style={{ paddingTop: 17 }}>
+				<View style={{ paddingTop: 17, width: '50%' }}>
 					<Text style={style.walletBalance}>Wallet balance</Text>
 					<BoldText style={style.balance}>
 						{currencyFormat(seller?.balance || 0, 'AED')}
@@ -85,6 +85,7 @@ const style = StyleSheet.create({
 		paddingHorizontal: 34,
 		paddingVertical: 19,
 		position: 'absolute',
+		width: '100%',
 	},
 	walletBalance: {
 		color: '#E9EBF0',
